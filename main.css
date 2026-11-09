@@ -826,6 +826,11 @@ h1 {
   color: #444;
 }
 .counter {
+  /* Fixed width: the counter's text overflows instead of pushing the rest
+     of the bar's content to the right as it grows. */
+  flex: none;
+  width: 140px;
+  overflow: visible;
   white-space: nowrap;
 }
 .jump-nav {
