@@ -12,6 +12,7 @@ var sixtyPercentScrollPercentage = 0.0;
 var babies = document.getElementById('babies-wrapper');
 var baby_counter = document.getElementById('baby-counter');
 
+var MUSK_WEALTH = 908000000000;
 var thousand = new Intl.NumberFormat('en-US')
 var money = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -53,9 +54,13 @@ babies.addEventListener('scroll', function(){
 //Todo: stop executing once scrolled past
 function update_wealth_counter() {
   if (bezos_viewable()) {
-    if (bezos_counter_viewable()) {
-      let wealth = (window.scrollX - bezos.offsetLeft + 175) * 500000;
-      bezos_counter.innerHTML = (wealth < 908000000000) ? money.format(wealth) : "$908,000,000,000.00";
+    let wealth = Math.min((window.scrollX - bezos.offsetLeft + 175) * 500000, MUSK_WEALTH);
+    if (wealth > 0) {
+      // The percentage shows from the start of the bar; the dollar amount
+      // joins it once the reader reaches the "just kidding" box, as before.
+      let pct = wealth / MUSK_WEALTH * 100;
+      let pctText = '<strong>' + pct.toFixed(pct < 1 ? 2 : 1) + '%</strong> of Elon Musk\'s wealth';
+      bezos_counter.innerHTML = bezos_counter_viewable() ? money.format(wealth) + ' &middot; ' + pctText : pctText;
     }
     else {
       bezos_counter.innerHTML = '';
@@ -86,3 +91,81 @@ function update_wealth_counter() {
 function toggleZoom() {
   document.getElementById('line-chart').classList.toggle('zoom');
 }
+
+// Back / Next buttons: jump to the previous or next piece of information.
+(function () {
+  var german = document.documentElement.lang === 'de';
+  var nav = document.createElement('nav');
+  nav.className = 'jump-nav';
+  nav.innerHTML =
+    '<button type="button" class="jump-prev">&lsaquo; ' + (german ? 'Zur&uuml;ck' : 'Back') + '</button>' +
+    '<button type="button" class="jump-next">' + (german ? 'Weiter' : 'Next') + ' &rsaquo;</button>';
+  document.body.appendChild(nav);
+
+  var STICKY_CONTENT = '.title, .chart, .piechart, .worldchart, .chart-outer, .midtext, .title-square-wrapper, .center-sticky';
+  var lastTarget = null, lastJump = 0;
+
+  function pageLeft(el) {
+    return el.getBoundingClientRect().left + window.scrollX;
+  }
+
+  // Where to scroll so that a stop is in view.
+  function targetFor(el) {
+    var left = pageLeft(el), width = el.offsetWidth, vw = window.innerWidth;
+    if (width <= vw) {
+      return left + width / 2 - vw / 2;              // small: center it
+    }
+    if (el.classList.contains('infobox') && el.querySelector(STICKY_CONTENT)) {
+      // Its content sticks to the middle of the screen (or 10px from the left
+      // on phones) once its left edge reaches that point.
+      return vw <= 450 ? left - 5 : left - vw / 2 + 5;
+    }
+    return left - 60;                                 // wide: show its start
+  }
+
+  function stops() {
+    var els = document.querySelectorAll('.wealth-wrapper, .wealth-wrapper .infobox');
+    var targets = [];
+    for (var i = 0; i < els.length; i++) {
+      targets.push(targetFor(els[i]));
+    }
+    // The end of each giant bar, where its counter reaches the total
+    // (the counter reads the bar 175px from the left of the screen).
+    [bezos, four_hundred.querySelector('.wealth')].forEach(function (bar) {
+      targets.push(pageLeft(bar) + bar.offsetWidth - 170);
+    });
+    var max = document.documentElement.scrollWidth - window.innerWidth;
+    targets = targets.map(function (t) { return Math.max(0, Math.min(Math.round(t), max)); });
+    targets.sort(function (a, b) { return a - b; });
+    // Stops a few pixels apart show the same thing: keep the first.
+    var kept = [];
+    targets.forEach(function (t) {
+      if (!kept.length || t - kept[kept.length - 1] > 300) { kept.push(t); }
+    });
+    return kept;
+  }
+
+  function jump(direction) {
+    // While a jump is still animating, count from where it is going.
+    var from = (lastTarget !== null && Date.now() - lastJump < 1500) ? lastTarget : window.scrollX;
+    var all = stops(), target = null;
+    if (direction > 0) {
+      for (var i = 0; i < all.length; i++) {
+        if (all[i] > from + 20) { target = all[i]; break; }
+      }
+    }
+    else {
+      for (var j = all.length - 1; j >= 0; j--) {
+        if (all[j] < from - 20) { target = all[j]; break; }
+      }
+      if (target === null) { target = 0; }
+    }
+    if (target === null) { return; }
+    lastTarget = target;
+    lastJump = Date.now();
+    window.scrollTo({left: target, top: window.scrollY, behavior: 'smooth'});
+  }
+
+  nav.querySelector('.jump-prev').addEventListener('click', function () { jump(-1); });
+  nav.querySelector('.jump-next').addEventListener('click', function () { jump(1); });
+})();
