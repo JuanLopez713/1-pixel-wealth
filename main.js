@@ -109,8 +109,17 @@ function toggleZoom() {
   }
 
   // Where to scroll so that a stop is in view.
+  // Box figures (a colored square or bar with its label) line up with the
+  // left edge of the screen; text and charts are centered.
+  var BOX_FIGURES = '.celebrities > *, .infectious > div, .lifetime, .healthcare, .amazon-year, .year-veteran, .year-chemo, .money-bar, .teacher-pay';
+
   function targetFor(el) {
     var left = pageLeft(el), width = el.offsetWidth, vw = window.innerWidth;
+    if (el.matches(BOX_FIGURES)) {
+      // Line up the square itself (the celebrity boxes have side margins).
+      var square = el.closest('.celebrities') && el.querySelector('.square');
+      return (square ? pageLeft(square) : left) - (vw <= 450 ? 10 : 40);
+    }
     if (width <= vw) {
       return left + width / 2 - vw / 2;              // small: center it
     }
@@ -126,7 +135,24 @@ function toggleZoom() {
     var els = document.querySelectorAll('.wealth-wrapper, .wealth-wrapper .infobox');
     var targets = [];
     for (var i = 0; i < els.length; i++) {
+      // A box that holds a row of graphics gets one stop per graphic (below).
+      if (els[i].classList.contains('celebrities') || els[i].querySelector('.infectious')) { continue; }
       targets.push(targetFor(els[i]));
+    }
+    // Graphics side by side in one box: Solomon, Beyonce, Tim Cook, the
+    // doctor/lawyer column and the hedge fund manager; COVID, malaria, Ebola.
+    var items = document.querySelectorAll('.celebrities > .sub-infobox, .celebrities > .column-infobox, .infectious > div');
+    for (var j = 0; j < items.length; j++) {
+      targets.push(targetFor(items[j]));
+    }
+    // Text in the middle of a wide box (the "$9 billion every week" line on
+    // the chemotherapy bar) only comes into view partway through the box.
+    // It is centered in its wrapper and sticks to the middle of the screen.
+    var midtexts = document.querySelectorAll('.midtext-wrapper');
+    for (var k = 0; k < midtexts.length; k++) {
+      var wrapper = midtexts[k], text = wrapper.querySelector('.midtext');
+      var start = pageLeft(wrapper) + (wrapper.offsetWidth - text.offsetWidth) / 2;
+      targets.push(window.innerWidth <= 450 ? start - 5 : start - window.innerWidth / 2 + 5);
     }
     // The end of each giant bar, where its counter reaches the total
     // (the counter reads the bar 175px from the left of the screen).

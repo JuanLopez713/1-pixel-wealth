@@ -17,7 +17,7 @@ strings : {
 'i18n-ok-were-coming-up' : "OK, das Ende ist in Sicht.",
 'i18n-lol-just-kidding' : "Haha, nur Spa&szlig;, wir haben erst ungef&auml;hr ein Drittel des Weges. Aber bleib dran, es gibt noch einiges zu sehen.",
 'i18n-lets-put-this-wealth' : "Lass uns versuchen dieses Verm&ouml;gen einzuordnen, indem wir es mit ein paar Dingen vergleichen, die wir uns besser vorstellen k&ouml;nnen.",
-'i18n-all-the-money-you' : "Alles Geld, das du in deinem gesamten Leben jemals verdienen wirst, von dem Tag deiner Geburt bis zu dem Tag an dem du stirbst (ungef&auml;hr 1,7 Millionen Dollar)",
+'i18n-all-the-money-you' : "Durchschnittliches Einkommen eines Menschen in seinem gesamten Leben, vom Tag der Geburt bis zum Tag des Todes (ungef&auml;hr 1,7 Millionen Dollar)",
 'i18n-annual-cost-of-health' : "J&auml;hrliche Kosten f&uuml;r die medizinische Versorgung einer vierk&ouml;pfigen Familie",
 'i18n-annual-pay-of-amazon' : "Jahresgehalt eines Amazon-Lagerarbeiters",
 'i18n-annual-cost-to-house' : "J&auml;hrliche Kosten, um allen obdachlosen Kriegsveteranen der USA ein Dach &uuml;ber dem Kopf zu geben",

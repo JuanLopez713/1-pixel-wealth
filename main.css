@@ -431,12 +431,12 @@ h1 {
   transition: box-shadow .8s;
   box-shadow: inset 0 0 10px #00000042;
 }
-.zoom.line-chart svg {
-  transition: all 1.5s;
-  width: 940%;
-  height: auto;
-  margin-top: -102%;
-  margin-left: -20%;
+.line-chart .chart-zoomed,
+.zoom.line-chart .chart-full {
+  display: none;
+}
+.zoom.line-chart .chart-zoomed {
+  display: block;
 }
 @media (max-width: 450px) {
   .line-chart .chart-inner .zero,
@@ -452,11 +452,6 @@ h1 {
   }
   .desktop-zuck {
     display: none;
-  }
-  .zoom.line-chart svg {
-    width: 1200%;
-    margin-top: -120%;
-    margin-left: -16%;
   }
 }
 @media (min-width: 451px) {
@@ -824,6 +819,119 @@ h1 {
 }
 .credit a {
   color: #444;
+}
+/* "For scale" key that travels under Musk's bar. Zero width, so it never
+   pushes the bar's content. */
+.scale-key {
+  position: sticky;
+  left: 10px;
+  align-self: flex-end;
+  flex: none;
+  width: 0;
+  height: 0;
+  z-index: 2;
+}
+.scale-key-inner {
+  position: absolute;
+  left: 0;
+  top: 64px;
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  white-space: nowrap;
+  color: black;
+  font-size: 14px;
+}
+.scale-item {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+.scale-square {
+  display: inline-block;
+  background-color: black;
+}
+.scale-square.million-square {
+  background-color: #4CAF50;
+}
+@media (max-width: 450px) {
+  .scale-key-inner {
+    flex-wrap: wrap;
+    width: 90vw;
+    white-space: normal;
+    gap: 6px 14px;
+  }
+}
+/* Box figures (squares with a label) sit at the left edge, not centered. */
+@media (min-width: 451px) {
+  .infobox .title-square-wrapper {
+    left: 40px;
+    transform: none;
+  }
+}
+/* Political money, drawn to scale (400 px tall, $1,000 per square pixel). */
+.infobox.money-bar,
+.four-hundred .infobox.money-bar {
+  width: auto;
+}
+.teacher-pay .square {
+  width: 8.63px;
+  height: 8.63px;
+  background-color: blue;
+}
+.famine-plan .square {
+  background-color: #2e7d32;
+}
+.end-hunger .square {
+  background-color: #1b5e20;
+}
+.free-college .square {
+  background-color: #1565c0;
+}
+.debt-relief .square {
+  background-color: #283593;
+}
+/* Last note in Musk's bar, pushed to the bar's far end. */
+.infobox.bar-end-note {
+  width: 520px;
+  margin-left: auto;
+  margin-right: 260px;
+  font-size: 20px;
+  line-height: 1.4;
+  color: black;
+}
+@media (max-width: 450px) {
+  .infobox.bar-end-note {
+    width: 300px;
+    margin-right: 200px;
+    font-size: 17px;
+  }
+}
+.money-bar .square {
+  height: 400px;
+  box-sizing: border-box;
+}
+.money-bar .square .title {
+  position: sticky;
+  left: 1px;
+  transform: none;
+  display: inline-block;
+  width: auto;
+  max-width: 420px;
+  padding: 10px;
+  color: white;
+}
+.money-bar .square .title a {
+  color: white;
+}
+.billionaire-midterms .square {
+  background-color: #b71c1c;
+}
+.musk-2024 .square {
+  background-color: #e65100;
+}
+.lobbying-2025 .square {
+  background-color: #4a148c;
 }
 .counter {
   /* Fixed width: the counter's text overflows instead of pushing the rest

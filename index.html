@@ -60,6 +60,14 @@
         <div id="bezos" class="wealth ruler">
           <h2 class="wealth-title i18n-USD908-billion-wealth-2026">$908 billion (wealth of Elon Musk)</h2>
           <div class="counter" id="bezos-counter"></div>
+          <div class="scale-key">
+            <div class="scale-key-inner">
+              <span class="scale-key-label">For scale:</span>
+              <span class="scale-item"><span class="scale-square" style="width: 1px; height: 1px"></span>$1,000</span>
+              <span class="scale-item"><span class="scale-square" style="width: 9.35px; height: 9.35px"></span>$87,460 (median household income)</span>
+              <span class="scale-item"><span class="scale-square million-square" style="width: 33.62px; height: 33.62px"></span>$1 million</span>
+            </div>
+          </div>
           <div class="key">
             <span class="i18n-USD80-million">$80 million</span>
           </div>
@@ -93,7 +101,7 @@
 
           <div class="infobox infobox-half lifetime">
             <div class="title-square-wrapper">
-              <div class="title i18n-all-the-money-you">All the money you will ever earn in your entire life from the day you are born until the day you die (about $1.7 million)</div>
+              <div class="title i18n-all-the-money-you">On average, a person's earnings over their entire life, from the day they are born until the day they die (about $1.7 million)</div>
               <div class="square"></div>
             </div>
           </div>
@@ -108,6 +116,13 @@
           <div class="infobox infobox-half amazon-year">
             <div class="title-square-wrapper">
               <div class="title i18n-annual-pay-of-amazon-2026">Annual pay of an Amazon warehouse worker (about $47,800, at <a href="https://fortune.com/2025/09/17/amazon-1-bllion-boost-fulfillment-transportation-pay-health-costs/" target="_blank">$23 an hour</a>)</div>
+              <div class="square"></div>
+            </div>
+          </div>
+
+          <div class="infobox infobox-half teacher-pay">
+            <div class="title-square-wrapper">
+              <div class="title">Average annual pay of a public school teacher (<a href="https://www.wunc.org/2026-04-27/inflation-is-sucking-the-life-out-of-teacher-pay-raises-report-says" target="_blank">$74,495</a>). Elon's fortune could pay about 12 million years of it.</div>
               <div class="square"></div>
             </div>
           </div>
@@ -185,7 +200,7 @@
           <div id="line-chart" class="infobox infobox-quarter line-chart">
             <div class="chart-outer">
               <div class="chart-inner">
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="150 276 696 152" width="100%" height="100%">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="150 276 696 152" width="100%" height="100%" class="chart-full">
                     <defs>
                       <font-face font-family="Arial" font-size="16" panose-1="2 11 6 4 2 2 2 2 2 4" units-per-em="1000" underline-position="-105.95703" underline-thickness="73.24219" slope="0" x-height="518.5547" cap-height="716.3086" ascent="905.2734" descent="-211.91406" font-weight="400">
                         <font-face-src>
@@ -228,17 +243,29 @@
                         </g>
                         <g id="Graphic_9">
                           <text transform="translate(155 281.5)" fill="black">
-                            <tspan class="two-hundred-million i18n-USD200-million" font-family="Arial" font-size="16" font-weight="400" fill="black" x="0" y="14">$200 million</tspan>
+                            <tspan class="two-hundred-million i18n-USD200-million" font-family="Arial" font-size="16" font-weight="700" fill="#d50000" x="0" y="14">$200 million</tspan>
                           </text>
                         </g>
                         <g id="Line_10">
-                          <line x1="197.73068" y1="304.02344" x2="197.8919" y2="360.51144" stroke="black" stroke-linecap="square" stroke-linejoin="round" stroke-width=".25"/>
+                          <line x1="203" y1="304.02344" x2="203" y2="355.5" stroke="#d50000" stroke-width=".5"/>
                         </g>
                         <g id="Line_2">
-                          <line x1="203" y1="362" x2="703" y2="362" stroke="black" stroke-linecap="square" stroke-linejoin="round" stroke-width="13"/>
+                          <line x1="203" y1="362" x2="703" y2="362" stroke="black" stroke-linecap="butt" stroke-width="13"/>
+                          <line x1="203" y1="362" x2="203.265" y2="362" stroke="#d50000" stroke-linecap="butt" stroke-width="13"/>
                         </g>
                       </g>
                     </g>
+                  </svg>
+                  <svg class="chart-zoomed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 200" width="100%" height="100%" style="overflow: visible" font-family="Arial, sans-serif" role="img" aria-label="Zoomed in 300 times: $200 million is a short red bar; Jeff Bezos's $378 billion bar runs off the screen.">
+                    <text x="10" y="24" font-size="14" fill="#333">Zoomed in 300 times</text>
+                    <line x1="40" y1="88" x2="40" y2="138" stroke="black" stroke-width="1"/>
+                    <text x="40" y="156" font-size="16" text-anchor="middle">$0</text>
+                    <rect x="40" y="95" width="82" height="34" fill="#d50000"/>
+                    <rect x="122" y="95" width="3000" height="34" fill="black"/>
+                    <line x1="122" y1="86" x2="122" y2="95" stroke="#d50000" stroke-width="1.5"/>
+                    <text x="81" y="80" font-size="16" font-weight="bold" fill="#d50000" text-anchor="middle">$200 million</text>
+                    <text x="530" y="80" font-size="16" text-anchor="end">Jeff Bezos ($378 billion) &#8594;</text>
+                    <text x="530" y="156" font-size="13" text-anchor="end">At this zoom, his bar keeps going for another 155,000 pixels.</text>
                   </svg>
                 </div>
                 <div id="ok-zoomer">
@@ -260,6 +287,44 @@
           </div>
         </div>
 
+        <div class="infobox text-infobox infobox-half">
+          <h2 class="title what-could-we-do">What could Elon Musk alone pay for?</h2>
+        </div>
+
+        <div class="infobox infobox-close money-bar famine-plan">
+          <div class="square shadow" style="width: 15000px">
+            <div class="title">The UN World Food Programme&#8217;s 2021 plan to keep 42 million people from starving: <a href="https://whyy.org/npr-story/how-6-billion-from-elon-musk-could-feed-millions-on-the-brink-of-famine" target="_blank">$6 billion</a>. That&#8217;s 0.7% of Elon&#8217;s wealth today.</div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>In 2021, the head of the World Food Programme said $6 billion from billionaires could save 42 million people on the brink of famine. Musk replied that if the WFP could explain how, he would sell Tesla stock and do it. <a href="https://globalnews.ca/news/8379773/un-response-elon-musk-world-hunger-challenge/" target="_blank">The WFP published its plan.</a> Musk never funded it.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar end-hunger">
+          <div class="square shadow" style="width: 82500px">
+            <div class="title">Ending world hunger by 2030: about <a href="https://www.ifpri.org/blog/big-costs-bigger-rewards-how-33-billion-spending-each-year-can-help-end-hunger-sustainably-2030" target="_blank">$33 billion a year</a> in extra spending, according to the Ceres2030 study. Elon&#8217;s fortune could pay for it for 27 years.</div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar free-college">
+          <div class="square shadow" style="width: 248750px">
+            <div class="title">Making college tuition-free for every student: up to about <a href="https://educationdata.org/how-much-would-free-college-cost" target="_blank">$100 billion a year</a> (Georgetown University estimate, in 2025 dollars). Elon could pay for it for 9 years.</div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar debt-relief">
+          <div class="square shadow" style="width: 1000000px">
+            <div class="title">President Biden&#8217;s student debt relief plan, up to $20,000 per borrower: about <a href="https://www.npr.org/2022/09/27/1125272287/student-loan-forgiveness-cost-billion" target="_blank">$400 billion</a>, according to the Congressional Budget Office. The Supreme Court blocked it in 2023. Elon could pay for it twice.</div>
+          </div>
+        </div>
+
+
+          <div class="infobox bar-end-note">
+            <p>Elon&#8217;s money runs out here. Every public school in America costs about <a href="https://nces.ed.gov/fastfacts/display.asp?id=66" target="_blank">$927 billion a year</a>. His entire fortune would keep them open for about 11&frac34; months.</p>
+          </div>
       </div>
     </div>
 
@@ -667,12 +732,53 @@
         </div>
 
         <div class="infobox text-infobox infobox-half">
+          <h2 class="title what-could-we-do">So why hasn't any of this happened?</h2>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Because a sliver of this wealth buys political power.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar billionaire-midterms">
+          <div class="square shadow" style="width: 4250px">
+            <div class="title">Billionaire families&#8217; spending on the 2026 midterm elections, through August: <a href="https://atfactionfund.org/billionaires-buying-elections-midterm-edition/" target="_blank">$1.7 billion</a>. That&#8217;s 0.02% of the wealth of the 400 richest Americans.</div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>About 81% of that money went to super PACs. A super PAC can't hand money to a candidate, but it can spend unlimited amounts on ads and campaigns to elect or defeat one. Billionaire political spending is 53 times what it was in 2010, according to Americans for Tax Fairness, a progressive advocacy group.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar musk-2024">
+          <div class="square shadow" style="width: 725px">
+            <div class="title">Elon Musk&#8217;s spending on the 2024 election: <a href="https://ktvz.com/politics/cnn-us-politics/2025/02/01/elon-musk-spent-more-than-290-million-on-the-2024-election-year-end-fec-filings-show/" target="_blank">about $290 million</a>, more than any other donor, mostly through his own super PAC.</div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar lobbying-2025">
+          <div class="square shadow" style="width: 12750px">
+            <div class="title">Spending on lobbying the federal government in 2025: <a href="https://legistorm.com/pro_news/4371/lobbying-spending-tops-5-billion-in-2025.html" target="_blank">more than $5 billion</a>, a record. That&#8217;s over $9 million for every member of Congress.</div>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>Much of that lobbying money comes from corporations and industry groups, and it buys access to lawmakers. Together with election spending, it helps explain why proposals to tax the super rich so rarely become law.</p>
+            <p>That is what oligarchy means: a wealthy few with an outsized say in how everyone else is governed.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-half">
           <h2 class="title what-could-we-do i18n-we-cannot-accept">We cannot accept this level of inequality any longer.</h2>
         </div>
 
         <div class="infobox text-infobox infobox-close sources">
           <div class="title">
-            <p>Figures updated in November 2026. Wealth: <a href="https://www.forbes.com/sites/pr/2026/09/15/forbes-releases-its-45th-annual-forbes-400-ranking-of-richest-americans/" target="_blank">Forbes 400</a> (September 2026) and the Federal Reserve's <a href="https://fred.stlouisfed.org/series/WFRBLB50107" target="_blank">Distributional Financial Accounts</a> (Q2 2026). Income and poverty: <a href="https://www.census.gov/library/publications/2026/demo/p60-289.html" target="_blank">Census Bureau</a> (2025). Population: Census Bureau Vintage 2025 estimates. Households: <a href="https://fred.stlouisfed.org/series/TTLHH" target="_blank">Census, via FRED</a> (2025). Malaria: <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">WHO World Malaria Report 2025</a>. Water: <a href="https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef" target="_blank">WHO/UNICEF JMP 2025</a>. Lifetime earnings, the costs of chemotherapy and of housing homeless veterans, David Solomon's wealth, and the doctor, lawyer and hedge fund manager figures are the original 2020 numbers. Original project by <a href="https://github.com/MKorostoff" target="_blank">Matt Korostoff</a>, forked from <a href="https://github.com/eattherichtextformat/1-pixel-wealth" target="_blank">eattherichtextformat/1-pixel-wealth</a>.</p>
+            <p>Figures updated in November 2026. Wealth: <a href="https://www.forbes.com/sites/pr/2026/09/15/forbes-releases-its-45th-annual-forbes-400-ranking-of-richest-americans/" target="_blank">Forbes 400</a> (September 2026) and the Federal Reserve's <a href="https://fred.stlouisfed.org/series/WFRBLB50107" target="_blank">Distributional Financial Accounts</a> (Q2 2026). Income and poverty: <a href="https://www.census.gov/library/publications/2026/demo/p60-289.html" target="_blank">Census Bureau</a> (2025). Population: Census Bureau Vintage 2025 estimates. Households: <a href="https://fred.stlouisfed.org/series/TTLHH" target="_blank">Census, via FRED</a> (2025). Malaria: <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">WHO World Malaria Report 2025</a>. Water: <a href="https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef" target="_blank">WHO/UNICEF JMP 2025</a>. Hunger: <a href="https://whyy.org/npr-story/how-6-billion-from-elon-musk-could-feed-millions-on-the-brink-of-famine" target="_blank">NPR</a> (World Food Programme, 2021) and <a href="https://www.ifpri.org/blog/big-costs-bigger-rewards-how-33-billion-spending-each-year-can-help-end-hunger-sustainably-2030" target="_blank">Ceres2030</a>. Education: <a href="https://nces.ed.gov/fastfacts/display.asp?id=66" target="_blank">NCES</a> (2020&ndash;21 spending, in 2022&ndash;23 dollars), <a href="https://educationdata.org/how-much-would-free-college-cost" target="_blank">Georgetown University via EducationData</a>, <a href="https://www.npr.org/2022/09/27/1125272287/student-loan-forgiveness-cost-billion" target="_blank">CBO via NPR</a>, and the NEA&#8217;s 2026 Rankings and Estimates (<a href="https://www.wunc.org/2026-04-27/inflation-is-sucking-the-life-out-of-teacher-pay-raises-report-says" target="_blank">via NPR</a>). Political spending: <a href="https://atfactionfund.org/billionaires-buying-elections-midterm-edition/" target="_blank">Americans for Tax Fairness</a> (FEC data through August 2026), <a href="https://ktvz.com/politics/cnn-us-politics/2025/02/01/elon-musk-spent-more-than-290-million-on-the-2024-election-year-end-fec-filings-show/" target="_blank">CNN</a> (FEC filings). Lobbying: <a href="https://legistorm.com/pro_news/4371/lobbying-spending-tops-5-billion-in-2025.html" target="_blank">LegiStorm</a>, consistent with OpenSecrets and Bloomberg Government. Lifetime earnings, the costs of chemotherapy and of housing homeless veterans, David Solomon's wealth, and the doctor, lawyer and hedge fund manager figures are the original 2020 numbers. Original project by <a href="https://github.com/MKorostoff" target="_blank">Matt Korostoff</a>, forked from <a href="https://github.com/eattherichtextformat/1-pixel-wealth" target="_blank">eattherichtextformat/1-pixel-wealth</a>.</p>
           </div>
         </div>
 
