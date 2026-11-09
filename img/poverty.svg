@@ -26,49 +26,49 @@
     <g id="Canvas_2: Layer 1">
       <title>Layer 1</title>
       <g id="Graphic_2">
-        <rect x="279" y="138.75" width="395" height="31.5" fill="#666"/>
+        <rect x="279" y="138.75" width="402.4" height="31.5" fill="#666"/>
         <text transform="translate(284 145.276)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="0" y="15">California</tspan>
         </text>
       </g>
       <g id="Graphic_3">
-        <rect x="279" y="182" width="381" height="31.5" fill="#c71b03"/>
+        <rect x="279" y="182" width="352.8" height="31.5" fill="#c71b03"/>
         <text transform="translate(284 188.526)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="0" y="15">Americans living in poverty</tspan>
         </text>
       </g>
       <g id="Graphic_4">
-        <rect x="279" y="225.25" width="287" height="31.5" fill="#666"/>
+        <rect x="279" y="225.25" width="324.2" height="31.5" fill="#666"/>
         <text transform="translate(284 231.776)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="0" y="15">Texas</tspan>
         </text>
       </g>
       <g id="Graphic_5">
-        <rect x="279" y="316.75" width="195" height="31.5" fill="#666"/>
+        <rect x="279" y="316.75" width="204.5" height="31.5" fill="#666"/>
         <text transform="translate(284 323.276)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="0" y="15">New York</tspan>
         </text>
       </g>
       <g id="Graphic_9">
-        <rect x="279" y="271" width="212" height="31.5" fill="#666"/>
+        <rect x="279" y="271" width="239.9" height="31.5" fill="#666"/>
         <text transform="translate(284 277.526)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="0" y="15">Florida</tspan>
         </text>
       </g>
       <g id="Graphic_10">
-        <rect x="279" y="362.5" width="128" height="31.5" fill="#666"/>
+        <rect x="279" y="362.5" width="133.5" height="31.5" fill="#666"/>
         <text transform="translate(284 369.026)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="0" y="15">Pennsylvania</tspan>
         </text>
       </g>
       <g id="Graphic_11">
-        <rect x="279" y="408.25" width="126" height="31.5" fill="#666"/>
+        <rect x="279" y="408.25" width="130.1" height="31.5" fill="#666"/>
         <text transform="translate(284 414.776)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="0" y="15">Illinois</tspan>
         </text>
       </g>
       <g id="Graphic_12">
-        <rect x="279" y="454" width="116" height="31.5" fill="#666"/>
+        <rect x="279" y="454" width="121.7" height="31.5" fill="#666"/>
         <text transform="translate(284 460.526)" fill="white">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="white" x="0" y="15">Ohio</tspan>
         </text>

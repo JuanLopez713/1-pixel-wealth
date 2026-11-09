@@ -268,8 +268,8 @@ h1 {
   width: 480px;
 }
 .median .wealth{
-  width: 7.94px;
-  height: 7.94px;
+  width: 9.35px;
+  height: 9.35px;
 }
 .million {
   width: 200px;
@@ -285,13 +285,13 @@ h1 {
   background-color: #03A9F4;
 }
 .bezos .wealth {
-  width: 278000px;
+  width: 1816000px;
   height: 500px;
   background-color: orange;
 }
 .four-hundred .wealth {
   margin-left: 100px;
-  width: 5920000px;
+  width: 16000000px;
   height: 500px;
   background-color: #03A9F4;
 }
@@ -337,13 +337,13 @@ h1 {
   background-color: blue;
 }
 .healthcare .square {
-  width: 4.96px;
-  height: 4.96px;
+  width: 5.32px;
+  height: 5.32px;
   background-color: blue;
 }
 .amazon-year .square {
-  width: 5.4px;
-  height: 5.4px;
+  width: 6.92px;
+  height: 6.92px;
   background-color: blue;
 }
 .year-veteran .square {
@@ -389,7 +389,7 @@ h1 {
 }
 .beyonce .square {
   height: 350px;
-  width: 1142px;
+  width: 2857px;
   background-color: #406994;
 }
 .goldman .square {
@@ -398,7 +398,7 @@ h1 {
   background-color: #64A8F0;
 }
 .tim-cook .square {
-  width: 1785px;
+  width: 8571px;
   height: 350px;
   background-color: #71889e;
 }
@@ -499,7 +499,7 @@ h1 {
 }
 .sixty-percent-people .people {
   width: 800px;
-  height: 1974000px;
+  height: 1708924px;
 }
 .sixty-percent-people .people-wrapper {
   box-shadow: inset 0 0 10px #000000;
@@ -559,7 +559,7 @@ h1 {
   }
   .sixty-percent-people .people {
     width: 200px;
-    height: 1974000px;
+    height: 1708924px;
   }
   .people-label {
     left: 35px;
@@ -707,7 +707,7 @@ h1 {
   width: 90vw;
 }
 .malaria .babies {
-  height: 9120320px;
+  height: 13888320px;
   background-size: 160px;
   background-image: url(img/baby.svg);
 }
@@ -732,7 +732,7 @@ h1 {
   }
   .malaria .babies {
     background-size: 68px;
-    height: 3876340px;
+    height: 5902740px;
   }
   .scroll-indicator {
     top: 38%;

@@ -1,6 +1,7 @@
 //German i18n data
 window.i18n_data = {
 code : 'de',
+images : ['plane.png'],
 strings : {
 'i18n-wealth-shown-to' : "Reichtum, ma&szlig;stabsgetreu",
 'i18n-scroll' : "scrollen",
