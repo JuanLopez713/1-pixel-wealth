@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Font options</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Big+Shoulders+Stencil:wght@900&family=League+Gothic&family=Public+Sans:wght@400;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--stock:#efe6d2;--ink:#1c1a17;--orange:#e0662a;--blue:#25547f}
+body{margin:0;background:var(--stock);color:var(--ink);font-family:'Public Sans',sans-serif}
+h1{font:800 22px 'Public Sans';margin:24px 32px 4px}
+p.lead{margin:0 32px 24px;font-size:15px}
+.opt{display:grid;grid-template-columns:200px 1fr;border-top:2px solid var(--ink)}
+.lab{padding:20px 24px;font:800 18px 'Public Sans'}
+.lab span{display:block;font:400 13px 'Public Sans';margin-top:6px}
+.row{padding:16px 24px 24px;display:grid;gap:12px}
+.bar{padding:10px 14px}
+.o{background:var(--orange)}.b{background:var(--blue);color:var(--stock)}.k{background:var(--stock);color:var(--blue)}
+.t{font-size:34px;text-transform:uppercase;line-height:1}
+.big{font-size:110px;line-height:.9;text-transform:uppercase}
+.cnt{font-size:30px}
+.f0{font-family:'Big Shoulders Stencil';font-weight:900}
+.f1{font-family:'Big Shoulders Display';font-weight:900}
+.f2{font-family:'League Gothic';font-weight:400;letter-spacing:.01em}
+.f3{font-family:'Public Sans';font-weight:900;letter-spacing:-.01em}
+.f3.big{font-size:88px}.f3.t{font-size:28px}
+</style></head><body>
+<h1>Font options for numbers and headings</h1>
+<p class="lead">Same text, same colors as the page. A is today's stencil, for comparison. Reading text stays Public Sans in every option.</p>
+<script>
+const opts=[["f0","A. Current: Big Shoulders Stencil","for comparison"],["f1","B. Big Shoulders Display","same family, solid letters"],["f2","C. League Gothic","classic condensed poster gothic"],["f3","D. Public Sans Black","the reading font, extra bold"]];
+for(const [f,n,s] of opts){document.write(`<section class="opt"><div class="lab">${n}<span>${s}</span></div><div class="row">
+<div class="bar"><span class="${f} t">$87,460 (Median US household income)</span></div>
+<div class="bar o"><span class="${f} t">$908 billion (wealth of Elon Musk)</span></div>
+<div><span class="${f} cnt">$58,747,554,688 · 6.5% of Elon Musk's wealth</span></div>
+<div class="bar k"><div class="${f} big">$1.35 trillion</div></div>
+<div class="bar b"><span class="${f} t">So why hasn't any of this happened?</span></div>
+</div></section>`)}
+</script></body></html>

@@ -1,3 +1,42 @@
+/* Public Works Silkscreen: flat inks on buff poster stock, after the
+   1936-43 Federal Art Project posters for public programs. Fonts are
+   self-hosted (SIL Open Font License, see fonts/). */
+@font-face {
+  font-family: "Big Shoulders Stencil";
+  src: url(fonts/big-shoulders-stencil.woff2) format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: url(fonts/big-shoulders-display.woff2) format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url(fonts/public-sans.woff2) format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url(fonts/public-sans-italic.woff2) format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+:root {
+  --stock: #efe6d2;   /* buff poster stock */
+  --ink: #1c1a17;     /* key ink */
+  --orange: #e0662a;  /* Elon Musk's bar */
+  --blue: #25547f;    /* the 400 richest Americans' bar */
+  --gold: #c9a227;    /* reserved: the thing you are on now */
+  --stamp: #b4441a;   /* orange, pulled darker for stamps on bare stock */
+  --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --stencil: "Big Shoulders Stencil", "Arial Narrow", sans-serif;
+  --text: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+}
 body, html {
   margin: 0;
 }
@@ -24,13 +63,13 @@ h1 {
   position: absolute;
   right: 0;
   bottom: 0;
-  padding-top: 42px;
+  padding-top: 4px;
   padding-left: 48px;
 
   font-size: 30px;
-  color: #00000033;
+  color: var(--ink);
 
-  background-image: url(img/right.svg);
+  background-image: url(img/right-ink.svg);
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: 50px 40px;
@@ -56,7 +95,7 @@ h1 {
   100% {background-position: 50px 40px;}
 }
 .wealth-wrapper-outer {
-  font-family: sans-serif;
+  font-family: var(--text);
   overflow: visible;
   display: inline-block;
 }
@@ -65,50 +104,7 @@ h1 {
   left: 50%;
   transform: translate(-50%, 0);
 }
-.navigation {
-  position: fixed;
-  bottom: 15px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  display: flex;
-}
-.navigation .button {
-  color: rgba(0,0,0,0);
-  width: 20px;
-  display: block;
-  height: 20px;
-  border-radius: 100%;
-  background-position: 5px;
-  background-color: #d8d8d8;
-  box-shadow: inset 1px 6px 12px #e2e2e2, inset -1px -10px 5px #a9a9a9, 1px 2px 1px #797979;
-  overflow: hidden;
-  margin: 4px;
-}
-.navigation .button-inner {
-  background-repeat: no-repeat;
-  background-size: 8px;
-  height: 100%;
-  background-position: 5px;
-}
-.navigation .prev-button .button-inner {
-  background-image: url(img/prev.svg);
-}
-.navigation .next-button .button-inner {
-  background-image: url(img/next.svg);
-  background-position: 7px 5px;
-}
-.navigation .home-button .button-inner {
-  background-image: url(img/house.svg);
-  background-size: 12px;
-  background-position: 4px 4px;
-}
-.navigation .about-button .button-inner {
-  color: #999999;
-  font-weight: bold;
-  text-decoration: none;
-  text-indent: 5px;
-  line-height: 22px;
-}
+
 
 
 .wealth-row {
@@ -122,7 +118,7 @@ h1 {
   margin: 1em 3em;
 }
 .wealth {
-  background-color: black;
+  background-color: var(--ink);
   align-items: center;
   display: flex;
 }
@@ -155,7 +151,7 @@ h1 {
   position: sticky;
   left: 0;
   margin-bottom: 5px;
-  color: black;
+  color: var(--ink);
   margin-top: 0;
 }
 .text-infobox .title,
@@ -184,7 +180,6 @@ h1 {
   left: 0;
 }
 .infobox .chart,
-.infobox .piechart,
 .infobox .worldchart,
 .infobox .chart-outer,
 .infobox .midtext,
@@ -201,7 +196,6 @@ h1 {
   }
   .infobox .square,
   .infobox .title-square-wrapper,
-  .infobox .piechart,
   .infobox .chart-outer,
   .infobox .midtext,
   .infobox .title {
@@ -275,30 +269,32 @@ h1 {
   width: 200px;
 }
 .million .wealth {
-  width: 33.62px;
-  height: 33.62px;
-  background-color: #4CAF50;
+  width: 31.62px;
+  height: 31.62px;
+  background-color: var(--ink);
 }
 .billion .wealth {
   width: 2000px;
   height: 500px;
-  background-color: #03A9F4;
+  background-color: var(--ink);
 }
 .bezos .wealth {
   width: 1816000px;
   height: 500px;
-  background-color: orange;
+  background-color: var(--orange);
 }
 .four-hundred .wealth {
   margin-left: 100px;
   width: 16000000px;
   height: 500px;
-  background-color: #03A9F4;
+  background-color: var(--blue);
 }
 .ruler {
-  background-image: url('img/ruler.svg');
+  background-image: url('img/ruler-ink.svg');
   background-repeat: repeat-x;
   background-position: 0 470px;
+  /* Legacy $80 million tile (160 px), overridden by the $100 million ruler below. */
+  background-size: 160px 60px;
 }
 .key {
   position: absolute;
@@ -314,43 +310,34 @@ h1 {
   display: inline-block;
 }
 .bezos .key > span {
-  background-color: orange;
+  background-color: var(--orange);
 }
 .four-hundred .key > span {
-  background-color: #03A9F4;
+  background-color: var(--blue);
 }
 .shadow {
-  box-shadow: -3px 5px 10px;
-}
-.counter {
-  align-self: flex-end;
-  left: 10px;
-  position: sticky;
-  transform: translate(0, 27px);
-  color: black;
-  padding: 5px;
-  min-width: 140px;
+  box-shadow: none;
 }
 .lifetime .square {
-  width: 41.23px;
-  height: 41.23px;
-  background-color: blue;
+  width: 40px;
+  height: 40px;
+  background-color: var(--ink);
 }
 .healthcare .square {
   width: 5.32px;
   height: 5.32px;
-  background-color: blue;
+  background-color: var(--ink);
 }
 .amazon-year .square {
   width: 6.92px;
   height: 6.92px;
-  background-color: blue;
+  background-color: var(--ink);
 }
 .year-veteran .square {
   height: 400px;
-  width: 1186px;
+  width: 8000px;
   margin-top: 5px;
-  background-color: #8BC34A;
+  background-color: var(--ink);
 }
 .year-veteran .title {
   width: auto;
@@ -366,9 +353,9 @@ h1 {
 }
 .year-chemo .square {
   height: 400px;
-  width: 22500px;
-  background-color: #03A9F4;
-  border: 5px dashed #0078af;
+  width: 87800px;
+  background-color: var(--blue);
+  border: 5px dashed var(--stock);
   box-sizing: border-box;
 }
 .year-chemo .square .title {
@@ -381,7 +368,7 @@ h1 {
   top: 310px;
 }
 .year-chemo .key > span {
-  background-color: #03A9F4;
+  background-color: var(--blue);
 }
 .celebrities {
   display: flex;
@@ -390,32 +377,27 @@ h1 {
 .beyonce .square {
   height: 350px;
   width: 2857px;
-  background-color: #406994;
+  background-color: var(--blue);
 }
 .goldman .square {
-  width: 223px;
-  height: 223px;
-  background-color: #64A8F0;
+  width: 216.79px;
+  height: 216.79px;
+  background-color: var(--ink);
 }
 .tim-cook .square {
   width: 8571px;
   height: 350px;
-  background-color: #71889e;
+  background-color: var(--ink);
 }
 .doctor .square {
-  width: 81.8px;
-  height: 81.8px;
-  background-color: #0661b9;
+  width: 97.98px;
+  height: 97.98px;
+  background-color: var(--blue);
 }
 .lawyer .square {
-  width: 63.2px;
-  height: 63.2px;
-  background-color: #00478a;
-}
-.hedgefund .square {
-  width: 289.8px;
-  height: 289.8px;
-  background-color: #9daebf;
+  width: 81.85px;
+  height: 81.85px;
+  background-color: var(--ink);
 }
 .line-chart .chart-outer {
   width: 720px;
@@ -429,7 +411,7 @@ h1 {
 }
 .zoom.line-chart .chart-inner {
   transition: box-shadow .8s;
-  box-shadow: inset 0 0 10px #00000042;
+  outline: 3px solid var(--ink);
 }
 .line-chart .chart-zoomed,
 .zoom.line-chart .chart-full {
@@ -497,14 +479,14 @@ h1 {
   height: 1708924px;
 }
 .sixty-percent-people .people-wrapper {
-  box-shadow: inset 0 0 10px #000000;
+  outline: 3px solid var(--ink);
 }
 .bubble {
   border-radius: 10px;
   font-weight: bold;
   box-shadow: 4px 4px 5px;
   font-size: 28px;
-  background-color: white;
+  background-color: var(--stock);
   text-align: center;
   padding: 10px;
 }
@@ -512,13 +494,6 @@ h1 {
   position: absolute;
   top: 40%;
   left: 39%;
-}
-.scroll-indicator {
-  position: absolute;
-  top: 40%;
-  left: 260px;
-  font-size: 18px;
-  max-width: 240px;
 }
 .people-sub-label {
   font-weight: normal;
@@ -580,210 +555,6 @@ h1 {
   font-size: 25px;
   font-weight: bold;
 }
-.piechart {
-  position: relative;
-}
-.piechart .piechart-outer {
-  width: 300px;
-  height: 300px;
-  transform: rotate(-50deg);
-  background: yellowgreen;
-  border-radius: 50%;
-}
-.piechart .piechart-inner {
-  fill: yellowgreen;
-  stroke: #655;
-  stroke-width: 32;
-}
-@media (max-width: 450px) {
-  .piechart h2 {
-    font-size: 17px;
-  }
-}
-.two-point-seven-percent .piechart-inner {
-  stroke-dasharray: 2.7 100;
-}
-.six-percent .piechart-inner {
-  stroke-dasharray: 6 100;
-}
-.six-percent .piechart-outer {
-  transform: rotate(-45deg);
-}
-.eight-percent .piechart-inner {
-  stroke-dasharray: 8 100;
-}
-.two-point-seven-percent .piechart-outer,
-.three-percent .piechart-outer {
-  transform: rotate(-38deg);
-}
-.five-percent .piechart-outer {
-  transform: rotate(-43deg);
-}
-.four-tenths-percent .piechart-outer {
-  transform: rotate(-34deg);
-}
-.four-tenths-percent .piechart-inner {
-  stroke-dasharray: .4 100;
-}
-.three-percent .piechart-inner {
-  stroke-dasharray: 3 100;
-}
-.five-percent .piechart-inner {
-  stroke-dasharray: 5 100;
-}
-.forty-percent .piechart-inner {
-  stroke-dasharray: 43 100;
-}
-.piechart .dotted-line {
-  position: absolute;
-  width: 80px;
-  height: 0;
-  top: 40px;
-  left: 270px;
-  border-top: 2px dashed black;
-  transform: rotate(-38deg);
-}
-.piechart .label {
-  position: absolute;
-  left: 347px;
-  top: -7px;
-  font-size: 24px;
-}
-@media (max-width: 450px) {
-  .piechart .label {
-    left: 277px;
-    top: 43px;
-    font-size: 18px;
-  }
-  .piechart .dotted-line {
-    display: none;
-  }
-}
-.piechart .description {
-  width: 300px;
-  text-align: center;
-}
-.about {
-  visibility: hidden;
-  transition: opacity .7s;
-  opacity: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.65);
-}
-.about.open {
-  visibility: visible;
-  opacity: 1;
-}
-.modal-inner {
-  opacity: 1;
-  position: fixed;
-  top: 15px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  height: 0;
-  width: 0;
-  overflow: scroll;
-  transition: height .7s, width .7s;
-  background-color: white;
-}
-.modal-text {
-  width: calc(90vw - 40px);
-  height: calc(95vh - 40px);
-  overflow: visible;
-  padding: 20px;
-}
-.about.open .modal-inner,
-.about.open .modal-inner {
-  height: 95vh;
-  width: 90vw;
-}
-.malaria .babies {
-  height: 13888320px;
-  background-size: 160px;
-  background-image: url(img/baby.svg);
-}
-.malaria .babies-wrapper {
-  box-shadow: inset 0 0 10px #00000042;
-  width: 800px;
-  height: 320px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-.baby-counter {
-  top: 127px;
-  position: sticky;
-  display: inline-block;
-  left: 350px;
-  margin-top: 1800px;
-}
-@media (max-width: 450px) {
-  .malaria .babies-wrapper {
-    max-width: 340px;
-    height: 340px;
-  }
-  .malaria .babies {
-    background-size: 68px;
-    height: 5902740px;
-  }
-  .scroll-indicator {
-    top: 38%;
-    left: 40px;
-  }
-  .baby-counter {
-    left: 135px;
-  }
-}
-.infectious {
-  display: flex;
-  align-items: center;
-}
-.ebola-bar {
-  max-width: 300px;
-}
-.ebola-bar .title {
-  max-width: 100%;
-}
-.ebola-bar .square {
-  height: 122px;
-  width: 122px;
-  background-color: #00bb42;
-}
-.corona-bar .title,
-.malaria-bar .title {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  text-align: center;
-}
-.malaria-bar .square {
-  height: 400px;
-  width: 337px;
-  background-color: #66c35a;
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-}
-.corona-bar .square {
-  height: 400px;
-  width: 500px;
-  background-color: green;
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-}
-.corona-bar,
-.malaria-bar,
-.ebola-bar {
-  color: black;
-  margin: 50px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
 @media (max-width: 450px) {
   h3 {
     font-size: 14px;
@@ -792,18 +563,12 @@ h1 {
 .cares .chart {
   text-align: center;
 }
-.worldchart-wrapper {
-  display: flex;
-}
 .worldchart {
   text-align: center;
   width: 320px;
 }
 .worldchart img {
   max-width: 100%;
-}
-.worldchart-wrapper .description {
-  text-align: center;
 }
 .all-of-them .title {
   width: 370px;
@@ -815,52 +580,10 @@ h1 {
   padding: 0 16px;
   font-size: 15px;
   line-height: 1.5;
-  color: #666;
+  color: var(--ink);
 }
 .credit a {
-  color: #444;
-}
-/* "For scale" key that travels under Musk's bar. Zero width, so it never
-   pushes the bar's content. */
-.scale-key {
-  position: sticky;
-  left: 10px;
-  align-self: flex-end;
-  flex: none;
-  width: 0;
-  height: 0;
-  z-index: 2;
-}
-.scale-key-inner {
-  position: absolute;
-  left: 0;
-  top: 64px;
-  display: flex;
-  align-items: flex-end;
-  gap: 18px;
-  white-space: nowrap;
-  color: black;
-  font-size: 14px;
-}
-.scale-item {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-}
-.scale-square {
-  display: inline-block;
-  background-color: black;
-}
-.scale-square.million-square {
-  background-color: #4CAF50;
-}
-@media (max-width: 450px) {
-  .scale-key-inner {
-    flex-wrap: wrap;
-    width: 90vw;
-    white-space: normal;
-    gap: 6px 14px;
-  }
+  color: inherit;
 }
 /* Box figures (squares with a label) sit at the left edge, not centered. */
 @media (min-width: 451px) {
@@ -877,19 +600,19 @@ h1 {
 .teacher-pay .square {
   width: 8.63px;
   height: 8.63px;
-  background-color: blue;
+  background-color: var(--ink);
 }
 .famine-plan .square {
-  background-color: #2e7d32;
+  background-color: var(--ink);
 }
 .end-hunger .square {
-  background-color: #1b5e20;
+  background-color: var(--ink);
 }
 .free-college .square {
-  background-color: #1565c0;
+  background-color: var(--ink);
 }
 .debt-relief .square {
-  background-color: #283593;
+  background-color: var(--ink);
 }
 /* Last note in Musk's bar, pushed to the bar's far end. */
 .infobox.bar-end-note {
@@ -898,7 +621,7 @@ h1 {
   margin-right: 260px;
   font-size: 20px;
   line-height: 1.4;
-  color: black;
+  color: var(--ink);
 }
 @media (max-width: 450px) {
   .infobox.bar-end-note {
@@ -919,28 +642,462 @@ h1 {
   width: auto;
   max-width: 420px;
   padding: 10px;
-  color: white;
+  color: var(--stock);
 }
 .money-bar .square .title a {
-  color: white;
+  color: var(--stock);
 }
 .billionaire-midterms .square {
-  background-color: #b71c1c;
+  background-color: var(--ink);
 }
 .musk-2024 .square {
-  background-color: #e65100;
+  background-color: var(--orange);
 }
 .lobbying-2025 .square {
-  background-color: #4a148c;
+  background-color: var(--ink);
 }
-.counter {
-  /* Fixed width: the counter's text overflows instead of pushing the rest
-     of the bar's content to the right as it grows. */
-  flex: none;
-  width: 140px;
-  overflow: visible;
+/* Programs funded by the 400, drawn to scale (400 px tall, dollars / 400,000
+   px wide). Each is knocked out of the bar; the strip's pie takes its slice. */
+.program .square {
+  background-color: var(--stock);
+}
+.money-bar.program .square .title,
+.money-bar.program .square .title a {
+  color: var(--blue);
+}
+/* The political ending is drawn on what's left, at the far end of the bar. */
+.infobox.political-start {
+  margin-left: auto;
+}
+.four-hundred .infobox.sources {
+  margin-right: 200px;
+}
+
+/* The strip: fixed under the bars, above Back/Next. main.js sets its top to
+   the bar's bottom edge and turns each part on when it applies. */
+.strip {
+  position: fixed;
+  top: 524px;
+  bottom: 64px;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: none;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  align-content: start;
+  gap: 12px 32px;
+  padding: 4px 16px 0 15px;
+  overflow: hidden;
+  font-family: var(--text);
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--ink);
+  pointer-events: none;
+}
+.strip.on {
+  display: grid;
+}
+.strip a {
+  pointer-events: auto;
+}
+.strip-left {
+  grid-column: 1;
+  min-width: 0;
+}
+.strip-counter {
+  min-height: 1.4em;
+  font-size: 16px;
   white-space: nowrap;
 }
+.scale-key {
+  display: none;
+  align-items: flex-end;
+  gap: 18px;
+  margin-top: 24px;
+  white-space: nowrap;
+}
+.strip.key-on .scale-key {
+  display: flex;
+}
+.scale-item {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+.scale-square {
+  display: inline-block;
+  background-color: var(--ink);
+}
+.scale-square.million-square {
+  background-color: var(--ink);
+}
+
+.pie {
+  grid-column: 3;
+  display: none;
+  align-items: center;
+  gap: 14px;
+}
+.strip.pie-on .pie {
+  display: flex;
+}
+.pie-disc {
+  --pie-taken: var(--stock);
+  --pie-now: var(--gold);
+  --pie-rest: var(--blue);
+  width: clamp(56px, calc(100vh - 660px), 130px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px black;
+  background: var(--pie-rest);
+}
+.pie-text {
+  max-width: 190px;
+}
+.pie-text b {
+  font-size: 28px;
+}
+.pie-now {
+  font-style: italic;
+}
+
+.deaths {
+  grid-column: 2;
+  display: none;
+  gap: 28px;
+  min-width: 0;
+}
+.strip.deaths-on .deaths {
+  display: flex;
+}
+.deaths p {
+  margin: 0 0 6px;
+  max-width: 620px;
+}
+.deaths-head {
+  font-weight: bold;
+}
+.deaths-row {
+  --s: clamp(36px, calc(100vh - 690px), 96px);
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+.death {
+  margin: 0;
+  width: max(calc(var(--s) * 1.3), 128px);
+  font-size: 12px;
+}
+.death-square {
+  background-color: var(--ink);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.death.covid .death-square { width: var(--s); height: var(--s); }
+.death.malaria .death-square { width: calc(var(--s) * 0.9797); height: calc(var(--s) * 0.9797); transition-delay: .4s; }
+.death.ebola .death-square { width: calc(var(--s) * 0.2279); height: calc(var(--s) * 0.2279); transition-delay: .8s; }
+.deaths.play .death-square {
+  transform: none;
+}
+.deaths-canvas {
+  display: block;
+  /* 140 x 31 dots, shrunk to fit the strip on short screens. */
+  width: min(420px, 100%, calc((100vh - 660px) * 4.5));
+  height: auto;
+  color: var(--ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .death-square { transition: none; }
+}
+/* The widget's two parts take turns: the squares, then the grid. */
+.deaths .deaths-grid,
+.deaths.phase-grid .deaths-squares {
+  display: none;
+}
+.deaths.phase-grid .deaths-grid {
+  display: block;
+}
+/* Not enough room for the key and the widget side by side: the widget takes
+   the key's place. */
+@media (max-width: 1299px) {
+  .strip.deaths-on .scale-key { display: none; }
+}
+@media (max-width: 450px) {
+  .strip {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 0 10px;
+    gap: 8px 12px;
+  }
+  .pie { grid-column: 2; }
+  .deaths { grid-column: 1 / -1; grid-row: 2; }
+  .scale-key {
+    flex-wrap: wrap;
+    white-space: normal;
+    gap: 6px 14px;
+    margin-top: 8px;
+  }
+  .pie-text b { font-size: 20px; }
+}
+
+/* ---------- Public Works Silkscreen: type, stock, components ---------- */
+body {
+  background-color: var(--stock);
+  /* Uncoated stock: a faint, even tooth. */
+  background-image: radial-gradient(rgba(28, 26, 23, 0.05) 0.7px, transparent 0.9px);
+  background-size: 5px 5px;
+  color: var(--ink);
+  font-family: var(--text);
+  font-variant-numeric: lining-nums;
+  line-height: 1.45;
+}
+::selection {
+  background-color: var(--gold);
+  color: var(--ink);
+}
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+:focus-visible {
+  /* Ink ring on a stock halo: readable on stock, orange, blue and ink. */
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--stock);
+}
+
+/* Title poster */
+.title-screen {
+  position: relative;
+  height: calc(100vh - 2em);
+  min-height: 520px;
+}
+h1 {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(72px, 11vw, 168px);
+  line-height: 0.84;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  max-width: 11ch;
+  margin: 12vh auto 0;
+  /* Two inks, pulled slightly out of register. */
+  text-shadow: 0.035em 0.025em 0 var(--orange);
+}
+.credit {
+  margin-top: 36px;
+  max-width: 34em;
+  font-size: 15px;
+}
+.scroll-this-way {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Bar titles and section headings: solid poster capitals. */
+.wealth-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+.billion .wealth-title {
+  color: var(--stock);
+}
+/* Bar titles stay on one line, clear of the figures below them. */
+.wealth > .wealth-title {
+  white-space: nowrap;
+}
+.billion .wealth > .wealth-title {
+  position: sticky;
+  white-space: nowrap;
+}
+.four-hundred .wealth-title {
+  color: var(--stock);
+}
+.infobox .what-could-we-do.title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-wrap: balance;
+  width: 440px;
+}
+@media (max-width: 450px) {
+  .wealth-title { font-size: 26px; }
+  .infobox .what-could-we-do.title { font-size: 36px; width: 86vw; }
+}
+
+/* Reading text sits straight on the ink: key ink on orange, stock on blue. */
+.infobox .title {
+  font-size: 19px;
+  line-height: 1.45;
+}
+.infobox .title p {
+  margin: 0 0 0.7em;
+}
+.infobox .title p:last-child {
+  margin-bottom: 0;
+}
+.four-hundred .infobox .title,
+.four-hundred .bar-end-note {
+  color: var(--stock);
+}
+.sources .title {
+  font-size: 15px;
+}
+.infobox.bar-end-note {
+  font-size: 22px;
+}
+.four-hundred .ruler {
+  background-image: url('img/ruler-stock.svg');
+}
+.four-hundred .key {
+  background-image: url(img/scale-stock.svg);
+  color: var(--stock);
+}
+.billion .key,
+.bezos .key {
+  color: var(--ink);
+}
+
+/* Figures and images that are not ink sit in windows of bare stock. */
+.infobox .chart,
+.worldchart,
+.ninety-wrapper,
+.plane-wrapper,
+.line-chart .chart-outer {
+  background-color: var(--stock);
+  color: var(--ink);
+  padding: 16px;
+  box-sizing: border-box;
+}
+.infobox .chart h3,
+.worldchart .description {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 24px;
+  margin: 4px 0 10px;
+}
+.people-wrapper {
+  background-color: var(--stock);
+}
+.bubble,
+.people-wrapper .percent {
+  border-radius: 0;
+  box-shadow: none;
+  background-color: var(--ink);
+  color: var(--stock);
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.people-sub-label {
+  font-family: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+}
+#ok-zoomer a {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 16px;
+  background-color: var(--ink);
+  color: var(--stock);
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#ok-zoomer .zoom-out,
+.zoom #ok-zoomer .zoom-in {
+  display: none;
+}
+.zoom #ok-zoomer .zoom-out {
+  display: inline-block;
+}
+
+/* Money bars on Musk's bar and the political bars: ink fields, stock type. */
+.money-bar .square .title {
+  font-size: 19px;
+  line-height: 1.4;
+  max-width: 460px;
+}
+.musk-2024 .square .title,
+.musk-2024 .square .title a {
+  color: var(--ink);
+}
+
+/* The programs: knocked out of the 400's ink as bare stock. One oversized
+   number per program; a FUNDED stamp where the bar, and its slice, ends. */
+.program .square {
+  position: relative;
+}
+.money-bar.program .square .title {
+  max-width: 560px;
+  padding: 18px 24px;
+}
+.program-name,
+.program-cost,
+.program-share {
+  display: block;
+}
+.program-name {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.program-cost {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 128px;
+  line-height: 0.86;
+  margin: 18px 0 12px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.program-share {
+  font-size: 18px;
+}
+.stamp {
+  position: absolute;
+  right: 120px;
+  bottom: 36px;
+  padding: 6px 18px 2px;
+  border: 6px solid var(--stamp);
+  color: var(--stamp);
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  mix-blend-mode: multiply;
+}
+@media (max-width: 450px) {
+  .program-cost { font-size: 72px; }
+  .program-name { font-size: 24px; }
+  .money-bar.program .square .title { max-width: 86vw; padding: 12px; }
+  .stamp { right: 60px; bottom: 24px; font-size: 48px; }
+}
+
+/* Back / Next: printed tabs. */
 .jump-nav {
   position: fixed;
   bottom: 16px;
@@ -949,24 +1106,648 @@ h1 {
   display: flex;
   gap: 8px;
   z-index: 10;
-  font-family: sans-serif;
 }
 .jump-nav button {
-  font: inherit;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.75);
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--stock);
+  background-color: var(--ink);
   border: none;
-  border-radius: 20px;
-  padding: 10px 18px;
+  border-radius: 0;
+  padding: 9px 22px 8px;
+  white-space: nowrap;
   cursor: pointer;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.15s ease-out, color 0.15s ease-out;
 }
 .jump-nav button:hover {
-  background-color: black;
+  background-color: var(--orange);
+  color: var(--ink);
 }
-.jump-nav button:focus-visible {
-  outline: 3px solid #03A9F4;
-  outline-offset: 2px;
+.jump-nav button:active {
+  transform: translateY(1px);
+}
+
+/* The strip */
+.strip {
+  font-family: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.strip-counter {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+.scale-key {
+  font-size: 13px;
+}
+.scale-key-label {
+  font-weight: 700;
+}
+.pie-disc {
+  box-shadow: 0 0 0 3px var(--ink);
+}
+.pie-text b {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 0.9;
+}
+.pie-now {
+  font-style: normal;
+  font-weight: 700;
+}
+.deaths-head {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 19px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+@media (max-width: 450px) {
+  .strip-counter { font-size: 22px; }
+  .pie-text b { font-size: 30px; }
+}
+
+/* Phones: counter and pie share the top row; the key, or the deaths widget
+   while malaria is on screen, runs full width below them. */
+@media (max-width: 450px) {
+  .strip-left { display: contents; }
+  .strip-counter { font-size: 20px; white-space: normal; }
+  .pie { grid-column: 2; grid-row: 1; gap: 8px; }
+  .pie-disc { width: 56px; }
+  .pie-text { max-width: 120px; font-size: 12px; }
+  .pie-text b { font-size: 26px; }
+  .scale-key { grid-column: 1 / -1; grid-row: 2; margin-top: 0; }
+  .deaths { grid-column: 1 / -1; grid-row: 2; }
+  .deaths-head { font-size: 15px; }
+  .deaths-live { font-size: 13px; }
+  .deaths-row { --s: 56px; }
+  .death { width: auto; flex: 1; font-size: 11px; }
+  .deaths-canvas { width: 100%; }
+}
+
+.chart-source {
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+/* Titles that sit inside ink-filled bars on Musk's bar print in stock. */
+.year-veteran .square .title,
+.year-chemo .square .title {
+  color: var(--stock);
+}
+/* The sources run long: a wider, smaller column that scrolls if it must. */
+.infobox.sources .title {
+  max-width: 720px;
+  max-height: 400px;
+  overflow-y: auto;
+  font-size: 13.5px;
+  line-height: 1.45;
+  scrollbar-color: var(--stock) var(--blue);
+}
+
+/* Review fixes ------------------------------------------------------- */
+/* The knock-out: each program starts in the 400's blue and is cut back to
+   bare stock as the reading line passes, in step with the pie. main.js sets
+   --cut; only paint changes, never width. A stock cutting guide shows its size. */
+.program .square {
+  --cut: 0px;
+  background: linear-gradient(to right, var(--stock) var(--cut), var(--blue) var(--cut));
+  outline: 2px dashed var(--stock);
+  outline-offset: -2px;
+}
+.money-bar.program .square .title {
+  background-color: var(--stock);
+}
+.program-source {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+}
+.stamp {
+  opacity: 0;
+  transform: rotate(-8deg) scale(1.6);
+  transition: opacity 0.2s ease-out, transform 0.35s cubic-bezier(0.2, 1.5, 0.4, 1);
+}
+.program.funded .stamp {
+  opacity: 1;
+  transform: rotate(-8deg) scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .stamp { transition: none; }
+}
+/* Datelines under bar titles. */
+.title-dateline {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--text);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+/* The ending, at poster scale with the title's overprint. */
+.infobox.ending .what-could-we-do.title {
+  font-size: 92px;
+  line-height: 0.9;
+  width: 780px;
+  max-width: 92vw;
+  text-shadow: 0.035em 0.025em 0 var(--orange);
+}
+/* Reserved gold: where the counter and the pie read the bar. */
+.reading-mark {
+  position: fixed;
+  left: 50%;
+  margin-left: -12px;
+  top: 512px;
+  z-index: 6;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 18px solid var(--gold);
+  display: none;
+  pointer-events: none;
+}
+.reading-mark.on {
+  display: block;
+}
+/* The lone $1,000 pixel on the title poster. */
+.title-pixel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px auto 0;
+  font-size: 15px;
+}
+.title-pixel-dot {
+  flex: none;
+  width: 1px;
+  height: 1px;
+  background-color: var(--ink);
+  outline: 10px solid transparent;
+  box-shadow: 0 0 0 9px var(--stock), 0 0 0 10px var(--ink);
+}
+/* Back / Next chevrons, drawn. */
+.jump-nav button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.chev {
+  flex: none;
+}
+/* A bigger grid: every dot a mark. */
+.deaths-canvas {
+  width: min(560px, 100%, calc((100vh - 660px) * 4.5));
+}
+@media (max-width: 450px) {
+  .wealth > .wealth-title {
+    flex: none;
+    width: calc(100vw - 30px);
+    white-space: normal;
+    box-sizing: border-box;
+  }
+  .program-cost { font-size: 52px; }
+  .infobox.ending .what-could-we-do.title { font-size: 52px; }
+}
+/* Datelines sit beside the bar title: below it the program bars cover them. */
+.wealth > .wealth-title .title-dateline {
+  display: inline-block;
+  margin: 0 0 0 14px;
+  vertical-align: 0.35em;
+}
+.title-pixel {
+  gap: 24px;
+}
+@media (max-width: 450px) {
+  .wealth > .wealth-title { font-size: 19px; }
+  .wealth > .wealth-title .title-dateline { display: none; }
+  .title-pixel { padding: 0 16px 0 26px; text-align: left; }
+}
+
+/* The label window always holds the whole program cost. */
+.money-bar.program .square .title {
+  width: max-content;
+  max-width: none;
+}
+.program-name,
+.program-share,
+.program-source {
+  max-width: min(460px, calc(100vw - 80px));
+}
+.program-cost {
+  font-size: clamp(44px, 7.4vw, 128px);
+}
+@media (max-width: 450px) {
+  .program-cost { font-size: 44px; }
+}
+
+/* ---------- Owner round 2 ---------- */
+/* Stencil only where it is decoration: the title poster and the stamp. */
+h1,
+.stamp {
+  font-family: var(--stencil);
+}
+/* The familiar amounts print in the 400's blue, apart from the ink text. */
+.wealth.one-thousand,
+.median .wealth,
+.million .wealth,
+.scale-square,
+.scale-square.million-square,
+.title-pixel-dot {
+  background-color: var(--blue);
+}
+.billion .ruler {
+  background-image: url('img/ruler-stock.svg');
+}
+/* Legacy $80 million marker, overridden by the $100 million rules below. */
+.wealth > .key {
+  position: sticky;
+  left: 0;
+  top: auto;
+  align-self: flex-end;
+  flex: none;
+  display: block;
+  width: 0;
+  height: 0;
+  background: none;
+  z-index: 2;
+}
+.wealth > .key > span {
+  position: absolute;
+  left: 10px;
+  bottom: 34px;
+  width: 160px;
+  padding-top: 13px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 700;
+  background: url(img/scale.svg) no-repeat 0 0 / 160px 9px;
+  background-color: transparent;
+}
+.billion .wealth > .key > span,
+.four-hundred .wealth > .key > span {
+  background-image: url(img/scale-stock.svg);
+  color: var(--stock);
+}
+/* 80 cells of $1 million (32 x 31.25 px = 1,000 square pixels each) over one
+   ruler section, shown when scrolling stops. Ink and stock lines together
+   read on any ink. */
+.grid80 {
+  position: fixed;
+  left: 0;
+  top: 16px;
+  width: 160px;
+  height: 500px;
+  /* Under the text boxes and program bars (z-index 1), over the bare bar. */
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease-out, visibility 0s linear 0.35s;
+  background-image:
+    linear-gradient(to right, rgba(28, 26, 23, 0.5) 1px, rgba(239, 230, 210, 0.5) 1px, rgba(239, 230, 210, 0.5) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(28, 26, 23, 0.5) 1px, rgba(239, 230, 210, 0.5) 1px, rgba(239, 230, 210, 0.5) 2px, transparent 2px);
+  background-size: 32px 31.25px;
+  box-shadow: inset -1px -1px 0 rgba(28, 26, 23, 0.5), inset -2px -2px 0 rgba(239, 230, 210, 0.5);
+}
+.grid80.on {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.35s ease-out;
+}
+.grid80-label {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  padding: 4px 7px;
+  background-color: var(--ink);
+  color: var(--stock);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+@media (prefers-reduced-motion: reduce) {
+  .grid80, .grid80.on { transition: none; }
+}
+/* "Every 10 pixels": the strip it means, full bar height. */
+.infobox.five-pixels {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+.ten-px {
+  position: sticky;
+  left: calc(50% - 176px);
+  flex: none;
+  align-self: stretch;
+  width: 10px;
+  background-color: var(--ink);
+}
+.infobox.five-pixels .title {
+  max-width: 300px;
+}
+@media (max-width: 450px) {
+  .ten-px { left: 10px; }
+  .infobox.five-pixels .title { left: 34px; width: 70vw; }
+}
+/* Progress bar: Musk's share as the counter climbs; returns at the political
+   section as the sliver that buys political power. */
+.progress {
+  display: none;
+  box-sizing: border-box;
+  width: min(360px, 100%);
+  height: 14px;
+  margin-top: 8px;
+  padding: 3px;
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+.strip.progress-on .progress {
+  display: block;
+}
+.progress-fill {
+  width: 0;
+  min-width: 3px;
+  height: 100%;
+  background-color: var(--orange);
+}
+.strip.progress-political .progress-fill {
+  background-color: var(--stamp);
+}
+.progress-label {
+  display: none;
+  max-width: 360px;
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+.strip.progress-political .progress-label {
+  display: block;
+}
+@media (max-width: 450px) {
+  .strip-readout { grid-column: 1; grid-row: 1; min-width: 0; }
+}
+/* Home: a printed tab like Back and Next. */
+.jump-nav .jump-home {
+  padding-left: 14px;
+  padding-right: 16px;
+}
+
+/* While the grid shows, it is the $100 million marker. */
+body.grid-on .wealth > .key > span {
+  visibility: hidden;
+}
+
+/* Every amount's label sits above its shape. The labels of the long bars
+   travel with the reader along the top edge of the bar. */
+.wealth-wrapper > .wealth-title {
+  width: max-content;
+  max-width: none;
+  white-space: nowrap;
+  padding: 0 10px 8px;
+  margin: 0;
+  color: var(--ink);
+  position: sticky;
+  left: 0;
+}
+.billion > .wealth-title,
+.four-hundred > .wealth-title {
+  color: var(--ink);
+}
+.four-hundred > .wealth-title {
+  margin-left: 100px;
+}
+.median {
+  width: auto;
+  margin-right: 6em;
+}
+.wealth-wrapper > .wealth-title .title-dateline {
+  display: inline-block;
+  margin: 0 0 0 14px;
+  vertical-align: 0.35em;
+}
+/* The strip starts about 45px lower now; its fitted sizes follow. */
+.pie-disc {
+  width: clamp(56px, calc(100vh - 705px), 130px);
+}
+.deaths-row {
+  --s: clamp(36px, calc(100vh - 735px), 96px);
+}
+.deaths-canvas {
+  width: min(560px, 100%, calc((100vh - 705px) * 4.5));
+}
+@media (max-width: 450px) {
+  .wealth-wrapper > .wealth-title {
+    width: calc(100vw - 30px);
+    white-space: normal;
+    box-sizing: border-box;
+    font-size: 22px;
+  }
+  .median > .wealth-title { white-space: nowrap; font-size: 19px; }
+  .four-hundred > .wealth-title { margin-left: 0; }
+  .wealth-wrapper > .wealth-title .title-dateline { display: block; margin: 4px 0 0; }
+  .deaths-canvas { width: 100%; }
+  .deaths-row { --s: 56px; }
+  .pie-disc { width: 56px; }
+}
+
+@media (max-width: 450px) {
+  .wealth-wrapper > .wealth-title .title-dateline { display: none; }
+  .deaths-note { display: none; }
+  .deaths-row { --s: 48px; }
+  .death figcaption { font-size: 10.5px; }
+}
+/* Short laptop screens: less strip height, so the widget sheds its note and
+   its captions run wider and shorter. */
+@media (min-width: 451px) and (max-height: 800px) {
+  .deaths-note { display: none; }
+  .death { width: 190px; }
+}
+
+/* ---------- $100 million sections ---------- */
+.ruler {
+  background-image: url('img/ruler100-ink.svg');
+  background-size: 200px 30px;
+  background-position: 0 470px;
+}
+.billion .ruler,
+.four-hundred .ruler {
+  background-image: url('img/ruler100-stock.svg');
+}
+.wealth > .key > span {
+  width: 200px;
+  background-size: 200px 9px;
+}
+.grid80 {
+  /* 100 true $1 million squares (31.62 px a side = 1,000 square pixels) as
+     tall as the bar allows: six full columns of 15 (90) plus 10 at the foot
+     of a seventh. */
+  width: 221.36px;
+  height: 474.34px;
+  background: none;
+  box-shadow: none;
+  /* Above the money bars; text and labels keep clear of the left 250px grid zone. */
+  z-index: 2;
+}
+@media (max-width: 450px) {
+  .grid80 { display: none; }
+}
+/* The left 250px of each bar belong to the grid: boxes start at 250px, and
+   text and charts center in the space to its right. */
+@media (min-width: 451px) {
+  .center-sticky,
+  .infobox .chart,
+  .infobox .worldchart,
+  .infobox .chart-outer,
+  .infobox .midtext,
+  .text-infobox .title {
+    left: calc(50% + 125px);
+  }
+  .infobox .title-square-wrapper {
+    left: 250px;
+  }
+  .money-bar .square .title,
+  .year-chemo .square .title {
+    left: 251px;
+  }
+  .infobox.year-veteran .title,
+  .year-veteran .title {
+    left: 250px;
+  }
+  .ten-px {
+    left: calc(50% - 51px);
+  }
+  .text-infobox .title,
+  .infobox .chart {
+    max-width: min(600px, calc(100vw - 310px));
+  }
+  .people-wrapper,
+  .ninety-wrapper,
+  .plane-wrapper,
+  .line-chart .chart-outer,
+  .infobox.ending .what-could-we-do.title {
+    max-width: calc(100vw - 310px);
+  }
+  .infobox.sources .title {
+    max-width: min(720px, calc(100vw - 310px));
+  }
+}
+
+@media (min-width: 451px) {
+  /* Celebrity boxes wider than the screen keep their label clear of the grid. */
+  .celebrities .sub-infobox .title {
+    position: sticky;
+    left: 250px;
+  }
+}
+
+/* Celebrities row: one year's earnings print in ink, net worth in blue. */
+.celebrities .earned .square { background-color: var(--ink); }
+.celebrities .worth .square { background-color: var(--blue); }
+.celebrities .sub-infobox { align-self: flex-end; }
+/* Careers: lifetime earnings squares, smallest to largest, in two rows. */
+.infobox.careers {
+  /* Room for its content to stay pinned beside the grid. */
+  width: 3000px;
+}
+.careers .title-square-wrapper {
+  width: max-content;
+  max-width: none;
+}
+.careers-head {
+  max-width: 560px;
+}
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 116px);
+  gap: 14px 10px;
+  align-items: end;
+  margin-top: 10px;
+}
+.career .title {
+  width: auto;
+  max-width: none;
+  font-size: 12.5px;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  position: static;
+  transform: none;
+}
+.career .square {
+  background-color: var(--ink);
+}
+@media (max-width: 450px) {
+  .career-grid { grid-template-columns: repeat(3, 104px); }
+}
+
+.grid80 .grid-main,
+.grid80 .grid-tail {
+  position: absolute;
+  bottom: 0;
+  background-image:
+    linear-gradient(to right, rgba(28, 26, 23, 0.5) 1px, rgba(239, 230, 210, 0.5) 1px, rgba(239, 230, 210, 0.5) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(28, 26, 23, 0.5) 1px, rgba(239, 230, 210, 0.5) 1px, rgba(239, 230, 210, 0.5) 2px, transparent 2px);
+  background-size: 31.623px 31.623px;
+  box-shadow: inset -1px -1px 0 rgba(28, 26, 23, 0.5), inset -2px -2px 0 rgba(239, 230, 210, 0.5);
+}
+.grid80 .grid-main {
+  left: 0;
+  width: 189.74px;
+  height: 474.34px;
+}
+.grid80 .grid-tail {
+  left: 189.74px;
+  width: 31.62px;
+  height: 316.23px;
+}
+
+/* The grid's wash covers the full bar height above it too. */
+.grid80::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 25.66px;
+  background-color: inherit;
+}
+
+/* The wash runs to the edge of the clear zone (250px), past the squares. */
+.grid80::after {
+  content: "";
+  position: absolute;
+  top: -25.66px;
+  bottom: 0;
+  left: 100%;
+  width: 28.64px;
+  background-color: inherit;
+}
+
+@media (max-width: 450px) {
+  .infobox .careers-head { font-size: 13px; line-height: 1.3; max-width: 340px; }
+  .career-calc { display: none; }
+  .career .title { font-size: 11px; line-height: 1.25; }
+  .career-grid { grid-template-columns: repeat(3, 108px); gap: 8px 8px; margin-top: 6px; }
+}
+/* Phones: small labels stay at a readable 12px. */
+@media (max-width: 450px) {
+  .death figcaption { font-size: 12px; }
+  .career .title { font-size: 12px; }
+  .career-grid { grid-template-columns: repeat(3, 112px); }
+}
+/* Phones: the death-toll captions run five lines deep, so the squares shrink
+   and the lines tighten to keep them clear of the Back/Next bar. */
+@media (max-width: 450px) {
+  .deaths-row { --s: 36px; gap: 10px; }
+  .death figcaption { line-height: 1.25; }
+  .deaths-head { margin-bottom: 4px; }
 }

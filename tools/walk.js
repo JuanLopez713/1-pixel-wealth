@@ -11,7 +11,10 @@ window.addEventListener("load", async () => {
   const look = () => {
     content.forEach((e, i) => {
       const r = e.getBoundingClientRect();
-      const w = Math.min(r.width, vw);
+      // On screens wider than 450px the left 250px of each bar belong to the
+      // $100 million grid, so a graphic wider than the screen counts as seen
+      // when it fills 90% of the space to the grid's right.
+      const w = Math.min(r.width, vw > 450 ? vw - 250 : vw);
       const visible = Math.min(r.right, vw) - Math.max(r.left, 0);
       if (r.width > 0 && visible >= w * 0.9 - 1) seen.add(i);
     });

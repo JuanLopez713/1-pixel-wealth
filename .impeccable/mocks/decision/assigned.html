@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;900&family=Public+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--stock:#efe6d2;--orange:#e0662a;--blue:#25547f;--ink:#1c1a17;--hi:#c9a227}
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;background:var(--stock);font-family:'Public Sans',sans-serif;color:var(--ink);overflow:hidden;position:relative}
+body:before{content:"";position:absolute;inset:0;background:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1.2px) 0 0/5px 5px;pointer-events:none}
+.bar{position:absolute;top:24px;left:0;width:1440px;height:500px;background:var(--blue)}
+.bar.reg{background:none;border-top:3px solid var(--orange);top:21px;left:-4px}
+.h{position:absolute;left:40px;top:44px;font:900 64px/0.9 'Big Shoulders Stencil Display';color:var(--stock);letter-spacing:.01em}
+.h small{display:block;font-size:30px;color:var(--hi)}
+.knock{position:absolute;top:74px;left:520px;width:1100px;height:400px;background:var(--stock)}
+.knock .t{position:absolute;left:36px;top:120px;font:900 88px/.88 'Big Shoulders Stencil Display';color:var(--blue)}
+.knock .d{position:absolute;left:40px;top:330px;font:600 15px 'Public Sans';color:var(--ink)}
+.stamp{position:absolute;left:560px;top:150px;border:5px solid var(--orange);color:var(--orange);font:900 40px 'Big Shoulders Stencil Display';padding:6px 16px;transform:rotate(-8deg);opacity:.9}
+.ruler{position:absolute;top:494px;left:0;width:1440px;height:30px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 32px);opacity:.8}
+.strip{position:absolute;top:548px;left:40px;right:40px;display:flex;align-items:flex-start;gap:60px}
+.count{font:900 72px/.9 'Big Shoulders Stencil Display'}
+.count span{display:block;font:600 15px 'Public Sans';margin-top:8px}
+.key{margin-top:20px;font:600 14px 'Public Sans';display:flex;gap:18px;align-items:flex-end}
+.key i{display:inline-block;background:var(--ink);margin-right:6px}
+.pie{margin-left:auto;display:flex;gap:22px;align-items:center}
+.disc{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--stock) 0 4%,var(--blue) 4% 100%);outline:3px solid var(--ink);outline-offset:3px}
+.pie b{display:block;font:900 64px/.9 'Big Shoulders Stencil Display';color:var(--orange)}
+.pie span{font:600 15px 'Public Sans'}
+.nav{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;gap:12px}
+.nav div{background:var(--ink);color:var(--stock);font:900 26px 'Big Shoulders Stencil Display';padding:8px 26px}
+.flag{position:absolute;top:520px;left:900px;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-top:22px solid var(--hi)}
+</style></head><body>
+<div class="bar"></div><div class="bar reg"></div>
+<div class="h">400 RICHEST AMERICANS<small>$8 TRILLION · FORBES, SEPT 2026</small></div>
+<div class="knock"><div class="t">ERADICATE<br>MALARIA</div><div class="d">$100 billion · Lancet estimate, $1.84 per at-risk person a year</div></div>
+<div class="stamp">FUNDED</div>
+<div class="ruler"></div><div class="flag"></div>
+<div class="strip">
+ <div><div class="count">$312 BILLION</div><span style="font:600 15px Public Sans">taken so far, scrolling at $500,000 a pixel</span>
+  <div class="key"><b>For scale:</b><span><i style="width:2px;height:2px"></i>$1,000</span><span><i style="width:9px;height:9px"></i>$87,460 median household income</span><span><i style="width:34px;height:34px;background:var(--orange)"></i>$1 million</span></div></div>
+ <div class="pie"><div class="disc"></div><div><b>1.25%</b><span>taken · $7.9 trillion left</span></div></div>
+</div>
+<div class="nav"><div>‹ BACK</div><div>NEXT ›</div></div>
+</body></html>

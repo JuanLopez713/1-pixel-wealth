@@ -1,0 +1,32 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-09T20:16:43.047Z",
+        "reason": "user chose the Public Works Silkscreen direction on the decision page; its palette is buff poster stock #efe6d2"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.2, 1.5, 0.4, 1)",
+        "createdAt": "2026-11-09T21:26:15.382Z",
+        "reason": "domain-appropriate motion: the FUNDED rubber-stamp strike overshoots like a stamp hitting paper; it runs once per program and is off under reduced motion"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "main.css"
+        ],
+        "createdAt": "2026-11-09T21:26:32.572Z",
+        "reason": "the only two-axis grid in main.css is data: 100 true $1 million squares (31.62px) showing $100 million to scale"
+      }
+    ]
+  }
+}

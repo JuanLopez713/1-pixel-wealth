@@ -1,0 +1,434 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T23:00:00Z",
+  "title": "Design System: Wealth, shown to scale",
+  "extensions": {
+    "colorMeta": {
+      "stock": {
+        "role": "neutral",
+        "displayName": "Buff Poster Stock",
+        "canonical": "#efe6d2",
+        "oklch": "oklch(92.7% 0.028 86.6)",
+        "tonalRamp": [
+          "#0d0b08",
+          "#29251c",
+          "#484132",
+          "#68604f",
+          "#8a826f",
+          "#aca493",
+          "#cec9bd",
+          "#f1eee9"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Key Ink",
+        "canonical": "#1c1a17",
+        "oklch": "oklch(21.9% 0.007 78.2)",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#262523",
+          "#44423e",
+          "#63615d",
+          "#84827e",
+          "#a7a5a1",
+          "#cac9c6",
+          "#efeeed"
+        ]
+      },
+      "orange": {
+        "role": "primary",
+        "displayName": "Musk Orange",
+        "canonical": "#e0662a",
+        "oklch": "oklch(65.1% 0.168 43.7)",
+        "tonalRamp": [
+          "#1a0400",
+          "#490a00",
+          "#7e1000",
+          "#a93300",
+          "#d15817",
+          "#f3814e",
+          "#ffb494",
+          "#ffe5d6"
+        ]
+      },
+      "stamp": {
+        "role": "primary",
+        "displayName": "Cancellation Orange",
+        "canonical": "#b4441a",
+        "oklch": "oklch(53.5% 0.155 39.0)",
+        "tonalRamp": [
+          "#1a0401",
+          "#480d00",
+          "#7b1600",
+          "#a63705",
+          "#cd5b33",
+          "#ef835f",
+          "#feb59c",
+          "#ffe5d9"
+        ]
+      },
+      "blue": {
+        "role": "secondary",
+        "displayName": "Ledger Blue",
+        "canonical": "#25547f",
+        "oklch": "oklch(43.5% 0.088 248.7)",
+        "tonalRamp": [
+          "#040c15",
+          "#0e273d",
+          "#1a446b",
+          "#366591",
+          "#5787b5",
+          "#7daad6",
+          "#afcdeb",
+          "#e2f0ff"
+        ]
+      },
+      "gold": {
+        "role": "tertiary",
+        "displayName": "Reserved Gold",
+        "canonical": "#c9a227",
+        "oklch": "oklch(72.8% 0.138 89.7)",
+        "tonalRamp": [
+          "#110a00",
+          "#352100",
+          "#5c3b00",
+          "#805b00",
+          "#a37d00",
+          "#c4a137",
+          "#dec78a",
+          "#f9eed2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (Stencil)",
+        "purpose": "Title poster only; carries the orange overprint. The ending line takes this scale in the solid face."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "One oversized number per program: its cost. Big Shoulders Display."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section turns. Big Shoulders Display."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Bar labels above their shapes, program names, strip counter, chart headings. Big Shoulders Display."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Home/Back/Next tabs, zoom tab, ink labels. Big Shoulders Display."
+      },
+      "stamp": {
+        "displayName": "Stamp (Stencil)",
+        "purpose": "The FUNDED stamp only."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Infobox reading text, max 600px."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "The strip, scale key, progress label; tabular numerals."
+      },
+      "dateline": {
+        "displayName": "Dateline",
+        "purpose": "Value, source and date beside a bar label or under a program or chart."
+      }
+    },
+    "shadows": [
+      {
+        "name": "overprint",
+        "value": "text-shadow: 0.035em 0.025em 0 var(--orange)",
+        "purpose": "Misregistered second ink on Display-size headings only (title, ending)."
+      },
+      {
+        "name": "ink-rim",
+        "value": "box-shadow: 0 0 0 3px var(--ink)",
+        "purpose": "Printed edge of the pie disc."
+      },
+      {
+        "name": "track-rim",
+        "value": "box-shadow: inset 0 0 0 2px var(--ink)",
+        "purpose": "Printed outline of the progress bar."
+      },
+      {
+        "name": "register-ring",
+        "value": "box-shadow: 0 0 0 9px var(--stock), 0 0 0 10px var(--ink)",
+        "purpose": "Frames the lone $1,000 pixel on the title poster."
+      },
+      {
+        "name": "focus-halo",
+        "value": "outline: 3px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 2px var(--stock)",
+        "purpose": "Every focusable element: an ink ring on a stock halo."
+      }
+    ],
+    "motion": [
+      {
+        "name": "tab-ink",
+        "value": "0.15s ease-out",
+        "purpose": "Tab fill and text swap on hover."
+      },
+      {
+        "name": "stamp-land",
+        "value": "opacity 0.2s ease-out, transform 0.35s cubic-bezier(0.2, 1.5, 0.4, 1)",
+        "purpose": "FUNDED stamp lands from scale 1.6 to 1 when a program bar is fully cut."
+      },
+      {
+        "name": "square-grow",
+        "value": "transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), stagger 0.4s",
+        "purpose": "Deaths squares grow from bottom-left."
+      },
+      {
+        "name": "grid-fill",
+        "value": "20s linear, requestAnimationFrame",
+        "purpose": "Malaria deaths grid fills dot by dot."
+      },
+      {
+        "name": "scroll-nudge",
+        "value": "bouncy-arrow 3s infinite",
+        "purpose": "Title poster scroll arrow."
+      },
+      {
+        "name": "grid-show",
+        "value": "opacity 0.35s ease-out, after 500ms without scrolling",
+        "purpose": "The $100 million grid fades in over the ruler section at the left edge once scrolling stops."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Stamp, squares and the $100 million grid appear without transition; deaths grid draws at once."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "450px"
+      },
+      {
+        "name": "strip-key",
+        "value": "1299px"
+      },
+      {
+        "name": "short-screen",
+        "value": "min-width 451px and max-height 800px"
+      }
+    ],
+    "scale": {
+      "dollarsPerSquarePixel": 1000,
+      "barHeight": "500px",
+      "moneyBarHeight": "400px",
+      "moneyBarWidth": "dollars / 400000 px",
+      "squareSide": "sqrt(dollars / 1000) px",
+      "pageWidth": "about 17.82 million px (Firefox limit about 17.9M)",
+      "millionSquare": "31.62px",
+      "rulerSection": "200px = $100 million (big tick $0, middle $50M, small every $10M)",
+      "grid100m": "100 x 31.62px squares: 6 columns of 15 + 10, 221.36 x 474.34px",
+      "gridZone": "left 250px of each bar at >450px; boxes at 250px, text centered on calc(50% + 125px), widths capped at calc(100vw - 310px)"
+    },
+    "chartLocal": {
+      "combinedSvgInkTints": [
+        "#4a4640",
+        "#77716a",
+        "#a39c92",
+        "#c4bcaf",
+        "#ddd3c1"
+      ],
+      "note": "Ink tints for pie slices inside combined.svg only; not system tokens."
+    }
+  },
+  "components": [
+    {
+      "name": "Next Tab",
+      "kind": "button",
+      "refersTo": "tab",
+      "description": "Printed ink tab for Back/Next, fixed bottom center.",
+      "html": "<button class=\"ds-tab\" type=\"button\">Next<svg class=\"ds-chev\" viewBox=\"0 0 10 16\" width=\"10\" height=\"16\" aria-hidden=\"true\"><path d=\"M2 2 L8 8 L2 14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"square\"/></svg></button>",
+      "css": ".ds-tab{display:inline-flex;align-items:center;gap:8px;font-family:\"Big Shoulders Display\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:22px;line-height:1;letter-spacing:.04em;text-transform:uppercase;color:#efe6d2;background:#1c1a17;border:none;border-radius:0;padding:9px 22px 8px;cursor:pointer;transition:background-color .15s ease-out,color .15s ease-out}.ds-tab:hover{background:#e0662a;color:#1c1a17}.ds-tab:active{transform:translateY(1px)}.ds-tab:focus-visible{outline:3px solid #1c1a17;outline-offset:2px;box-shadow:0 0 0 2px #efe6d2}.ds-chev{flex:none}"
+    },
+    {
+      "name": "Back Tab",
+      "kind": "button",
+      "refersTo": "tab",
+      "description": "The Back half of the tab pair; chevron leads.",
+      "html": "<button class=\"ds-tab-back\" type=\"button\"><svg viewBox=\"0 0 10 16\" width=\"10\" height=\"16\" aria-hidden=\"true\"><path d=\"M8 2 L2 8 L8 14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\" stroke-linecap=\"square\"/></svg>Back</button>",
+      "css": ".ds-tab-back{display:inline-flex;align-items:center;gap:8px;font-family:\"Big Shoulders Display\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:22px;line-height:1;letter-spacing:.04em;text-transform:uppercase;color:#efe6d2;background:#1c1a17;border:none;border-radius:0;padding:9px 22px 8px;cursor:pointer;transition:background-color .15s ease-out,color .15s ease-out}.ds-tab-back:hover{background:#e0662a;color:#1c1a17}.ds-tab-back:focus-visible{outline:3px solid #1c1a17;outline-offset:2px;box-shadow:0 0 0 2px #efe6d2}"
+    },
+    {
+      "name": "Home Tab",
+      "kind": "button",
+      "refersTo": "tab-home",
+      "description": "The first tab in the Home/Back/Next nav, with a drawn house.",
+      "html": "<button class=\"ds-tab-home\" type=\"button\"><svg viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M2 8 L8 2 L14 8 M4 6.5 V14 H12 V6.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linejoin=\"miter\"/></svg>Home</button>",
+      "css": ".ds-tab-home{display:inline-flex;align-items:center;gap:8px;font-family:\"Big Shoulders Display\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:22px;line-height:1;letter-spacing:.04em;text-transform:uppercase;color:#efe6d2;background:#1c1a17;border:none;border-radius:0;padding:9px 16px 8px 14px;cursor:pointer;transition:background-color .15s ease-out,color .15s ease-out}.ds-tab-home:hover{background:#e0662a;color:#1c1a17}.ds-tab-home:active{transform:translateY(1px)}.ds-tab-home:focus-visible{outline:3px solid #1c1a17;outline-offset:2px;box-shadow:0 0 0 2px #efe6d2}"
+    },
+    {
+      "name": "Program Bar (knock-out)",
+      "kind": "custom",
+      "refersTo": "program-label",
+      "description": "A 400px program bar: blue cut back to bare stock by --cut, stock label window, one big figure, FUNDED stamp at the end.",
+      "html": "<div class=\"ds-program\"><div class=\"ds-program-label\"><span class=\"ds-program-name\">Lift every American out of poverty.</span><span class=\"ds-program-cost\">$195 billion</span><span class=\"ds-program-share\">About 2.4% of the 400’s wealth</span></div><div class=\"ds-stamp\">Funded</div></div>",
+      "css": ".ds-program{--cut:55%;position:relative;height:400px;width:100%;background:linear-gradient(to right,#efe6d2 var(--cut),#25547f var(--cut));outline:2px dashed #efe6d2;outline-offset:-2px;font-family:\"Public Sans\",\"Helvetica Neue\",Arial,sans-serif;overflow:hidden}.ds-program:hover{--cut:100%}.ds-program-label{display:inline-block;background:#efe6d2;color:#25547f;padding:18px 24px}.ds-program-name,.ds-program-cost,.ds-program-share{display:block}.ds-program-name{font-family:\"Big Shoulders Display\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:30px;line-height:1;text-transform:uppercase}.ds-program-cost{font-family:\"Big Shoulders Display\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:96px;line-height:.86;margin:18px 0 12px;text-transform:uppercase;white-space:nowrap}.ds-program-share{font-size:18px}.ds-stamp{position:absolute;right:40px;bottom:36px;padding:6px 18px 2px;border:6px solid #b4441a;color:#b4441a;font-family:\"Big Shoulders Stencil\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:56px;line-height:1;text-transform:uppercase;transform:rotate(-8deg);mix-blend-mode:multiply}"
+    },
+    {
+      "name": "Stock Window",
+      "kind": "card",
+      "refersTo": "stock-window",
+      "description": "Bare-stock window that holds a chart or photo on a bar.",
+      "html": "<div class=\"ds-window-field\"><figure class=\"ds-window\"><h3>Population of US states compared to poverty</h3><div class=\"ds-window-chart\"></div><p class=\"ds-window-source\">Source: <a href=\"#\">US Census Bureau</a>, 2026</p></figure></div>",
+      "css": ".ds-window-field{background:#25547f;padding:32px}.ds-window{margin:0;background:#efe6d2;color:#1c1a17;padding:16px;max-width:450px;font-family:\"Public Sans\",\"Helvetica Neue\",Arial,sans-serif}.ds-window h3{font-family:\"Big Shoulders Display\",\"Arial Narrow\",sans-serif;font-weight:900;text-transform:uppercase;font-size:24px;margin:4px 0 10px}.ds-window-chart{height:120px;background:linear-gradient(to right,#1c1a17 70%,transparent 70%) 0 0/100% 18px no-repeat,linear-gradient(to right,#b4441a 45%,transparent 45%) 0 30px/100% 18px no-repeat,linear-gradient(to right,#1c1a17 30%,transparent 30%) 0 60px/100% 18px no-repeat}.ds-window-source{margin:6px 0 0;font-size:13px}.ds-window a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.18em}.ds-window a:hover{text-decoration-thickness:2px}.ds-window a:focus-visible{outline:3px solid #1c1a17;outline-offset:2px;box-shadow:0 0 0 2px #efe6d2}"
+    },
+    {
+      "name": "Ink Field Money Bar",
+      "kind": "custom",
+      "refersTo": "ink-field",
+      "description": "A 400px to-scale money bar in key ink with a sticky stock label.",
+      "html": "<div class=\"ds-ink-field\"><div class=\"ds-ink-field-label\">Label text prints in stock on the ink field. <a href=\"#\">Source</a></div></div>",
+      "css": ".ds-ink-field{height:400px;background:#1c1a17;font-family:\"Public Sans\",\"Helvetica Neue\",Arial,sans-serif}.ds-ink-field-label{display:inline-block;max-width:460px;padding:10px;color:#efe6d2;font-size:19px;line-height:1.4}.ds-ink-field-label a{color:#efe6d2;text-underline-offset:.18em}.ds-ink-field-label a:hover{text-decoration-thickness:2px}.ds-ink-field-label a:focus-visible{outline:3px solid #1c1a17;outline-offset:2px;box-shadow:0 0 0 2px #efe6d2}"
+    },
+    {
+      "name": "Bar Label with Dateline",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "Poster-capital bar label in ink on stock, above its bar, with its printed dateline beside it.",
+      "html": "<div class=\"ds-bar-wrap\"><h2 class=\"ds-bar-title\">400 richest Americans ($8 trillion)<span class=\"ds-dateline\"><a href=\"#\">Forbes 400, September 2026</a></span></h2><div class=\"ds-bar\"></div></div>",
+      "css": ".ds-bar-wrap{background:#efe6d2}.ds-bar{background:#25547f;height:140px;background-image:linear-gradient(to right,#efe6d2 1.2px,transparent 1.2px);background-size:200px 30px;background-repeat:repeat-x;background-position:0 110px}.ds-bar-title{position:sticky;left:0;width:max-content;margin:0;padding:0 10px 8px;color:#1c1a17;font-family:\"Big Shoulders Display\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:34px;line-height:1;text-transform:uppercase;letter-spacing:.01em;white-space:nowrap}.ds-dateline{display:inline-block;margin-left:14px;vertical-align:.35em;font-family:\"Public Sans\",\"Helvetica Neue\",Arial,sans-serif;font-weight:400;font-size:13px;letter-spacing:0;text-transform:none}.ds-dateline a{color:inherit;text-underline-offset:.18em}.ds-dateline a:hover{text-decoration-thickness:2px}.ds-dateline a:focus-visible{outline:3px solid #1c1a17;outline-offset:2px;box-shadow:0 0 0 2px #efe6d2}"
+    },
+    {
+      "name": "Pie and Reading Mark",
+      "kind": "custom",
+      "refersTo": "pie-disc",
+      "description": "The strip pie: stock taken, gold in progress, blue left; the gold reading mark it reads from.",
+      "html": "<div class=\"ds-pie\"><div class=\"ds-mark\"></div><div class=\"ds-pie-disc\"></div><div class=\"ds-pie-text\"><b>3.7%</b> taken<br>$7.7 trillion left<br><span class=\"ds-pie-now\">Funding: End poverty</span></div></div>",
+      "css": ".ds-pie{position:relative;display:flex;align-items:center;gap:14px;padding-top:28px;font-family:\"Public Sans\",\"Helvetica Neue\",Arial,sans-serif;font-size:14px;line-height:1.35;color:#1c1a17;font-variant-numeric:tabular-nums}.ds-mark{position:absolute;top:0;left:53px;width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:18px solid #c9a227}.ds-pie-disc{width:120px;aspect-ratio:1;border-radius:50%;box-shadow:0 0 0 3px #1c1a17;background:conic-gradient(#efe6d2 0 2.4%,#c9a227 2.4% 3.7%,#25547f 3.7% 100%)}.ds-pie-text{max-width:190px}.ds-pie-text b{font-family:\"Big Shoulders Display\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:48px;line-height:.9}.ds-pie-now{font-weight:700}"
+    },
+    {
+      "name": "Ink Label",
+      "kind": "chip",
+      "refersTo": "ink-label",
+      "description": "Key-ink box with stock poster-capital type, for chart call-outs.",
+      "html": "<div class=\"ds-ink-label\">400 people<div class=\"ds-ink-label-sub\">each one a billionaire</div></div>",
+      "css": ".ds-ink-label{display:inline-block;padding:10px;background:#1c1a17;color:#efe6d2;font-family:\"Big Shoulders Display\",\"Arial Narrow\",sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;letter-spacing:.02em;text-align:center;border-radius:0}.ds-ink-label-sub{font-family:\"Public Sans\",\"Helvetica Neue\",Arial,sans-serif;font-weight:400;font-style:italic;font-size:14px;text-transform:none;letter-spacing:0;margin-top:4px}"
+    },
+    {
+      "name": "Hundred Million Grid",
+      "kind": "custom",
+      "refersTo": "grid-100m",
+      "description": "One hundred $1 million squares (31.62px) over a ruler section, under a wash of the bar's own ink, shown when scrolling stops.",
+      "html": "<div class=\"ds-grid-bar\"><div class=\"ds-grid\"><span class=\"ds-grid-label\">100 &times; $1 million = $100 million</span><span class=\"ds-grid-main\"></span><span class=\"ds-grid-tail\"></span></div></div>",
+      "css": ".ds-grid-bar{position:relative;height:500px;width:600px;background:#e0662a;background-image:linear-gradient(to right,#1c1a17 1.2px,transparent 1.2px);background-size:200px 30px;background-repeat:repeat-x;background-position:0 470px}.ds-grid{position:absolute;left:0;bottom:0;width:221.36px;height:474.34px;background:#e0662a;opacity:.6;transition:opacity .35s ease-out}.ds-grid-bar:hover .ds-grid{opacity:1}.ds-grid-main,.ds-grid-tail{position:absolute;bottom:0;background-image:linear-gradient(to right,rgba(28,26,23,.5) 1px,rgba(239,230,210,.5) 1px,rgba(239,230,210,.5) 2px,transparent 2px),linear-gradient(to bottom,rgba(28,26,23,.5) 1px,rgba(239,230,210,.5) 1px,rgba(239,230,210,.5) 2px,transparent 2px);background-size:31.623px 31.623px;box-shadow:inset -1px -1px 0 rgba(28,26,23,.5),inset -2px -2px 0 rgba(239,230,210,.5)}.ds-grid-main{left:0;width:189.74px;height:474.34px}.ds-grid-tail{left:189.74px;width:31.62px;height:316.23px}.ds-grid-label{position:absolute;left:0;bottom:100%;margin-bottom:4px;white-space:nowrap;padding:4px 7px;background:#1c1a17;color:#efe6d2;font-family:\"Public Sans\",\"Helvetica Neue\",Arial,sans-serif;font-size:12px;font-weight:700;line-height:1.25}"
+    },
+    {
+      "name": "Progress Bar",
+      "kind": "custom",
+      "refersTo": "progress-track",
+      "description": "Under the strip counter: Musk's share in orange; at the political section a Cancellation Orange sliver with its label.",
+      "html": "<div class=\"ds-progress-wrap\"><div class=\"ds-progress\"><div class=\"ds-progress-fill\" style=\"width:38%\"></div></div><div class=\"ds-progress ds-political\"><div class=\"ds-progress-fill\" style=\"width:0.02%\"></div></div><p class=\"ds-progress-label\">Billionaire families&#8217; 2026 midterm spending, $1.7 billion: just 0.02% of the 400&#8217;s wealth.</p></div>",
+      "css": ".ds-progress-wrap{background:#efe6d2;padding:12px;font-family:\"Public Sans\",\"Helvetica Neue\",Arial,sans-serif;color:#1c1a17}.ds-progress{box-sizing:border-box;width:min(360px,100%);height:14px;margin-top:8px;padding:3px;box-shadow:inset 0 0 0 2px #1c1a17}.ds-progress-fill{min-width:3px;height:100%;background:#e0662a}.ds-political .ds-progress-fill{background:#b4441a}.ds-progress-label{max-width:360px;margin:6px 0 0;font-size:13px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Public Works Silkscreen",
+    "overview": "The page is a public-works poster pulled in flat inks on buff stock, after the 1936-43 Federal Art Project posters for public programs. Each ink is a fixed meaning, not a decoration: orange is Elon Musk's money, blue is the 400 richest Americans' money and the familiar amounts that set the scale, key ink is everything else drawn to scale, and bare stock is paper with nothing printed on it. When a program is funded, its ink is cut away and the stock shows through. The scale is the argument, so the system's first job is to leave every drawn area exactly the size its dollars say.\n\nDensity is poster density: one idea per stop, solid poster capitals (Big Shoulders Display) that shout, Public Sans that reads, and long stretches of solid ink the reader scrolls through to feel a sum. The cut stencil survives only as decoration, on the title poster and the FUNDED stamp; the direction contract named stencil capitals for headings, and the build moved them to the solid face. Every bar carries a printed ruler of $100 million sections, and when the reader stops, a grid of one hundred $1 million squares prints over the section at the left edge. There is no elevation, no gradient lighting, no rounded card. Depth is only ink over stock, and the one sanctioned misregistration (orange pulled under the key ink) on the title and the ending poster.",
+    "keyCharacteristics": [
+      "Six inks, each with one job; gold is reserved for \"now\".",
+      "$1,000 per square pixel wherever money is drawn; rulers mark $100 million every 200px.",
+      "Solid poster capitals (Big Shoulders Display 900) for headings, bar labels, figures, tabs and counters; Big Shoulders Stencil only for the title poster and the FUNDED stamp; Public Sans for reading.",
+      "Every amount's label sits above its shape, in ink on stock.",
+      "Square corners everywhere; the pie is the only round shape.",
+      "The knock-out: a program's blue is cut back to bare stock as the reader passes, and the pie loses the same slice.",
+      "Charts and photos sit in windows of bare stock; nothing is lifted with a shadow."
+    ],
+    "rules": [
+      {
+        "name": "The One Ink, One Meaning Rule",
+        "body": "Orange is Musk's money; blue is the 400's money, net worth, and the familiar amounts that set the scale; key ink is earnings and every other amount drawn to scale. Do not reassign a bar's ink for variety.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reserved Gold Rule",
+        "body": "Gold (#c9a227) appears only for \"now\": the in-progress pie slice, the reading mark, and `::selection`. Focus rings are ink on a stock halo, because gold fails 3:1 on stock and orange. A finished state is never gold; a funded slice goes to stock.",
+        "section": "colors"
+      },
+      {
+        "name": "The Pulled Stamp Rule",
+        "body": "Marks and text on bare stock that want orange use Cancellation Orange (#b4441a), never Musk Orange.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink Pairing Rule",
+        "body": "Key ink on orange; stock on blue and on ink fields; blue or ink on stock. Charts and photos never sit directly on a bar: they sit in a stock window.",
+        "section": "colors"
+      },
+      {
+        "name": "The Capitals Shout, Sans Explains Rule",
+        "body": "Poster capitals are uppercase and weight 900, for names, labels, figures, tabs and counters. Sentences and sources are Public Sans. Never set a paragraph in poster capitals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Stencil Is Decoration Rule",
+        "body": "Big Shoulders Stencil prints only the title poster and the FUNDED stamp. Every other heading, label, figure and tab is Big Shoulders Display.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Big Number Rule",
+        "body": "Each program carries exactly one Figure-size number, its cost, and the label window always holds the whole number (`width: max-content`, no wrap).",
+        "section": "typography"
+      },
+      {
+        "name": "The Lining Figures Rule",
+        "body": "Body numerals are lining; anything that counts (the strip) uses tabular numerals so it does not jitter.",
+        "section": "typography"
+      },
+      {
+        "name": "The Scale Is Sacred Rule",
+        "body": "A drawn money shape's area is its dollars divided by 1,000, in pixels. Changing a number means changing its drawn size; no style may change a drawn size.",
+        "section": "layout"
+      },
+      {
+        "name": "The No New Width Rule",
+        "body": "Nothing in a bar's flex row changes width at runtime, and nothing adds page width. Animate paint (gradients, opacity, transforms of non-flow marks), never width.",
+        "section": "layout"
+      },
+      {
+        "name": "The Clear Zone Rule",
+        "body": "On screens wider than 450px, the left 250px of a bar hold only the ruler, the key marker, the bar's own label and the $100 million grid. Box figures start at 250px; text and charts center to its right.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Ink Rule",
+        "body": "No drop shadows or elevation on any element. If something needs separating, put it in a stock window or an ink field.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Overprint Rule",
+        "body": "The orange misregistration belongs only to Display-size headings, at most two on the page. It is a print artifact, not a shadow style.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** draw every amount at $1,000 per square pixel: bars 500px tall, money bars 400px tall at dollars / 400,000 wide, squares sqrt(dollars / 1000) on a side ($1 million = 31.62px).",
+      "**Do** paint program bars with the stock-to-blue gradient driven by `--cut`; change paint, never width.",
+      "**Do** keep gold (#c9a227) for \"now\" only: the in-progress slice, the reading mark, text selection.",
+      "**Do** use Cancellation Orange (#b4441a) for stamps and marks on bare stock, and only at stamp or bold-mark size.",
+      "**Do** set key ink on orange, stock on blue and on ink fields, and put charts and photos in stock windows with 16px padding.",
+      "**Do** set headings, bar labels, figures, tabs and counters in Big Shoulders Display 900 uppercase, and reading text in Public Sans.",
+      "**Do** put every amount's label above its shape, in key ink on stock.",
+      "**Do** keep the left 250px of a bar clear on screens wider than 450px: box figures at 250px, text and charts centered on calc(50% + 125px), widths capped at calc(100vw − 310px).",
+      "**Do** measure bars with the $100 million ruler (200px sections) and land Back/Next stops inside a bar on its ticks.",
+      "**Do** give each figure a printed source line (dateline) in 13-14px Public Sans."
+    ],
+    "donts": [
+      "**Don't** let anything in a bar's flex row change width at runtime, and don't add page width; the page is about 17.82 million px wide, near Firefox's limit.",
+      "**Don't** draw non-money quantities (deaths, people) on the bars as money shapes; they go in the strip or in stock windows.",
+      "**Don't** use gold for a finished state, a decoration, or a category color.",
+      "**Don't** put Musk Orange text or thin marks on bare stock (2.77:1).",
+      "**Don't** add drop shadows, rounded corners, or gradient lighting; the overprint stays on Display-size headings only.",
+      "**Don't** use Big Shoulders Stencil for anything but the title poster and the FUNDED stamp.",
+      "**Don't** set sentences in poster capitals or headings in Public Sans."
+    ]
+  }
+}
