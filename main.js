@@ -13,7 +13,6 @@ var strip = document.getElementById('strip');
 var progressFill = document.getElementById('progress-fill');
 var politicalStart = document.querySelector('.political-start');
 var billionBar = document.querySelector('.billion .wealth');
-var grid80 = document.getElementById('grid80');
 var readingMark = document.getElementById('reading-mark');
 var stripCounter = document.getElementById('strip-counter');
 var ledgerStart = document.getElementById('ledger-start');
@@ -67,46 +66,136 @@ var stripQueued = false;
 function queueStrip() {
   if (!stripQueued) {
     stripQueued = true;
-    window.requestAnimationFrame(function () { stripQueued = false; update_strip(); });
+    window.requestAnimationFrame(function () { stripQueued = false; update_strip(); update_keys(); });
   }
 }
 window.addEventListener('scroll', queueStrip);
 
-// The $100 million grid: half a second after scrolling stops, 100 cells of
-// $1 million appear over the ruler section at the left edge of the screen.
-var gridTimer = null;
-window.addEventListener('scroll', function () {
-  grid80.classList.remove('on');
-  document.body.classList.remove('grid-on');
-  window.clearTimeout(gridTimer);
-  gridTimer = window.setTimeout(showGrid80, 500);
+// Every bar is 20 $1 million squares tall (632.46px), so a $100 million ruler
+// section (100,000 square pixels) is 158.11px wide: exactly 5 x 20 squares.
+var TWENTY_HIGH = 632.46;
+function sectionWidth(bar) {
+  return 100000 / TWENTY_HIGH;
+}
+
+// The $100 million scale, as a grid: one per bar, held at the bar's left edge
+// under everything in it (see main.css).
+var scaleBars = [billionBar, bezos, four_hundred_bar];
+scaleBars.forEach(function (bar) {
+  var grid = document.createElement('div');
+  grid.className = 'grid100';
+  grid.setAttribute('aria-hidden', 'true');
+  grid.innerHTML = '<span class="grid-main"></span>';
+  var tag = document.createElement('div');
+  tag.className = 'grid100-tag';
+  tag.setAttribute('aria-hidden', 'true');
+  tag.innerHTML = '<span>100 &times; $1 million = $100 million</span>';
+  var key = bar.querySelector('.key');
+  bar.insertBefore(tag, key.nextSibling);
+  bar.insertBefore(grid, tag);
 });
-function showGrid80() {
-  var SECTION = 200, SIDE = 221.36, HIGH = 474.34, vw = window.innerWidth;
-  if (vw <= 450) { return; }
-  var bars = [billionBar, bezos, four_hundred_bar];
-  for (var i = 0; i < bars.length; i++) {
-    var r = bars[i].getBoundingClientRect();
-    // The first ruler tick at or right of the screen's left edge.
-    // (Within a pixel counts: bars start at fractional positions.)
-    var tick = r.left >= -1 ? r.left : r.left + Math.ceil((-r.left - 1) / SECTION) * SECTION;
-    if (tick + SIDE <= r.right && tick + SIDE <= vw) {
-      grid80.style.left = Math.round(tick) + 'px';
-      grid80.style.top = (r.bottom - HIGH) + 'px';
-      // A wash of the bar's own ink hides whatever has scrolled under the
-      // grid, so nothing shows on top of it. Over a program bar it stays
-      // clear: the bare stock there is money already taken.
-      var overProgram = [].some.call(document.querySelectorAll('.program .square'), function (sq) {
-        var q = sq.getBoundingClientRect();
-        return q.left < tick + SIDE && q.right > tick;
+
+// Every figure's top edge sits on a grid line, so as it passes over the grid
+// it can be read off in $1 million squares. Each figure moves (with its
+// label) to the nearest line; the lines run up from the bar's foot every
+// 31.623px. Text heights change with fonts and screen width, so this reruns.
+var SQUARE = Math.sqrt(1000);
+var FIGURE_BOX = '.career, .sub-infobox, .column-infobox, .infobox';
+function align_figures() {
+  scaleBars.forEach(function (bar) {
+    [].forEach.call(bar.querySelectorAll(FIGURE_BOX), function (box) { box.style.translate = ''; });
+  });
+  scaleBars.forEach(function (bar) {
+    var br = bar.getBoundingClientRect(), high = br.height;
+    var lines = [];
+    for (var k = 0; k <= 20; k++) { lines.push(high - k * SQUARE); }
+    var moved = [];
+    [].forEach.call(bar.querySelectorAll('.square'), function (sq) {
+      var box = sq.closest(FIGURE_BOX);
+      if (!box || !bar.contains(box) || moved.indexOf(box) >= 0) { return; }
+      moved.push(box);
+      var top = sq.getBoundingClientRect().top - br.top;
+      var boxTop = box.getBoundingClientRect().top - br.top;
+      var best = null;
+      lines.forEach(function (y) {
+        // Not so high that the figure's label leaves the bar.
+        if (boxTop + y - top < -0.5) { return; }
+        if (best === null || Math.abs(y - top) < Math.abs(best - top)) { best = y; }
       });
-      var ink = getComputedStyle(bars[i]).backgroundColor.match(/\d+/g);
-      grid80.style.backgroundColor = overProgram ? 'transparent' : 'rgb(' + ink.slice(0, 3).join(',') + ')';
-      grid80.classList.add('on');
-      document.body.classList.add('grid-on');
-      return;
-    }
+      if (best !== null && Math.abs(best - top) > 0.01) {
+        box.style.translate = '0 ' + (best - top).toFixed(3) + 'px';
+      }
+    });
+  });
+}
+align_figures();
+if (document.fonts && document.fonts.ready) { document.fonts.ready.then(align_figures); }
+window.addEventListener('load', align_figures);
+var alignQueued = false;
+window.addEventListener('resize', function () {
+  if (!alignQueued) {
+    alignQueued = true;
+    window.requestAnimationFrame(function () { alignQueued = false; align_figures(); });
   }
+});
+
+// The $100 million scale, as a marker: it rides on top of everything, so it
+// prints in ink or stock, whichever stands out more from what is under it.
+var INK = [28, 26, 23], STOCK = [239, 230, 210];
+function luminance(rgb) {
+  var c = rgb.map(function (v) {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+function contrast(a, b) {
+  var la = luminance(a), lb = luminance(b);
+  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+}
+// The first solid color under a point, looking past the marker itself and
+// the fixed strip and buttons.
+function colorUnder(x, y) {
+  var els = document.elementsFromPoint(x, y);
+  for (var i = 0; i < els.length; i++) {
+    if (els[i].closest('.key, .grid100, .jump-nav, .strip, .reading-mark')) { continue; }
+    var c = getComputedStyle(els[i]).backgroundColor.match(/[\d.]+/g);
+    if (c && (c.length < 4 || +c[3] >= 0.5)) { return [+c[0], +c[1], +c[2]]; }
+  }
+  return STOCK;
+}
+function update_keys() {
+  if (document.body.classList.contains('scale-grid')) { return; }
+  var vw = window.innerWidth, vh = window.innerHeight;
+  scaleBars.forEach(function (bar) {
+    var span = bar.querySelector('.key > span');
+    var r = span.getBoundingClientRect();
+    if (r.right <= 0 || r.left >= vw || r.bottom <= 0 || r.top >= vh) { return; }
+    // Sample the line and the words, across the marker's width.
+    var worstInk = Infinity, worstStock = Infinity;
+    [r.top + 4, r.top + r.height * 0.7].forEach(function (y) {
+      for (var k = 0; k <= 4; k++) {
+        var x = r.left + 4 + (r.width - 8) * k / 4;
+        if (x < 0 || x >= vw || y < 0 || y >= vh) { continue; }
+        var under = colorUnder(x, y);
+        worstInk = Math.min(worstInk, contrast(under, INK));
+        worstStock = Math.min(worstStock, contrast(under, STOCK));
+      }
+    });
+    var dark = worstStock > worstInk;
+    span.classList.toggle('key-on-dark', dark);
+    span.classList.toggle('key-on-light', !dark);
+  });
+}
+
+// Scale or grid: the reader's choice, kept for their next visit.
+function setScaleMode(grid) {
+  document.body.classList.toggle('scale-grid', grid);
+  [].forEach.call(document.querySelectorAll('.jump-scale button'), function (b) {
+    b.setAttribute('aria-pressed', String(b.classList.contains('scale-pick-grid') === grid));
+  });
+  try { window.localStorage.setItem('scale-mode', grid ? 'grid' : 'scale'); } catch (e) {}
+  update_keys();
 }
 window.addEventListener('resize', queueStrip);
 
@@ -126,14 +215,15 @@ function update_strip() {
   var text = '', progress = null, political = false;
   var muskEnd = muskLeft + bezos.offsetWidth;
   if (x < muskEnd + 100) {
-    var wealth = Math.min((x - muskLeft + READ_LINE) * 500000, MUSK_WEALTH);
+    // Each pixel scrolled uncovers a column 632.46 squares tall: $632,460.
+    var wealth = Math.min((x - muskLeft + READ_LINE) * TWENTY_HIGH * 1000, MUSK_WEALTH);
     if (wealth > 0 && pageLeft(bezosCounterStart) - x < vw) {
       text = money.format(wealth) + ' &middot; <strong>' + (wealth / MUSK_WEALTH * 100).toFixed(1) + '%</strong> of Elon Musk\'s wealth';
       progress = wealth / MUSK_WEALTH * 100;
     }
   }
   else if (pageLeft(four_hundred_counter_start) - x < vw) {
-    var wealth400 = Math.min((x - pageLeft(four_hundred_bar) + READ_LINE) * 500000, FOUR_HUNDRED_WEALTH);
+    var wealth400 = Math.min((x - pageLeft(four_hundred_bar) + READ_LINE) * TWENTY_HIGH * 1000, FOUR_HUNDRED_WEALTH);
     text = money.format(Math.max(wealth400, 0));
   }
   if (stripCounter.innerHTML !== text) { stripCounter.innerHTML = text; }
@@ -264,12 +354,12 @@ function toggleZoom() {
 
   // Where to scroll so that a stop is in view.
   // On wider screens the left 250px of every bar belong to the $100 million
-  // grid (100 squares of $1 million, 221px wide), so box figures (a colored
-  // square or bar with its label) line up 250px from the left, and text and
-  // charts center in the space to the right of the grid. On phones there is no grid: boxes sit 10px from the
-  // left and text is centered on the screen.
+  // scale (the grid is 158px wide), so box figures (a colored square or
+  // bar with its label) line up 250px from the left, and text and charts
+  // center in the space to the right of it. On phones boxes sit 10px from the
+  // left and text is centered on the screen; the grid, if on, runs under them.
   var BOX_FIGURES = '.celebrities > *, .careers, .lifetime, .healthcare, .amazon-year, .year-veteran, .year-chemo, .money-bar, .teacher-pay';
-  var SECTION = 200, GRID_ZONE = 250;
+  var SECTION = sectionWidth(), GRID_ZONE = 250;
 
   function phone() { return window.innerWidth <= 450; }
   function boxLeft() { return phone() ? 10 : GRID_ZONE; }
@@ -302,9 +392,9 @@ function toggleZoom() {
     if (phone()) { return t; }
     var bar = el.classList.contains('ruler') ? el : el.closest('.wealth.ruler');
     if (!bar) { return t; }
-    var origin = pageLeft(bar), k = (t - origin) / SECTION;
+    var origin = pageLeft(bar), w = sectionWidth(bar), k = (t - origin) / w;
     var n = mode === 'floor' ? Math.floor(k) : (mode === 'round' ? Math.round(k) : Math.ceil(k));
-    return origin + n * SECTION;
+    return origin + n * w;
   }
 
   function stops() {
@@ -331,6 +421,11 @@ function toggleZoom() {
     [bezos, four_hundred_bar].forEach(function (bar) {
       targets.push(snap(pageLeft(bar) + bar.offsetWidth - 170, bar, 'ceil'));
     });
+    // The student debt plan, the last thing Musk's fortune pays for, ends at
+    // the counter's read line (about 92.5% of his wealth) before the long run
+    // of what is left.
+    var debtPlan = bezos.querySelector('.debt-relief .square');
+    targets.push(snap(pageLeft(debtPlan) + debtPlan.offsetWidth - READ_LINE, debtPlan, 'floor'));
     // A program bar ends when its end reaches the middle of the screen, where
     // the pie reads it: the whole slice is taken and the FUNDED stamp shows.
     var programBars = document.querySelectorAll('.program .square');
@@ -377,4 +472,24 @@ function toggleZoom() {
   });
   nav.querySelector('.jump-prev').addEventListener('click', function () { jump(-1); });
   nav.querySelector('.jump-next').addEventListener('click', function () { jump(1); });
+})();
+
+// Scale | Grid: shows the $100 million scale as the marker or as the grid.
+(function () {
+  var nav = document.querySelector('.jump-nav');
+  var group = document.createElement('span');
+  group.className = 'jump-scale';
+  group.setAttribute('role', 'group');
+  group.setAttribute('aria-label', '$100 million scale');
+  group.innerHTML =
+    '<button type="button" class="scale-pick-line" title="Show $100 million as a marker"><svg class="chev" viewBox="0 0 22 16" width="22" height="16" aria-hidden="true"><path d="M2 4 V12 M2 8 H20 M20 4 V12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg><span class="scale-word">Scale</span></button>' +
+    '<button type="button" class="scale-pick-grid" title="Show $100 million as a grid of $1 million squares"><svg class="chev" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M2 2 H14 V14 H2 Z M6 2 V14 M10 2 V14 M2 6 H14 M2 10 H14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></svg><span class="scale-word">Grid</span></button>';
+  nav.appendChild(group);
+  group.querySelector('.scale-pick-line').addEventListener('click', function () { setScaleMode(false); });
+  group.querySelector('.scale-pick-grid').addEventListener('click', function () { setScaleMode(true); });
+
+  var stored = null;
+  try { stored = window.localStorage.getItem('scale-mode'); } catch (e) {}
+  setScaleMode(stored !== 'scale');
+  window.addEventListener('load', update_keys);
 })();
