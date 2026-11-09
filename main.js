@@ -55,12 +55,11 @@ babies.addEventListener('scroll', function(){
 function update_wealth_counter() {
   if (bezos_viewable()) {
     let wealth = Math.min((window.scrollX - bezos.offsetLeft + 175) * 500000, MUSK_WEALTH);
-    if (wealth > 0) {
-      // The percentage shows from the start of the bar; the dollar amount
-      // joins it once the reader reaches the "just kidding" box, as before.
+    if (wealth > 0 && bezos_counter_viewable()) {
+      // The dollar amount and percentage appear together at the
+      // "just kidding" box, so the "coming up on the end" joke still lands.
       let pct = wealth / MUSK_WEALTH * 100;
-      let pctText = '<strong>' + pct.toFixed(pct < 1 ? 2 : 1) + '%</strong> of Elon Musk\'s wealth';
-      bezos_counter.innerHTML = bezos_counter_viewable() ? money.format(wealth) + ' &middot; ' + pctText : pctText;
+      bezos_counter.innerHTML = money.format(wealth) + ' &middot; <strong>' + pct.toFixed(1) + '%</strong> of Elon Musk\'s wealth';
     }
     else {
       bezos_counter.innerHTML = '';

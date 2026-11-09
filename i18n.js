@@ -39,7 +39,7 @@ function translate_page(response){
         }
 
         var script = document.createElement("script");
-        script.src = "../main.js?version=2026.11b";
+        script.src = "../main.js?version=2026.11c";
         document.body.appendChild(script);
     } 
 }
