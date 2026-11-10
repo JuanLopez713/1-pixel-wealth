@@ -95,8 +95,8 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
    chemotherapy + "$9 billion every week", the celebrities, the $200M vs Bezos
    chart, "No single human needs…", then "What could Elon Musk alone pay
    for?" in ascending order, ending at the bar's end with the public-schools note.
-4. **The 400 richest ($8T): what this wealth could fund.** Who they are (400
-   people vs. bottom 50%, the 747), then programs in ascending cost, each
+4. **The 400 richest ($8T): what this wealth could fund.** Who they are (the
+   747), then programs in ascending cost, each
    taking a slice out of the always-visible pie: malaria, $1,200 per household,
    poverty, medical debt, clean water, $10,000 per household, federal student
    loans → combined (≈48%) → "all of them would still be billionaires".
@@ -132,6 +132,11 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
   1000) px. Money bars inside a bar: 400 px tall, width = dollars ÷ 400,000.
   If you change a number, change its drawn size too (in `main.css`, or the
   inline `style="width: …"` on money bars in `index.html`).
+- **Cost bars** (`.money-bar.cost-bar`, Musk's bar): one recipe for every
+  "what could Elon pay for" slide. 18 squares tall (569.21 px), centered,
+  width = dollars ÷ 1,000 ÷ 569.21; the label uses the program spans
+  (`program-name`, `-cost`, `-share`, `-source`) on a stock window in key ink.
+  To add one, copy an existing block in `index.html` and set its width.
 - **Page width is close to the browser limit.** The document is about
   17.82 million px wide (Musk bar 1,816,000 px; 400 bar 16,000,000 px).
   Firefox's maximum is about 17.9 million. Don't add width outside the bars;
@@ -140,11 +145,13 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
   has a fixed 140px width for this reason (its growing text used to push
   every later box 190px right and break the Next targets). New overlays that
   live inside a bar use zero-width sticky wrappers (see `.scale-key`).
-- **Sticky positioning does a lot of work.** Text boxes stick to the screen
-  center (`left: 50%; transform: translate(-50%)`), squares with labels
-  stick 40px from the left on desktop; on phones (≤450px) things stick 10px
-  from the left. Next/Back targets in `main.js` (`targetFor`, `stops`)
-  assume these rules; change them together.
+- **Sticky positioning does a lot of work.** On screens wider than 450px,
+  text, charts and squares with labels all stick on the lane (`--lane` in
+  `main.css`, 189.74px: one $1 million square right of the 158.11px grid);
+  on phones (≤450px) things stick 10px from the left or center. Next/Back
+  targets in `main.js` (`targetFor`, `stops`) read `--lane` and put each
+  stop's content on it exactly, measuring sticky content with its offsets
+  switched off (`.jump-measuring`); change them together.
 - **Next/Back** (`main.js`, the IIFE at the bottom): stops are every
   `.wealth-wrapper`, every `.wealth-wrapper .infobox`, each celebrity /
   infectious child, `.midtext-wrapper` text, and the end of each giant bar.
@@ -184,7 +191,7 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | End world hunger by 2030 | ~$33B/yr | Ceres2030 (IFPRI), 2020 | dated estimate |
 | Tuition-free college | up to ~$100B/yr | Georgetown (2020) in 2025 $, via EducationData | dated estimate |
 | Biden debt relief | ~$400B | CBO 2022 (via NPR) | historical |
-| US public K-12 spending | $927B/yr | NCES Fast Facts (2020–21, 2022–23 $) | current |
+| US public K-12 spending | $927B/yr | NCES Fast Facts (2020–21, 2022–23 $) | removed from the page (Nov 2026) |
 | Billionaire midterm spending | $1.7B (81% super PACs), 53× since 2010 | Americans for Tax Fairness, FEC data to Aug 2026 | current, advocacy source |
 | Musk 2024 election spending | ~$290M | CNN (FEC filings) | current |
 | Federal lobbying 2025 | >$5B (~$9M per member of Congress) | LegiStorm; matches OpenSecrets, Bloomberg Gov | current |

@@ -26,6 +26,15 @@
         ],
         "createdAt": "2026-11-09T21:26:32.572Z",
         "reason": "the only two-axis grid in main.css is data: 100 true $1 million squares (31.62px) showing $100 million to scale"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-10T16:59:10.905Z",
+        "reason": "Claude triage: the .wealth bars are to-scale money shapes (20 $1M squares tall); figures and the grid sit flush against the bar edges by design, and inset padding would break the scale"
       }
     ]
   }

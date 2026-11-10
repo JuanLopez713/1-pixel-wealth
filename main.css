@@ -36,6 +36,11 @@
   --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
   --stencil: "Big Shoulders Stencil", "Arial Narrow", sans-serif;
   --text: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  /* Where every Next stop puts its content on screens wider than 450px: the
+     grid is 5 $1 million squares wide (158.11px), and content starts one
+     square (31.62px) to its right, 6 squares from the left edge. main.js
+     reads this value. */
+  --lane: 189.74px;
 }
 body, html {
   margin: 0;
@@ -137,6 +142,15 @@ h1 {
   position: relative;
   width: auto;
 }
+/* The bar's first text centers by pulling itself back half its width
+   (translate -50%), so it starts 600px into the bar: otherwise half of it
+   hangs out over the gap and Musk's bar before the 400 bar arrives. */
+.four-hundred .intro-first {
+  margin-left: 600px;
+}
+@media (max-width: 450px) {
+  .four-hundred .intro-first { margin-left: 0; }
+}
 .wealth > .wealth-title {
   flex-basis: 1%;
   padding: 10px;
@@ -174,10 +188,6 @@ h1 {
   .infobox .title {
     width: 90vw;
   }
-}
-.infobox.year-veteran .title {
-  position: sticky;
-  left: 0;
 }
 .infobox .chart,
 .infobox .worldchart,
@@ -339,43 +349,6 @@ h1 {
   height: 6.92px;
   background-color: var(--ink);
 }
-.year-veteran .square {
-  height: 400px;
-  width: 8000px;
-  margin-top: 5px;
-  background-color: var(--ink);
-}
-.year-veteran .title {
-  width: auto;
-  padding: 10px;
-  max-width: 380px;
-  left: 0;
-}
-.year-veteran .square {
-  position: static;
-}
-.year-chemo {
-  width: auto;
-}
-.year-chemo .square {
-  height: 400px;
-  width: 87800px;
-  background-color: var(--blue);
-  border: 5px dashed var(--stock);
-  box-sizing: border-box;
-}
-.year-chemo .square .title {
-  padding: 10px;
-  position: sticky;
-  left: 1px;
-  display: inline-block;
-}
-.year-chemo .key {
-  top: 310px;
-}
-.year-chemo .key > span {
-  background-color: var(--blue);
-}
 .celebrities {
   display: flex;
   width: auto;
@@ -457,94 +430,6 @@ h1 {
 .no-single-human .title {
   max-width: 390px;
 }
-.people {
-  background-image: url('img/person.svg');
-  background-size: 20px;
-}
-.people.first {
-  margin-top: -1040px;
-}
-.people-wrapper-outer h2 {
-  font-size: 16px;
-  font-weight: normal;
-  text-align: center;
-  margin: 5px;
-}
-.people-wrapper {
-  width: 800px;
-  height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-.four-hundred-people .people {
-  width: 800px;
-  height: 400px;
-}
-.sixty-percent-people .people {
-  width: 800px;
-  height: 1708924px;
-}
-.sixty-percent-people .people-wrapper {
-  outline: 3px solid var(--ink);
-}
-.bubble {
-  border-radius: 10px;
-  font-weight: bold;
-  box-shadow: 4px 4px 5px;
-  font-size: 28px;
-  background-color: var(--stock);
-  text-align: center;
-  padding: 10px;
-}
-.people-label {
-  position: absolute;
-  top: 40%;
-  left: 39%;
-}
-.people-sub-label {
-  font-weight: normal;
-  font-style: italic;
-  font-size: 14px;
-  margin-top: 4px;
-}
-.people-wrapper .percent {
-  background-color: rgb(255, 255, 255);
-  font-size: 20px;
-  font-weight: bold;
-  display: inline-block;
-  border-radius: 10px;
-  box-shadow: 4px 4px 5px;
-  padding: 10px;
-  position: -webkit-sticky;
-  position: sticky;
-  margin-top: 1000px;
-  top: 160px;
-  margin-left: 350px;
-}
-@media (max-width: 450px) {
-  .people {
-    background-size: 10px;
-  }
-  .people-wrapper {
-    width: 200px;
-    height: 400px;
-  }
-  .four-hundred-people .people {
-      width: 200px;
-      height: 400px;
-  }
-  .sixty-percent-people .people {
-    width: 200px;
-    height: 1708924px;
-  }
-  .people-label {
-    left: 35px;
-    font-size: 20px;
-  }
-  .people-wrapper .percent {
-    margin-left: 66px;
-  }
-}
 .ninety-wrapper,
 .plane-wrapper {
   width: 480px;
@@ -606,18 +491,6 @@ h1 {
 .teacher-pay .square {
   width: 8.63px;
   height: 8.63px;
-  background-color: var(--ink);
-}
-.famine-plan .square {
-  background-color: var(--ink);
-}
-.end-hunger .square {
-  background-color: var(--ink);
-}
-.free-college .square {
-  background-color: var(--ink);
-}
-.debt-relief .square {
   background-color: var(--ink);
 }
 /* Last note in Musk's bar, pushed to the bar's far end. */
@@ -997,25 +870,6 @@ h1 {
   font-size: 24px;
   margin: 4px 0 10px;
 }
-.people-wrapper {
-  background-color: var(--stock);
-}
-.bubble,
-.people-wrapper .percent {
-  border-radius: 0;
-  box-shadow: none;
-  background-color: var(--ink);
-  color: var(--stock);
-  font-family: var(--display);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-.people-sub-label {
-  font-family: var(--text);
-  text-transform: none;
-  letter-spacing: 0;
-}
 #ok-zoomer a {
   display: inline-block;
   margin-top: 8px;
@@ -1202,34 +1056,30 @@ h1 {
   margin: 6px 0 0;
   font-size: 13px;
 }
-/* The cost shapes inside Musk's bar: 19 $1 million squares tall
-   (19 x 31.623 = 600.83 px; the VA and cancer-drug boxes 18), at the top of
-   the bar, with room left below them for the ruler. Each width is its
-   cost / $1,000 / its height. */
-.bezos .infobox.year-veteran,
-.bezos .infobox.year-chemo,
-.bezos .infobox.money-bar {
+/* Cost bars: what Elon's fortune alone could pay for, drawn to scale on his
+   bar. Every one is 18 $1 million squares tall (18 x 31.623 = 569.21 px),
+   centered on the 20-square bar (one square of orange above, one below, where
+   the ruler runs), in key ink. Each width is its cost / $1,000 / 569.21 px
+   (free college: $99.5 billion). The label is the programs' window (see
+   .program): name, one oversized amount, its share, its source; in key ink
+   on bare stock, pinned on the lane. Unlike a program it is never cut away. */
+.bezos .infobox.cost-bar {
   align-self: flex-start;
+  margin-top: 31.623px;
 }
-.bezos .year-veteran .square {
-  /* 18 squares tall (569.21 px): $3.2 billion / $1,000 / 569.21 px. */
-  width: 5621.83px;
+.bezos .cost-bar .square {
   height: 569.21px;
-  margin-top: 0;
+  background-color: var(--ink);
 }
-.bezos .year-chemo .square {
-  /* 18 squares tall: $35.12 billion / $1,000 / 569.21 px. */
-  width: 61699.55px;
-  height: 569.21px;
-  border: none;
+.money-bar.cost-bar .square .title {
+  width: max-content;
+  max-width: none;
+  padding: 18px 24px;
+  background-color: var(--stock);
 }
-.bezos .money-bar .square {
-  height: 600.83px;
-}
-/* Titles that sit inside ink-filled bars on Musk's bar print in stock. */
-.year-veteran .square .title,
-.year-chemo .square .title {
-  color: var(--stock);
+.money-bar.cost-bar .square .title,
+.money-bar.cost-bar .square .title a {
+  color: var(--ink);
 }
 /* The sources run long: a wider, smaller column that scrolls if it must. */
 .infobox.sources .title {
@@ -1586,52 +1436,57 @@ h1,
   width: 158.11px;
   background-size: 158.11px 9px;
 }
-/* The left 250px of each bar belong to the grid: boxes start at 250px, and
-   text and charts center in the space to its right. */
+/* The left of each bar belongs to the grid. Everything a Next stop lands on
+   (boxes, text and charts) starts on one line, one $1 million square right
+   of the grid (--lane), and sticky content holds there. */
 @media (min-width: 451px) {
   .center-sticky,
   .infobox .chart,
   .infobox .worldchart,
   .infobox .chart-outer,
   .infobox .midtext,
-  .text-infobox .title {
-    left: calc(50% + 125px);
-  }
-  .infobox .title-square-wrapper {
-    left: 250px;
-  }
-  .money-bar .square .title,
-  .year-chemo .square .title {
-    left: 251px;
-  }
-  .infobox.year-veteran .title,
-  .year-veteran .title {
-    left: 250px;
-  }
+  .text-infobox .title,
+  .infobox .title-square-wrapper,
   .ten-px {
-    left: calc(50% - 51px);
+    left: var(--lane);
+    transform: none;
+  }
+  .money-bar .square .title {
+    left: calc(var(--lane) + 1px);
+  }
+  /* The 10px strip leads; its note follows 16px to the right. */
+  .infobox.five-pixels .title {
+    margin-left: 16px;
+    left: calc(var(--lane) + 26px);
   }
   .text-infobox .title,
   .infobox .chart {
-    max-width: min(600px, calc(100vw - 310px));
+    max-width: min(600px, calc(100vw - var(--lane) - 60px));
   }
-  .people-wrapper,
   .ninety-wrapper,
   .plane-wrapper,
   .line-chart .chart-outer,
   .infobox.ending .what-could-we-do.title {
-    max-width: calc(100vw - 310px);
+    max-width: calc(100vw - var(--lane) - 60px);
   }
   .infobox.sources .title {
-    max-width: min(720px, calc(100vw - 310px));
+    max-width: min(720px, calc(100vw - var(--lane) - 60px));
   }
+}
+
+/* For a moment while Back/Next works out its stops, sticky content lets go,
+   so main.js can measure where it sits in the page. */
+.jump-measuring .infobox,
+.jump-measuring .infobox *,
+.jump-measuring .center-sticky {
+  left: auto !important;
 }
 
 @media (min-width: 451px) {
   /* Celebrity boxes wider than the screen keep their label clear of the grid. */
   .celebrities .sub-infobox .title {
     position: sticky;
-    left: 250px;
+    left: var(--lane);
   }
 }
 
@@ -1653,11 +1508,21 @@ h1,
 }
 .career-grid {
   display: grid;
-  grid-template-columns: repeat(5, 116px);
-  gap: 14px 10px;
-  align-items: end;
+  grid-template-columns: repeat(5, 132px);
+  gap: 26px 12px;
   margin-top: 10px;
 }
+/* Each job takes a label row and a square row of the grid, so every square in
+   a row starts at the same height (and lands on the same grid line), with its
+   label set right on top of it. */
+.career {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+}
+.career .title { align-self: end; }
+.career .square { align-self: start; }
 .career .title {
   width: auto;
   max-width: none;
@@ -1669,6 +1534,44 @@ h1,
 }
 .career .square {
   background-color: var(--ink);
+}
+/* Figure labels (careers and celebrities): three lines. The name in poster
+   capitals, the working in Public Sans, the total as a poster-capital figure. */
+.fig-label > span { display: block; }
+.fig-label .fig-name,
+.fig-label .fig-total {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+.fig-label .fig-name { letter-spacing: 0.02em; padding-bottom: 3px; }
+.fig-label .fig-total { padding-top: 4px; font-variant-numeric: lining-nums; white-space: nowrap; }
+/* On Musk's bar each line backs onto the orange, hugging its words, so the
+   grid's lines never run through a label (on phones the labels sit over it). */
+.bezos .fig-label > span {
+  width: fit-content;
+  background-color: var(--orange);
+}
+.career .fig-math a,
+.career-hours { white-space: nowrap; }
+.career-calc { display: block; }
+.fig-label .fig-name { font-size: 26px; }
+.fig-label .fig-math { font-size: 16px; line-height: 1.4; }
+.fig-label .fig-total { font-size: 34px; }
+.fig-label .fig-note { font-size: 16px; line-height: 1.4; padding-top: 6px; }
+/* Careers: the same label, small enough for a 132px column. */
+.career .fig-label .fig-name { font-size: 16px; }
+.career .fig-label .fig-math { font-size: inherit; line-height: inherit; }
+.career .fig-label .fig-total { font-size: 21px; }
+@media (max-width: 450px) {
+  .fig-label .fig-name { font-size: 22px; }
+  .fig-label .fig-math,
+  .fig-label .fig-note { font-size: 14px; }
+  .fig-label .fig-total { font-size: 28px; }
+  .career .fig-label .fig-name { font-size: 14px; }
+  .career .fig-label .fig-math { font-size: inherit; }
+  .career .fig-label .fig-total { font-size: 18px; }
 }
 @media (max-width: 450px) {
   .career-grid { grid-template-columns: repeat(3, 104px); }
@@ -1685,7 +1588,7 @@ h1,
 @media (max-width: 450px) {
   .death figcaption { font-size: 12px; }
   .career .title { font-size: 12px; }
-  .career-grid { grid-template-columns: repeat(3, 112px); }
+  .career-grid { grid-template-columns: repeat(3, 112px); margin-top: 14px; }
 }
 /* Phones: the death-toll captions run five lines deep, so the squares shrink
    and the lines tighten to keep them clear of the Back/Next bar. */
@@ -1731,16 +1634,25 @@ body.scale-grid .wealth > .grid100 { display: block; }
 /* One solid line color: stock (white) on the ink and blue bars, ink (black)
    on Musk's orange. */
 .bezos .wealth > .grid100 { --grid-line: var(--ink); }
+/* The lines are an SVG drawn by main.js (crisp edges, so no line falls
+   between pixels and fades). */
 .grid100 .grid-main {
   position: absolute;
+  left: 0;
   bottom: 0;
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 31.623px 31.623px;
-  box-shadow: inset -1px -1px 0 var(--grid-line);
+  display: block;
+  width: 158.11px;
+  height: 632.46px;
+  color: var(--grid-line);
 }
-.grid100 .grid-main { left: 0; width: 158.11px; height: 632.46px; }
+/* A bar clips its own width, so the sticky grid, its tag and the marker
+   leave with the bar's end instead of riding out past it onto the page.
+   (clip, not hidden: hidden would stop everything inside from sticking.) */
+.billion .wealth,
+.bezos .wealth,
+.four-hundred .wealth {
+  overflow-x: clip;
+}
 /* The grid's tag, on one line, in the ruler band at the grid's foot, where
    the marker sits when the grid is off. It rides over everything in the bar
    (the cost shapes stop a square or more above the bar's foot). */

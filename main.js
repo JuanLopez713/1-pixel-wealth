@@ -5,9 +5,6 @@ var four_hundred = document.getElementById('four-hundred');
 var four_hundred_bar = four_hundred.querySelector('.wealth');
 var four_hundred_counter_start = document.getElementById('four-hundred-counter-start');
 
-var sixtyPercent = document.getElementById('sixty-percent');
-var sixtyPercentIndicator = document.getElementById('sixty-percent-indicator');
-var sixtyPercentScrollPercentage = 0.0;
 
 var strip = document.getElementById('strip');
 var progressFill = document.getElementById('progress-fill');
@@ -41,26 +38,6 @@ function pageLeft(el) {
   return el.getBoundingClientRect().left + window.scrollX;
 }
 
-function generate_sixty_percent() {
-  for (var i = 0; i < 100; i++) {
-    var node = document.createElement("div");
-    node.classList = "people";
-    if (i === 0) {
-      node.classList += " first";
-    }
-    document.getElementById("sixty-percent").appendChild(node);
-  }
-}
-generate_sixty_percent();
-
-sixtyPercent.addEventListener('scroll', function(){
-  let newScroll = ((sixtyPercent.scrollTop / sixtyPercent.scrollHeight) * 50).toFixed(1);
-  if (sixtyPercentScrollPercentage !== newScroll) {
-    sixtyPercentScrollPercentage = newScroll;
-    sixtyPercentIndicator.innerHTML = newScroll + '%';
-  }
-})
-
 // One update per frame, however many scroll events arrive.
 var stripQueued = false;
 function queueStrip() {
@@ -81,11 +58,26 @@ function sectionWidth(bar) {
 // The $100 million scale, as a grid: one per bar, held at the bar's left edge
 // under everything in it (see main.css).
 var scaleBars = [billionBar, bezos, four_hundred_bar];
+// Its lines are drawn as SVG with crisp edges: a square is 31.623 px, so most
+// lines fall between screen pixels, and a 1px CSS gradient line there prints
+// as two faint half-lines. crispEdges puts each on a whole pixel, full
+// strength. Lines run along the top and left of every square, plus the
+// grid's right and bottom edges.
+var GRID_SVG = (function () {
+  var s = Math.sqrt(1000), w = 5 * s, h = 20 * s, d = '';
+  for (var c = 0; c < 5; c++) { d += 'M' + (c * s + 0.5).toFixed(3) + ' 0V' + h.toFixed(3); }
+  d += 'M' + (w - 0.5).toFixed(3) + ' 0V' + h.toFixed(3);
+  for (var r = 0; r < 20; r++) { d += 'M0 ' + (r * s + 0.5).toFixed(3) + 'H' + w.toFixed(3); }
+  d += 'M0 ' + (h - 0.5).toFixed(3) + 'H' + w.toFixed(3);
+  return '<svg class="grid-main" width="' + w.toFixed(2) + '" height="' + h.toFixed(2) +
+    '" viewBox="0 0 ' + w.toFixed(3) + ' ' + h.toFixed(3) + '" shape-rendering="crispEdges">' +
+    '<path d="' + d + '" fill="none" stroke="currentColor" stroke-width="1"/></svg>';
+})();
 scaleBars.forEach(function (bar) {
   var grid = document.createElement('div');
   grid.className = 'grid100';
   grid.setAttribute('aria-hidden', 'true');
-  grid.innerHTML = '<span class="grid-main"></span>';
+  grid.innerHTML = GRID_SVG;
   var tag = document.createElement('div');
   tag.className = 'grid100-tag';
   tag.setAttribute('aria-hidden', 'true');
@@ -109,12 +101,24 @@ function align_figures() {
     var br = bar.getBoundingClientRect(), high = br.height;
     var lines = [];
     for (var k = 0; k <= 20; k++) { lines.push(high - k * SQUARE); }
-    var moved = [];
+    var moved = [], jobRows = {};
+    function shift(box, by) {
+      if (Math.abs(by) > 0.01) { box.style.translate = '0 ' + by.toFixed(3) + 'px'; }
+    }
     [].forEach.call(bar.querySelectorAll('.square'), function (sq) {
       var box = sq.closest(FIGURE_BOX);
       if (!box || !bar.contains(box) || moved.indexOf(box) >= 0) { return; }
       moved.push(box);
-      var top = sq.getBoundingClientRect().top - br.top;
+      var sr = sq.getBoundingClientRect();
+      var top = sr.top - br.top;
+      // The careers grid snaps a row at a time (see below).
+      if (box.matches('.career')) {
+        var key = Math.round(top);
+        var row = jobRows[key] || (jobRows[key] = { top: top, bottom: 0, boxes: [] });
+        row.bottom = Math.max(row.bottom, sr.bottom - br.top);
+        row.boxes.push(box);
+        return;
+      }
       var boxTop = box.getBoundingClientRect().top - br.top;
       var best = null;
       lines.forEach(function (y) {
@@ -122,9 +126,21 @@ function align_figures() {
         if (boxTop + y - top < -0.5) { return; }
         if (best === null || Math.abs(y - top) < Math.abs(best - top)) { best = y; }
       });
-      if (best !== null && Math.abs(best - top) > 0.01) {
-        box.style.translate = '0 ' + (best - top).toFixed(3) + 'px';
-      }
+      if (best !== null) { shift(box, best - top); }
+    });
+    // A row of job squares moves together, so their tops stay level. It moves
+    // down to the next line, so it never rides up into the careers heading,
+    // unless that would put its tallest square in the ruler band at the
+    // bar's foot; then it takes the nearest line.
+    Object.keys(jobRows).forEach(function (key) {
+      var row = jobRows[key], down = null, near = null;
+      lines.forEach(function (y) {
+        if (near === null || Math.abs(y - row.top) < Math.abs(near - row.top)) { near = y; }
+        if (y >= row.top - 0.5 && row.bottom + y - row.top <= high - 20 &&
+            (down === null || y < down)) { down = y; }
+      });
+      var by = (down !== null ? down : near) - row.top;
+      row.boxes.forEach(function (box) { shift(box, by); });
     });
   });
 }
@@ -211,7 +227,7 @@ function update_strip() {
   strip.classList.toggle('key-on', keyOn);
 
   // Counter: Musk's dollars and percentage from the "just kidding" box on,
-  // then the 400's dollars from the 400 people box on.
+  // then the 400's dollars from the "A trillion dollars" note on.
   var text = '', progress = null, political = false;
   var muskEnd = muskLeft + bezos.offsetWidth;
   if (x < muskEnd + 100) {
@@ -353,90 +369,84 @@ function toggleZoom() {
   var lastTarget = null, lastJump = 0;
 
   // Where to scroll so that a stop is in view.
-  // On wider screens the left 250px of every bar belong to the $100 million
-  // scale (the grid is 158px wide), so box figures (a colored square or
-  // bar with its label) line up 250px from the left, and text and charts
-  // center in the space to the right of it. On phones boxes sit 10px from the
-  // left and text is centered on the screen; the grid, if on, runs under them.
-  var BOX_FIGURES = '.celebrities > *, .careers, .lifetime, .healthcare, .amazon-year, .year-veteran, .year-chemo, .money-bar, .teacher-pay';
-  var SECTION = sectionWidth(), GRID_ZONE = 250;
+  // On wider screens the left of every bar belongs to the $100 million grid
+  // (5 $1 million squares wide), and every stop puts its content's left edge
+  // one square to the grid's right: the lane (--lane in main.css, 6 squares
+  // from the left). Content that sticks in place holds there as the page
+  // scrolls on. On phones boxes sit 10px from the left and text is centered
+  // on the screen; there is no grid.
+  var BOX_FIGURES = '.celebrities > *, .careers, .lifetime, .healthcare, .amazon-year, .money-bar, .teacher-pay';
+  var LANE = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--lane')) || 6 * SQUARE;
 
   function phone() { return window.innerWidth <= 450; }
-  function boxLeft() { return phone() ? 10 : GRID_ZONE; }
-  function centerLine() { return window.innerWidth / 2 + (phone() ? 0 : GRID_ZONE / 2); }
 
-  function targetFor(el) {
-    var left = pageLeft(el), width = el.offsetWidth, vw = window.innerWidth;
+  // Where content would sit if it did not stick: its left edge on the page.
+  // (Sticky offsets are switched off while measuring; see main.css.)
+  function staticLeft(el) {
+    if (el.classList.contains('wealth-wrapper')) {
+      // A bar's start: the bar itself (its title sticks to the screen edge).
+      return pageLeft(el.querySelector(':scope > .wealth') || el);
+    }
     if (el.matches(BOX_FIGURES)) {
       // Line up the square itself (the celebrity boxes have side margins).
-      var square = el.closest('.celebrities') && el.querySelector('.square');
-      return (square ? pageLeft(square) : left) - boxLeft();
+      return pageLeft((el.closest('.celebrities') && el.querySelector('.square')) || el);
     }
-    if (width <= vw) {
-      return left + width / 2 - centerLine();        // small: center it
+    var inner = el.querySelectorAll(STICKY_CONTENT), left = Infinity;
+    for (var i = 0; i < inner.length; i++) {
+      if (inner[i].offsetWidth) { left = Math.min(left, pageLeft(inner[i])); }
     }
-    if (el.classList.contains('infobox') && el.querySelector(STICKY_CONTENT)) {
-      // Its content sticks to the center line (or 10px from the left on
-      // phones) once its left edge reaches that point.
-      return phone() ? left - 5 : left - centerLine() + 5;
-    }
-    return left - 60;                                 // wide: show its start
+    return left === Infinity ? pageLeft(el) : left;
   }
 
-  // Inside a bar, stop where a ruler tick meets the left edge of the screen,
-  // so the grid's left edge sits exactly on it. Content that sticks in place
-  // takes the next tick (scrolling a little further does not move it); boxes
-  // that scroll with the page take the previous tick (they shift right);
-  // small centered notes take the nearest.
-  function snap(t, el, mode) {
-    if (phone()) { return t; }
-    var bar = el.classList.contains('ruler') ? el : el.closest('.wealth.ruler');
-    if (!bar) { return t; }
-    var origin = pageLeft(bar), w = sectionWidth(bar), k = (t - origin) / w;
-    var n = mode === 'floor' ? Math.floor(k) : (mode === 'round' ? Math.round(k) : Math.ceil(k));
-    return origin + n * w;
+  function targetFor(el) {
+    if (!phone()) { return staticLeft(el) - LANE; }
+    var left = pageLeft(el), width = el.offsetWidth, vw = window.innerWidth;
+    if (el.matches(BOX_FIGURES)) { return staticLeft(el) - 10; }
+    if (width <= vw) { return left + width / 2 - vw / 2; }   // small: center it
+    if (el.classList.contains('infobox') && el.querySelector(STICKY_CONTENT)) {
+      return left - 5;                               // its content sticks at 10px
+    }
+    return left - 60;                                 // wide: show its start
   }
 
   function stops() {
     var vw = window.innerWidth;
     var els = document.querySelectorAll('.wealth-wrapper, .wealth-wrapper .infobox');
     var targets = [];
+    // Measure where sticky content sits in the page, not where it is held.
+    document.documentElement.classList.add('jump-measuring');
     for (var i = 0; i < els.length; i++) {
-      var el = els[i];
       // A box that holds a row of graphics gets one stop per graphic (below).
-      if (el.classList.contains('celebrities')) { continue; }
-      var still = el.offsetWidth <= vw && !el.matches(BOX_FIGURES) && !el.querySelector(STICKY_CONTENT);
-      targets.push(snap(targetFor(el), el, still ? 'round' : 'ceil'));
+      if (els[i].classList.contains('celebrities')) { continue; }
+      targets.push(targetFor(els[i]));
     }
     // Graphics side by side in one box: Solomon, Beyonce, Tim Cook, the
-    // creators and the rest. Small ones scroll with the page (previous tick);
-    // wide ones keep their label pinned at the grid's edge (next tick).
+    // creators and the rest.
     var items = document.querySelectorAll('.celebrities > .sub-infobox, .celebrities > .column-infobox');
     for (var j = 0; j < items.length; j++) {
-      // (Too wide to fit after a shift of up to one section: next tick.)
-      targets.push(snap(targetFor(items[j]), items[j], items[j].offsetWidth > vw - GRID_ZONE - SECTION ? 'ceil' : 'floor'));
+      targets.push(targetFor(items[j]));
     }
+    document.documentElement.classList.remove('jump-measuring');
     // The end of each giant bar, where its counter reaches the total
     // (the counter reads the bar 175px from the left of the screen).
     [bezos, four_hundred_bar].forEach(function (bar) {
-      targets.push(snap(pageLeft(bar) + bar.offsetWidth - 170, bar, 'ceil'));
+      targets.push(pageLeft(bar) + bar.offsetWidth - 170);
     });
     // The student debt plan, the last thing Musk's fortune pays for, ends at
-    // the counter's read line (about 92.5% of his wealth) before the long run
+    // the counter's read line (about 97.8% of his wealth) before the long run
     // of what is left.
     var debtPlan = bezos.querySelector('.debt-relief .square');
-    targets.push(snap(pageLeft(debtPlan) + debtPlan.offsetWidth - READ_LINE, debtPlan, 'floor'));
+    targets.push(pageLeft(debtPlan) + debtPlan.offsetWidth - READ_LINE);
     // A program bar ends when its end reaches the middle of the screen, where
     // the pie reads it: the whole slice is taken and the FUNDED stamp shows.
     var programBars = document.querySelectorAll('.program .square');
     for (var m = 0; m < programBars.length; m++) {
-      targets.push(snap(pageLeft(programBars[m]) + programBars[m].offsetWidth - vw / 2 + 2, programBars[m], 'ceil'));
+      targets.push(pageLeft(programBars[m]) + programBars[m].offsetWidth - vw / 2 + 2);
     }
     var max = document.documentElement.scrollWidth - vw;
     targets = targets.map(function (t) { return Math.max(0, Math.min(Math.round(t), max)); });
     targets.sort(function (a, b) { return a - b; });
-    // Stops a few pixels apart show the same thing: keep the first. (Snapped
-    // stops sit whole ruler sections apart, 200px or more, so they all stay.)
+    // Stops a few pixels apart show the same thing: keep the first.
     var kept = [];
     targets.forEach(function (t) {
       if (!kept.length || t - kept[kept.length - 1] > 150) { kept.push(t); }
