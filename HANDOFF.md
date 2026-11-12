@@ -190,10 +190,14 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | WFP famine plan | $6B, 42M people (2021) | NPR / Global News | historical |
 | End world hunger by 2030 | ~$33B/yr | Ceres2030 (IFPRI), 2020 | dated estimate |
 | Tuition-free college | up to ~$100B/yr | Georgetown (2020) in 2025 $, via EducationData | dated estimate |
-| Biden debt relief | ~$400B | CBO 2022 (via NPR) | historical |
+| Biden debt relief | ~$400B | CBO 2022 (via NPR) | historical; a funded program on the 400's bar (Nov 2026), with the other $1.3T of student loans as its own program |
+| Musk's Twitter purchase | $44B (Oct 2022) | NPR | historical |
+| Musk 2026 midterm spending | at least $445M | AP via PBS NewsHour, Nov 5 2026 (NYT tally ~$474M) | current |
+| Musk taxes 2014–2018 | $455M; wealth +$13.9B; 3.27% "true tax rate"; $0 federal income tax in 2018 | ProPublica (IRS data), 2021 | historical |
+| Musk taxes 2021 | over $11B, his own statement | CNBC, Dec 2021 | historical, self-reported |
 | US public K-12 spending | $927B/yr | NCES Fast Facts (2020–21, 2022–23 $) | removed from the page (Nov 2026) |
 | Billionaire midterm spending | $1.7B (81% super PACs), 53× since 2010 | Americans for Tax Fairness, FEC data to Aug 2026 | current, advocacy source |
-| Musk 2024 election spending | ~$290M | CNN (FEC filings) | current |
+| Musk 2024 election spending | ~$290M | CNN (FEC filings) | current; now a cost bar on Musk's bar (moved from the political ending) |
 | Federal lobbying 2025 | >$5B (~$9M per member of Congress) | LegiStorm; matches OpenSecrets, Bloomberg Gov | current |
 | Poverty cost | ~$195B | 2019 Census-based $170B, adjusted for inflation and today's count | estimate (stated on page) |
 | Lifetime earnings $1.7M, chemo $9B, veterans housing, Solomon $50M, doctor/lawyer/hedge fund | | Original 2020 figures | **not updated**; refresh or cut |

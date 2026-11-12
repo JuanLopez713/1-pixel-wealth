@@ -529,9 +529,6 @@ h1 {
 .billionaire-midterms .square {
   background-color: var(--ink);
 }
-.musk-2024 .square {
-  background-color: var(--orange);
-}
 .lobbying-2025 .square {
   background-color: var(--ink);
 }
@@ -896,10 +893,6 @@ h1 {
   line-height: 1.4;
   max-width: 460px;
 }
-.musk-2024 .square .title,
-.musk-2024 .square .title a {
-  color: var(--ink);
-}
 
 /* The programs: knocked out of the 400's ink as bare stock. One oversized
    number per program; a FUNDED stamp where the bar, and its slice, ends. */
@@ -1081,6 +1074,12 @@ h1 {
 .money-bar.cost-bar .square .title a {
   color: var(--ink);
 }
+/* A cost bar narrower than its label (Musk's election spending and his
+   2014-2018 taxes) keeps the label's room, so the next box starts after the
+   words rather than under them. The bar itself stays to scale. */
+.bezos .infobox.cost-bar-small {
+  min-width: 640px;
+}
 /* The sources run long: a wider, smaller column that scrolls if it must. */
 .infobox.sources .title {
   max-width: 720px;
@@ -1094,12 +1093,32 @@ h1 {
 /* Review fixes ------------------------------------------------------- */
 /* The knock-out: each program starts in the 400's blue and is cut back to
    bare stock as the reading line passes, in step with the pie. main.js sets
-   --cut; only paint changes, never width. A stock cutting guide shows its size. */
+   --cut; never the bar's width. A stock cutting guide shows its size.
+   The cut is its own plain stock panel over a bar that never repaints: a
+   gradient across a bar hundreds of thousands of pixels wide had to be
+   repainted on every frame, and on a fast scroll Chrome showed bare blue
+   until it caught up. */
 .program .square {
   --cut: 0px;
-  background: linear-gradient(to right, var(--stock) var(--cut), var(--blue) var(--cut));
+  background: var(--blue);
   outline: 2px dashed var(--stock);
   outline-offset: -2px;
+}
+.program .square::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--cut);
+  background-color: var(--stock);
+}
+/* While a program is being cut, its label window runs the bar's full height,
+   so the edge of the bare stock is the label's own straight edge even when
+   the cut, set by script, is a frame behind the scroll. */
+.program.cutting .square .title {
+  min-height: 100%;
+  box-sizing: border-box;
 }
 .money-bar.program .square .title {
   background-color: var(--stock);
@@ -1333,6 +1352,51 @@ h1,
 }
 @media (max-width: 450px) {
   .strip-readout { grid-column: 1; grid-row: 1; min-width: 0; }
+}
+/* Wider screens: the scale key rides on the counter's line, to its right,
+   rather than on a row of its own that short screens push under the
+   buttons. The counter keeps the width of its longest text (set in
+   main.js), so the key holds still as the digits climb. */
+@media (min-width: 451px) {
+  .strip-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    column-gap: 28px;
+  }
+  .strip-readout { display: none; }
+  .strip.counter-on .strip-readout,
+  .strip.progress-on .strip-readout { display: block; }
+  .scale-key { margin-top: 0; }
+  /* Short screens leave little room under the bar: the counter takes only
+     its line, and the progress bar sits close beneath it. */
+  .strip-counter { min-height: 0; }
+  .progress { height: 10px; margin-top: 6px; padding: 2px; }
+}
+/* Too narrow for the counter and the key on one line: the key sits beside
+   the progress bar, just under the counter. */
+@media (min-width: 451px) and (max-width: 1199px) {
+  .strip-left {
+    display: grid;
+    grid-template-columns: auto minmax(0, auto);
+    justify-content: start;
+    align-items: center;
+    row-gap: 8px;
+  }
+  .strip-readout,
+  .strip.counter-on .strip-readout,
+  .strip.progress-on .strip-readout { display: contents; }
+  .strip-counter { grid-column: 1 / -1; min-width: 0 !important; }
+  .strip:not(.counter-on) .strip-counter { display: none; }
+  .progress { grid-column: 1; grid-row: 2; width: 360px; margin-top: 0; }
+  .progress-label { grid-column: 1; grid-row: 3; }
+  .scale-key { grid-column: 2; grid-row: 2; }
+  .strip:not(.counter-on):not(.progress-on) .scale-key { grid-row: 1; }
+}
+/* Narrower still: the key's items wrap rather than run off the screen. */
+@media (min-width: 451px) and (max-width: 939px) {
+  .progress { width: 240px; }
+  .scale-key { flex-wrap: wrap; white-space: normal; gap: 6px 14px; }
 }
 /* Home: a printed tab like Back and Next. */
 .jump-nav .jump-home {

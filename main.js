@@ -12,6 +12,8 @@ var politicalStart = document.querySelector('.political-start');
 var billionBar = document.querySelector('.billion .wealth');
 var readingMark = document.getElementById('reading-mark');
 var stripCounter = document.getElementById('strip-counter');
+var scaleKey = document.getElementById('scale-key');
+var muskTitle = bezos.parentNode.querySelector('.wealth-title');
 var ledgerStart = document.getElementById('ledger-start');
 var programs = [].slice.call(document.querySelectorAll('.program'));
 var pieDisc = document.getElementById('pie-disc');
@@ -215,6 +217,26 @@ function setScaleMode(grid) {
 }
 window.addEventListener('resize', queueStrip);
 
+// The width of the counter's longest text, so what sits beside it holds
+// still as the digits climb. Measured once the fonts have loaded.
+var counterWidthCache = 0;
+function counterWidth() {
+  if (!counterWidthCache) {
+    var probe = stripCounter.cloneNode(false);
+    probe.removeAttribute('id');
+    probe.style.cssText = 'position:absolute;visibility:hidden;min-width:0;width:auto';
+    probe.innerHTML = money.format(MUSK_WEALTH) + ' &middot; <strong>100.0%</strong> of Elon Musk\'s wealth';
+    stripCounter.parentNode.appendChild(probe);
+    counterWidthCache = Math.ceil(probe.offsetWidth);
+    probe.remove();
+  }
+  return counterWidthCache;
+}
+if (document.fonts) {
+  document.fonts.ready.then(function () { counterWidthCache = 0; queueStrip(); });
+}
+window.addEventListener('resize', function () { counterWidthCache = 0; });
+
 function update_strip() {
   var vw = window.innerWidth, x = window.scrollX;
   var muskLeft = pageLeft(bezos);
@@ -243,6 +265,8 @@ function update_strip() {
     text = money.format(Math.max(wealth400, 0));
   }
   if (stripCounter.innerHTML !== text) { stripCounter.innerHTML = text; }
+  strip.classList.toggle('counter-on', text !== '');
+  stripCounter.style.minWidth = (text !== '' && vw > 450) ? counterWidth() + 'px' : '';
   // The progress bar returns at the political section: what billionaire
   // families spent on the 2026 midterms, as a share of the 400's wealth.
   if (progress === null && pageLeft(politicalStart) - x < vw * 0.75) {
@@ -252,6 +276,20 @@ function update_strip() {
   strip.classList.toggle('progress-on', progress !== null);
   strip.classList.toggle('progress-political', political);
   if (progress !== null) { progressFill.style.width = progress + '%'; }
+
+  // Until the counter starts, the key lines up with the words of Musk's
+  // title, which travel in with his bar and then stick near the screen's
+  // left edge. It never runs off the right of the screen.
+  var keyShift = 0;
+  if (keyOn && vw > 450 && text === '' && progress === null) {
+    var titleText = muskTitle.getBoundingClientRect().left + parseFloat(getComputedStyle(muskTitle).paddingLeft);
+    var keyHome = scaleKey.getBoundingClientRect().left - (parseFloat(scaleKey.dataset.shift) || 0);
+    keyShift = Math.round(Math.min(titleText - keyHome, vw - 16 - keyHome - scaleKey.offsetWidth));
+  }
+  if (scaleKey.dataset.shift !== String(keyShift)) {
+    scaleKey.dataset.shift = keyShift;
+    scaleKey.style.transform = keyShift ? 'translateX(' + keyShift + 'px)' : '';
+  }
 
   update_pie(x, vw);
   update_deaths(x, vw);
@@ -278,6 +316,7 @@ function update_pie(x, vw) {
     var cut = p >= 1 ? bar.offsetWidth : (p > 0 ? Math.max(p * bar.offsetWidth, labelRight) : 0);
     bar.style.setProperty('--cut', Math.min(cut, bar.offsetWidth) + 'px');
     program.classList.toggle('funded', p >= 1);
+    program.classList.toggle('cutting', p > 0);
     if (p >= 1) { done += cost; }
     else { now += cost * p; }
     if (p > 0) { name = (p < 1 ? 'Funding: ' : 'Funded: ') + program.getAttribute('data-name'); }
@@ -432,11 +471,11 @@ function toggleZoom() {
     [bezos, four_hundred_bar].forEach(function (bar) {
       targets.push(pageLeft(bar) + bar.offsetWidth - 170);
     });
-    // The student debt plan, the last thing Musk's fortune pays for, ends at
-    // the counter's read line (about 97.8% of his wealth) before the long run
-    // of what is left.
-    var debtPlan = bezos.querySelector('.debt-relief .square');
-    targets.push(pageLeft(debtPlan) + debtPlan.offsetWidth - READ_LINE);
+    // The last cost bar on Musk's bar ends at the counter's read line before
+    // the long run of what is left.
+    var costBars = bezos.querySelectorAll('.cost-bar .square');
+    var lastCost = costBars[costBars.length - 1];
+    targets.push(pageLeft(lastCost) + lastCost.offsetWidth - READ_LINE);
     // A program bar ends when its end reaches the middle of the screen, where
     // the pie reads it: the whole slice is taken and the FUNDED stamp shows.
     var programBars = document.querySelectorAll('.program .square');
