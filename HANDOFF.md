@@ -135,7 +135,10 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
    static copy of the September 2026 list; new name per box passed or
    Back/Next press; hidden when it would touch the title, so off on phones).
 7. **Below-the-bar layer (not on the money scale):** the persistent "For
-   scale" key, the persistent pie (400 section) and the Musk/400 counters. The
+   scale" key, the persistent pie (400 section) and the Musk/400 counters. Both
+   counters read "$X · Y% of … wealth" with a progress bar under them,
+   orange for Musk, blue for the 400 (Nov 2026; the midterms sliver and its
+   caption were removed). The
    malaria figures (death squares and the dot grid) moved out of the strip
    into chart windows on the 400's bar in Nov 2026.
 

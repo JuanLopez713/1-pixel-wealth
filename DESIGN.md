@@ -109,8 +109,8 @@ components:
     padding: "3px"
   progress-fill:
     backgroundColor: "{colors.orange}"
-  progress-fill-political:
-    backgroundColor: "{colors.stamp}"
+  progress-fill-four:
+    backgroundColor: "{colors.blue}"
   career-square:
     backgroundColor: "{colors.ink}"
     rounded: "{rounded.none}"
@@ -178,10 +178,10 @@ A two-ink poster palette (orange and blue over key ink) on uncoated buff stock, 
 
 ### Primary
 - **Musk Orange** (#e0662a): the fill of Elon Musk's bar, money attributed to him, and the progress bar's fill while the counter climbs through his fortune. Text on it is key ink (5.05:1). It also prints the title's out-of-register second ink. On bare stock it fails text contrast (2.77:1), so it never carries text or thin marks there.
-- **Cancellation Orange** (#b4441a): orange pulled darker for marks on bare stock: the FUNDED stamp, the orange marks in recolored charts, the progress bar's sliver at the political section, and the pie's spent slice (`--pie-spent`; only 1.43:1 against the blue beside it, so the slice's line of text carries it). It measures 4.47:1 on stock, so it is for large or bold marks (stamps, chart fills and strokes), not small body text.
+- **Cancellation Orange** (#b4441a): orange pulled darker for marks on bare stock: the FUNDED stamp, the orange marks in recolored charts, and the pie's spent slice (`--pie-spent`; only 1.43:1 against the blue beside it, so the slice's line of text carries it). It measures 4.47:1 on stock, so it is for large or bold marks (stamps, chart fills and strokes), not small body text.
 
 ### Secondary
-- **Ledger Blue** (#25547f): the fill of the 400 richest Americans' bar and the uncut part of every program bar. It also prints the familiar amounts (the $1,000 pixel, the $87,460 median square, the $1 million square, the For scale key squares, the title poster's lone pixel) and net worth in the celebrities row. Text on it is stock (6.38:1). On stock windows it is the program label's ink (6.38:1). It is also the pie's remaining wealth.
+- **Ledger Blue** (#25547f): the fill of the 400 richest Americans' bar and the uncut part of every program bar. It also prints the familiar amounts (the $1,000 pixel, the $87,460 median square, the $1 million square, the For scale key squares, the title poster's lone pixel) and net worth in the celebrities row. Text on it is stock (6.38:1). On stock windows it is the program label's ink (6.38:1). It is also the pie's remaining wealth and the progress bar's fill on the 400's bar.
 
 ### Tertiary
 - **Reserved Gold** (#c9a227): the one highlight ink, meaning "the thing you are on now": the in-progress pie slice, the reading mark at the screen's middle, and text selection.
@@ -216,7 +216,7 @@ All three are self-hosted woff2 under the SIL Open Font License (`fonts/`).
 - **Label** (Display 900, 22px, 0.04em, uppercase): Back/Next/Home tabs, the zoom tab (20px).
 - **Stamp** (Stencil 900, 72px, 1, uppercase): the FUNDED stamp only; 48px on phones.
 - **Body** (400, 19px, 1.45): infobox reading text, max 600px wide (450px for chart columns). Paragraph gap 0.7em. Money-bar labels at 19px/1.4, the bar-end note at 22px, the credit at 15px/1.5, career working at 12.5px/1.3.
-- **Body Small** (400, 14px, 1.35, tabular numerals): the strip, the scale key (13px), the progress label (13px), death captions (12px). The "$100 million" key marker is 14px bold; the grid's label is 12px bold.
+- **Body Small** (400, 14px, 1.35, tabular numerals): the strip, the scale key (13px), death captions (12px). The "$100 million" key marker is 14px bold; the grid's label is 12px bold.
 - **Dateline** (400, 13px): source, value and date set beside a bar label or under a program or chart. Sources box at 13.5px.
 
 ### Named Rules
@@ -321,7 +321,7 @@ Printed ink tabs, fixed at the bottom center of the screen.
 
 ### The strip, progress bar, pie and reading mark
 - The counter is poster capitals at 30px with tabular numerals.
-- The progress bar sits under the counter: a 14px track, up to 360px wide, 3px inside a 2px ink rim. Its Musk Orange fill grows with Musk's share of his own fortune as the counter climbs. At the political section it returns as a Cancellation Orange sliver (at least 3px) for billionaire families' midterm spending, with a 13px label under it.
+- The progress bar sits under the counter: a 14px track, up to 360px wide, 3px inside a 2px ink rim. Its Musk Orange fill grows with Musk's share of his own fortune as the counter climbs ("$X · Y% of Elon Musk's wealth"). On the 400's bar it does the same in Ledger Blue, from the counter's start to the bar's end ("$X · Y% of the 400's wealth"). No caption under it.
 - The scale key ("For scale:" in bold) draws $1,000, the median household, and $1 million to scale in Ledger Blue.
 - The pie: stock = funded, gold = the program in progress, Cancellation Orange = money really spent (drawn after what was taken, to scale, so it is a hairline), blue = what is left, inside a 3px ink rim. Beside it, the percentage at 48px poster capitals, "$X trillion left" (programs only; spending never lowers it), "■ $X spent (Y%)" with a swatch of the spent ink, and a bold "Funding:", "Funded:" or "Spent:" line (on phones the "Spent:" line drops for room).
 

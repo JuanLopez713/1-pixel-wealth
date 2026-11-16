@@ -40,10 +40,10 @@ function translate_page(response){
 
         // The Forbes 400 names for the ticker load first, then main.js.
         var names = document.createElement("script");
-        names.src = "../forbes400.js?version=2026.11q";
+        names.src = "../forbes400.js?version=2026.11r";
         names.onload = names.onerror = function () {
             var script = document.createElement("script");
-            script.src = "../main.js?version=2026.11q";
+            script.src = "../main.js?version=2026.11r";
             document.body.appendChild(script);
         };
         document.body.appendChild(names);

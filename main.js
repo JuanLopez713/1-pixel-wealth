@@ -8,7 +8,6 @@ var four_hundred_counter_start = document.getElementById('four-hundred-counter-s
 
 var strip = document.getElementById('strip');
 var progressFill = document.getElementById('progress-fill');
-var politicalStart = document.querySelector('.political-start');
 var billionBar = document.querySelector('.billion .wealth');
 var readingMark = document.getElementById('reading-mark');
 var stripCounter = document.getElementById('strip-counter');
@@ -234,7 +233,7 @@ function counterWidth(kind) {
     probe.style.cssText = 'position:absolute;visibility:hidden;min-width:0;width:auto';
     probe.innerHTML = kind === 'musk'
       ? money.format(MUSK_WEALTH) + ' &middot; <strong>100.0%</strong> of Elon Musk\'s wealth'
-      : money.format(FOUR_HUNDRED_WEALTH);
+      : money.format(FOUR_HUNDRED_WEALTH) + ' &middot; <strong>100.0%</strong> of the 400\'s wealth';
     stripCounter.parentNode.appendChild(probe);
     counterWidthCache[kind] = Math.ceil(probe.offsetWidth);
     probe.remove();
@@ -259,7 +258,7 @@ function update_strip() {
 
   // Counter: Musk's dollars and percentage from the "just kidding" box on,
   // then the 400's dollars from the "A trillion dollars" note on.
-  var text = '', progress = null, political = false;
+  var text = '', progress = null, four = false;
   var muskEnd = muskLeft + bezos.offsetWidth;
   if (x < muskEnd + 100) {
     // Each pixel scrolled uncovers a column 632.46 squares tall: $632,460.
@@ -271,19 +270,17 @@ function update_strip() {
   }
   else if (pageLeft(four_hundred_counter_start) - x < vw) {
     var wealth400 = Math.min((x - pageLeft(four_hundred_bar) + READ_LINE) * TWENTY_HIGH * 1000, FOUR_HUNDRED_WEALTH);
-    text = money.format(Math.max(wealth400, 0));
+    wealth400 = Math.max(wealth400, 0);
+    text = money.format(wealth400) + ' &middot; <strong>' + (wealth400 / FOUR_HUNDRED_WEALTH * 100).toFixed(1) + '%</strong> of the 400\'s wealth';
+    progress = wealth400 / FOUR_HUNDRED_WEALTH * 100;
+    four = true;
   }
   if (stripCounter.innerHTML !== text) { stripCounter.innerHTML = text; }
   strip.classList.toggle('counter-on', text !== '');
   stripCounter.style.minWidth = (text !== '' && vw > 450) ? counterWidth(x < muskEnd + 100 ? 'musk' : 'four') + 'px' : '';
-  // The progress bar returns at the political section: what billionaire
-  // families spent on the 2026 midterms, as a share of the 400's wealth.
-  if (progress === null && pageLeft(politicalStart) - x < vw * 0.75) {
-    progress = 1.7e9 / FOUR_HUNDRED_WEALTH * 100;
-    political = true;
-  }
   strip.classList.toggle('progress-on', progress !== null);
-  strip.classList.toggle('progress-political', political);
+  // The 400's progress prints in their blue, Musk's in his orange.
+  strip.classList.toggle('progress-four', four);
   if (progress !== null) { progressFill.style.width = progress + '%'; }
 
   // Until the counter starts, the key lines up with the words of Musk's

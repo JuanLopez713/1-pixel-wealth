@@ -1313,8 +1313,8 @@ h1,
   .ten-px { left: 10px; }
   .infobox.five-pixels .title { left: 34px; width: 70vw; }
 }
-/* Progress bar: Musk's share as the counter climbs; returns at the political
-   section as the sliver that buys political power. */
+/* Progress bar: the share of the bar's fortune the counter has reached,
+   in the bar's own ink: Musk's orange, then the 400's blue. */
 .progress {
   display: none;
   box-sizing: border-box;
@@ -1333,17 +1333,8 @@ h1,
   height: 100%;
   background-color: var(--orange);
 }
-.strip.progress-political .progress-fill {
-  background-color: var(--stamp);
-}
-.progress-label {
-  display: none;
-  max-width: 360px;
-  margin: 6px 0 0;
-  font-size: 13px;
-}
-.strip.progress-political .progress-label {
-  display: block;
+.strip.progress-four .progress-fill {
+  background-color: var(--blue);
 }
 @media (max-width: 450px) {
   .strip-readout { grid-column: 1; grid-row: 1; min-width: 0; }
@@ -1384,7 +1375,6 @@ h1,
   .strip-counter { grid-column: 1 / -1; min-width: 0 !important; }
   .strip:not(.counter-on) .strip-counter { display: none; }
   .progress { grid-column: 1; grid-row: 2; width: 360px; margin-top: 0; }
-  .progress-label { grid-column: 1; grid-row: 3; }
   .scale-key { grid-column: 2; grid-row: 2; }
   .strip:not(.counter-on):not(.progress-on) .scale-key { grid-row: 1; }
 }
