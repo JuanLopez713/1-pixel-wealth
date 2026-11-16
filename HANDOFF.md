@@ -196,8 +196,9 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | Medical debt | ≥$220B | KFF 2024 | current |
 | Federal student loans | $1.7T, 42M borrowers | Federal Student Aid, Sept 2026 | current |
 | WFP famine plan | $6B, 42M people (2021) | NPR / Global News | historical |
-| End world hunger by 2030 | ~$33B/yr | Ceres2030 (IFPRI), 2020 | dated estimate |
-| Tuition-free college | up to ~$100B/yr | Georgetown (2020) in 2025 $, via EducationData | dated estimate |
+| End world hunger by 2030 | ~$33B/yr; shown as $132B for 2027–2030 | Ceres2030 (IFPRI), 2020 | dated estimate |
+| Free community college endowment | $184B ($9B/yr ÷ 4.9%) | Education Dept FY2025 plan ($90B/10 yrs), via EducationData; NACUBO-Commonfund FY2025 spending rate | current |
+| Replace US lead pipes | ≥$45B (estimates to $90B) | Inside Climate News, Jan 2026 (EPA count ~4M lines, disputed) | current |
 | Biden debt relief | ~$400B | CBO 2022 (via NPR) | historical; a funded program on the 400's bar (Nov 2026), with the other $1.3T of student loans as its own program |
 | Musk's Twitter purchase | $44B (Oct 2022) | NPR | historical |
 | Musk 2026 midterm spending | at least $445M | AP via PBS NewsHour, Nov 5 2026 (NYT tally ~$474M) | current |

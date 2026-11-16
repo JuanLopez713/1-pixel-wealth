@@ -229,6 +229,12 @@ h1 {
 .flex {
   display: flex;
 }
+/* On Musk's bar each text and figure box holds its content on screen for
+   6,000px rather than 12,000px, which leaves the bar room for every cost
+   bar drawn to scale. */
+#bezos > .infobox:not(.money-bar):not(.careers):not(.celebrities):not(.bar-end-note) {
+  width: 6000px;
+}
 .infobox.first {
   margin-left: 30000px;
 }
