@@ -97,10 +97,15 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
    - *How long would you have to work to earn it?* One year of Amazon and
      teacher pay, then *What do people typically earn in a lifetime?* and the grid (high school graduate + 9 jobs).
    - *How does he compare with other rich people?* Creators and celebrities,
-     the $200M vs Bezos chart, Oxfam, "No single human needs…".
+     the $200M vs Bezos chart, the top 1%'s share (Fed DFA, 1989 → 2026),
+     "We don't think any one person needs or deserves this much…".
    - *How does it compare with what the US spends?* Homeless veterans, cancer drugs.
+   - *How does it compare with what the US spends?* ends with a yearly-yield
+     note (4.9% of $908B ≈ $44B a year covers both budgets).
    - *What could Elon Musk alone pay for?*, *What has Elon actually spent it
-     on?*, *And what did he take away?*, ending at the bar's end.
+     on?*, *What did he do with his power?* (DOGE; renamed from "And what did
+     he take away?", caveats first, 2026-11-15), ending at the bar's end
+     ("He is one of the 400… Now start over").
 4. **The 400 richest ($8T)**, in titled sections like Musk's bar (owner,
    2026-11-15): *How much do the 400 own?* (intro, trillion note, 747) →
    *Could they have paid for 2020?* ($1,200 checks, CARES; not counted) →
@@ -109,7 +114,8 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
    water by 2030, US drinking water) → *What could they do for America's
    poor?* (poverty, 2021 child tax credit endowment) → *What would they have
    left?* (combined ≈55%, transform, "all of them would still be
-   billionaires") → *What have they actually spent it on?*: nine real
+   billionaires") → *What have they bought?* (renamed 2026-11-15; ends with
+   Gates Foundation giving and "most of it is held, not spent"): nine real
    purchases as cost bars (569.21px tall, cost / 1000 / 569.21 wide, class
    `.spent` with `data-cost` and `data-name`), cheapest first: Griffin's
    penthouse $238M, the Washington Post $250M, Koru $500M (estimate),
@@ -126,10 +132,13 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
    a sliver buys political power → billionaire midterm spending $1.7B →
    super PACs → Barre Seid's $1.6B to Leonard Leo (an ink money bar to
    scale, 4,000px wide) and Harlan Crow's
-   trips for Clarence Thomas (an ink box like the midterms bar, but sized to
-   its words, not its $500,000, and labeled "not drawn to scale"; owner's
-   choice, 2026-11-15). Neither is on the Forbes 400, so neither is counted
-   → lobbying → oligarchy → "We cannot accept this level of inequality any
+   trips for Clarence Thomas (the original words, with the 2019 trip drawn to scale under them,
+   like the lifetime-earnings squares: an ink square 22.36px on a side for
+   $500,000, class `.crow-thomas`, in `BOX_FIGURES`; owner, 2026-11-15). Neither is on the Forbes 400, so neither is counted
+   → lobbying → money doesn't win every race (Musk's 2026 loss), Gilens &
+   Page vs Enns → oligarchy → *What would it take?* (endowment yield, Warren's
+   Ultra-Millionaire Tax Act, the OECD objection, the US exit-tax answer;
+   added 2026-11-15 after the argument review) → "We cannot accept this level of inequality any
    longer." (the only poster-scale ending heading) → sources. A ticker at
    the top right shows one Forbes 400 member at a time (`forbes400.js`, a
    static copy of the September 2026 list; new name per box passed or
@@ -231,7 +240,7 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | DOGE claimed savings | ~$215B claimed; GAO found $110B tested unreliable, 2,503 of 13,476 contracts never terminated | GAO-26-108615 via CNBC, Aug 2026 | current |
 | Cost of DOGE's workforce cuts | $135B in FY2025 | Partnership for Public Service (nonpartisan), via CBS News, Apr 2025 | estimate |
 | EPA spending canceled with DOGE | at least $29B, EPA's own count | FedScoop, Oct 2025 | agency claim |
-| Deaths from foreign aid cuts | >750,000 (>500,000 children) by Jan 2026 | Brooke Nichols (BU) Impact Counter, via AFP/Taipei Times; model estimate, not peer-reviewed | estimate; drawn as dots (1 per 1,000), never a box |
+| Deaths from foreign aid cuts | >750,000 (>500,000 children) by Jan 2026 | Impact Counter website, via AFP/Taipei Times (the article doesn't tie it to Nichols; her related analysis is not peer-reviewed); model estimate | estimate; drawn as dots (1 per 1,000), never a box |
 | Projected deaths to 2030 | >14M, ~4.5M children under 5 | The Lancet (2025), via NPR | projection |
 | US public K-12 spending | $927B/yr | NCES Fast Facts (2020–21, 2022–23 $) | removed from the page (Nov 2026) |
 | Griffin penthouse | $238M (2019), a US record | Reuters via NBC News | historical; price from Griffin's spokesman |
@@ -244,8 +253,20 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | Walton-Penner group buys the Broncos | $4.65B (2022) | ESPN | historical; a group led by Rob Walton |
 | Harris group buys the Commanders | $6.05B (2023), a record | ESPN | historical; a group; ≈ the WFP's 2021 $6B famine ask |
 | Barre Seid gift to Marble Freedom Trust | $1.6B (2020–21), largest known donation to a political advocacy group | ProPublica, Aug 2022 | historical; Seid is not on the Forbes 400; ink money bar, 4,000px |
-| Crow trips for Clarence Thomas | 20+ years; 2019 Indonesia trip could have exceeded $500,000 | ProPublica, Apr 2023 | historical; Crow is not on the Forbes 400; ink box, labeled not to scale |
+| Crow trips for Clarence Thomas | 20+ years; 2019 Indonesia trip could have exceeded $500,000 | ProPublica, Apr 2023 | historical; Crow is not on the Forbes 400; drawn to scale, a 22.36px square |
 | Forbes 400 names (ticker) | 400 names, Sept 2026 list values | Forbes API (`forbes-400/2026/position/true.json`), pulled twice in chunks, 0 diffs; 9 profiles spot-checked | static copy in `forbes400.js` |
+| Top 1% share of US wealth | 22.8% (1989 Q3) → 32.5% (Q2 2026) | Fed DFA via FRED (WFRBST01134) | current; replaced Oxfam's 2017 82% (2026-11-15) |
+| SPM child poverty 2021 | 5.2% (from 9.7% in 2020); expanded CTC lifted ~2.1M more children | Census P60-277; Census SEHSD WP 2022-24 | historical |
+| Gates Foundation giving | >$100B in its first 25 years; ~$200B more by 2045 | Gates Foundation press release, May 2025 | current |
+| Billionaire midterm money by party | 69% Republicans, 28% Democrats (a pie in a chart window, `.party-split`; the other 3% is our arithmetic); Soros family ~$104M (its own ink money bar, 260px wide) | Americans for Tax Fairness (advocacy), to Aug 28 2026 | current |
+| Musk's 2026 midterm outcome | Republicans lost Congress | AP via PBS NewsHour, Nov 2026 | current |
+| Elite influence on policy | Gilens & Page (2014), 1,779 issues; reply by Enns (2015) | Perspectives on Politics | contested; both sides cited |
+| Yearly yield at 4.9% | $44B (Musk), ~$390B (the 400) | our arithmetic; NACUBO FY2025 rate | arithmetic |
+| Federal outlays FY2025 | $7.0T | CBO Monthly Budget Review, Nov 2025 | current; CBO PDF blocked our fetch, figure seen in CBO's text via search |
+| Warren Ultra-Millionaire Tax Act (2026) | 2% above $50M, 3% above $1B; $6.2T over 10 yrs assuming 15% avoidance | Warren press release; Saez & Zucman score letter, Mar 2026 | proponents' estimate |
+| Net wealth taxes in the OECD | 12 countries in 1990 → 4 in 2017; revenues mostly very low | OECD (2018) | OECD page blocked our fetch; figures from search summaries, check before publishing |
+| US expatriation tax | net worth ≥$2M → deemed sale of all property the day before | IRS | current |
+| Lancet aid-cuts method | 133 countries, 2001–2021; State Dept: "incorrect assumptions" | NPR (via KPBS) | projection |
 | Giving Pledge (unused) | 32 original pledgers still billionaires: +283% since signing | Institute for Policy Studies, July 2025 (advocacy) | sourced, not on the page |
 | Billionaire midterm spending | $1.7B (81% super PACs), 53× since 2010 | Americans for Tax Fairness, FEC data to Aug 2026 | current, advocacy source |
 | Musk 2024 election spending | ~$290M | CNN (FEC filings) | current; now a cost bar on Musk's bar (moved from the political ending) |

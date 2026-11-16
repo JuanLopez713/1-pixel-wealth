@@ -510,7 +510,7 @@ function toggleZoom() {
   // from the left). Content that sticks in place holds there as the page
   // scrolls on. On phones boxes sit 10px from the left and text is centered
   // on the screen; there is no grid.
-  var BOX_FIGURES = '.celebrities > *, .careers, .amazon-year, .money-bar, .teacher-pay';
+  var BOX_FIGURES = '.celebrities > *, .careers, .amazon-year, .money-bar, .teacher-pay, .crow-thomas';
   var LANE = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--lane')) || 6 * SQUARE;
 
   function phone() { return window.innerWidth <= 450; }

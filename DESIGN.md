@@ -168,7 +168,7 @@ Density is poster density: one idea per stop, solid poster capitals (Big Shoulde
 - $1,000 per square pixel wherever money is drawn; rulers mark $100 million every 200px.
 - Solid poster capitals (Big Shoulders Display 900) for headings, bar labels, figures, tabs and counters; Big Shoulders Stencil only for the title poster and the FUNDED stamp; Public Sans for reading.
 - Every amount's label sits above its shape, in ink on stock.
-- Square corners everywhere; the pie is the only round shape.
+- Square corners everywhere; the pies are the only round shapes (the strip's pie, and the party-split pie in its chart window on the 400's bar, owner 2026-11-15).
 - The knock-out: a program's blue is cut back to bare stock as the reader passes, and the pie loses the same slice.
 - Charts and photos sit in windows of bare stock; nothing is lifted with a shadow.
 
@@ -244,7 +244,7 @@ One horizontal row, roughly 17.82 million px wide, read by scrolling sideways or
 - **Breakpoints:** 450px is the phone break (counter and pie share a row, smaller capitals, datelines hidden, box figures at 10px, no grid).
 
 ### Named Rules
-**The Scale Is Sacred Rule.** A drawn money shape's area is its dollars divided by 1,000, in pixels. Changing a number means changing its drawn size; no style may change a drawn size. The one exception is the Crow box in the political section (owner, 2026-11-15): an ink box like the midterms bar, sized to its words, that says in its own text it is not drawn to scale.
+**The Scale Is Sacred Rule.** A drawn money shape's area is its dollars divided by 1,000, in pixels. Changing a number means changing its drawn size; no style may change a drawn size. There are no exceptions: the Crow box in the political section is now drawn to scale too, its text over a 22.36px ink square for $500,000 (owner, 2026-11-15).
 
 **The No New Width Rule.** Nothing in a bar's flex row changes width at runtime, and nothing adds page width. Animate paint (gradients, opacity, transforms of non-flow marks), never width.
 

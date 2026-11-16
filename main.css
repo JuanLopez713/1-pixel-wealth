@@ -531,24 +531,29 @@ h1 {
 .seid-gift .square {
   background-color: var(--ink);
 }
-/* Crow's gifts to Clarence Thomas: the same ink box, sized to its words
-   rather than its dollars, so it says it is not to scale. */
-.crow-thomas .square {
-  width: max-content;
+/* The Soros family's $104 million: 260 px wide, so its words wrap inside it. */
+.soros-midterms .square {
   background-color: var(--ink);
+}
+.money-bar.soros-midterms .square .title {
+  max-width: 240px;
+}
+/* One of Crow's trips for Clarence Thomas, drawn to scale like the
+   lifetime-earnings squares: $500,000 is sqrt(500) = 22.36px on a side. */
+.crow-thomas .square {
+  width: 22.36px;
+  height: 22.36px;
+  background-color: var(--ink);
+}
+/* Its label starts beside the grid, so it wraps before the screen's edge. */
+@media (min-width: 451px) {
+  .crow-thomas .title { max-width: min(460px, calc(100vw - 230px)); margin-bottom: 10px; }
 }
 /* The political ink boxes' words fit a phone screen. */
 .money-bar.billionaire-midterms .square .title,
 .money-bar.lobbying-2025 .square .title,
-.money-bar.seid-gift .square .title,
-.money-bar.crow-thomas .square .title {
+.money-bar.seid-gift .square .title {
   max-width: min(460px, calc(100vw - 60px));
-}
-.crow-thomas .not-to-scale {
-  display: block;
-  margin-top: 10px;
-  font-size: 14px;
-  font-style: italic;
 }
 /* Programs funded by the 400, drawn to scale (400 px tall, dollars / 400,000
    px wide). Each is knocked out of the bar; the strip's pie takes its slice. */
@@ -1856,6 +1861,56 @@ body.scale-grid .wealth > .grid100-tag { display: block; }
 .dots-key .dot.child { background-color: var(--stamp); }
 .dots-key .dot.adult { background-color: var(--ink); margin-left: 10px; }
 .dots-key .dots-scale { margin-left: 14px; font-weight: 700; }
+
+/* Billionaire midterm money by party: a pie of shares in a chart window,
+   not a money shape, so it isn't drawn to scale. Republicans print in
+   Cancellation Orange, Democrats in Ledger Blue, others in key ink. */
+.party-split .chart {
+  max-width: 460px;
+}
+.party-pie-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 10px;
+}
+.party-pie {
+  flex: none;
+  width: 140px;
+  height: 140px;
+}
+.party-key {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.party-key li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.party-key .swatch {
+  flex: none;
+  width: 12px;
+  height: 12px;
+}
+.party-key .swatch.rep { background-color: var(--stamp); }
+.party-key .swatch.dem { background-color: var(--blue); }
+.party-key .swatch.other { background-color: var(--ink); }
+.party-split .party-source {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.party-split .party-source a {
+  color: inherit;
+}
+@media (max-width: 450px) {
+  .party-pie { width: 110px; height: 110px; }
+  .party-pie-row { gap: 16px; }
+}
 
 /* Malaria figures: chart windows on the 400's bar, like the DOGE dots. The
    bars are to scale with each other; the grid has one dot per 100
