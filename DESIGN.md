@@ -211,7 +211,7 @@ All three are self-hosted woff2 under the SIL Open Font License (`fonts/`).
 ### Hierarchy
 - **Display** (Stencil 900, clamp(72px, 11vw, 168px), 0.84, uppercase, balanced, max 11ch): the title poster only, with the orange overprint. The ending line takes the same scale and overprint in the solid face at 92px, 0.9 (52px on phones).
 - **Figure** (Display 900, clamp(44px, 7.4vw, 128px), 0.86, no wrap): one oversized number per program, the program's cost. 44px on phones. The pie's percentage (48px, 0.9) is the strip's figure.
-- **Headline** (Display 900, 46px, 0.95, uppercase): section turns such as "What could we do with 46% of this money?"; 36px on phones.
+- **Headline** (Display 900, 46px, 0.95, uppercase): section turns such as "What could we do with 55% of this money?"; 36px on phones.
 - **Title** (Display 900, 34px, 1, uppercase, 0.01em, no wrap): bar labels, set above their shape. Program names at 30px (24px on phones), the strip counter at 30px (20px on phones), chart headings at 24px, the deaths heading at 19px. Bar labels drop to 22px and may wrap on phones (the median's label 19px).
 - **Label** (Display 900, 22px, 0.04em, uppercase): Back/Next/Home tabs, the zoom tab (20px).
 - **Stamp** (Stencil 900, 72px, 1, uppercase): the FUNDED stamp only; 48px on phones.

@@ -103,9 +103,12 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
      on?*, *And what did he take away?*, ending at the bar's end.
 4. **The 400 richest ($8T): what this wealth could fund.** Who they are (the
    747), then programs in ascending cost, each
-   taking a slice out of the always-visible pie: malaria, $1,200 per household,
-   poverty, medical debt, clean water, $10,000 per household, federal student
-   loans → combined (≈48%) → "all of them would still be billionaires".
+   taking a slice out of the always-visible pie. Since Nov 2026 these are
+   lasting, infrastructural or life-saving programs only (cash payments and
+   debt payoffs were cut): vaccines (Gavi), malaria, transit repairs, school
+   meals endowment, electricity and clean cooking, internet, clean water by
+   2030, US drinking water systems, 2021 child tax credit endowment → combined
+   (≈55%, "a little more than half") → "all of them would still be billionaires".
 5. **History (2020):** COVID testing, CARES Act, 2018 taxes. Open question:
    keep as one short "In 2020…" beat inside step 4, or drop.
 6. **Political ending:** "So why hasn't any of this happened?": billionaire
@@ -184,6 +187,7 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | Bottom 50% of households | $4.3T | Fed DFA via FRED (WFRBLB50107), Q2 2026 | current |
 | Median household income | $87,460 | Census P60-289 (2025) | current |
 | People in poverty | 34.5M | Census P60-290 (2025) | current |
+| Poverty line, 2025 | $32,649 (2 adults, 2 children; ≈$22/person/day); $16,749 (single adult under 65) | Census thresholds via CRS IN12737, Sept 2026 | current |
 | US population / households | 341.8M / 134.8M | Census Vintage 2025 / FRED TTLHH | current |
 | High school graduate pay | $966/week | BLS Education pays, 2025 | current |
 | Typical retirement savings, ages 55–64 | $239,000 median (63% hold any) | Fed SCF 2025, summary table 6 (all retirement accounts, families holding) | current |
@@ -193,13 +197,10 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | Malaria deaths | 610k (2024); ~434k under-5 | WHO World Malaria Report 2025 | current |
 | Clean water | 2.1B lack safe water; 354M open defecation | WHO/UNICEF JMP 2025 | current |
 | Contaminated-water deaths | ~505k/yr | WHO (via UNDRR) | current |
-| Medical debt | ≥$220B | KFF 2024 | current |
-| Federal student loans | $1.7T, 42M borrowers | Federal Student Aid, Sept 2026 | current |
 | WFP famine plan | $6B, 42M people (2021) | NPR / Global News | historical |
 | End world hunger by 2030 | ~$33B/yr; shown as $132B for 2027–2030 | Ceres2030 (IFPRI), 2020 | dated estimate |
 | Free community college endowment | $184B ($9B/yr ÷ 4.9%) | Education Dept FY2025 plan ($90B/10 yrs), via EducationData; NACUBO-Commonfund FY2025 spending rate | current |
 | Replace US lead pipes | ≥$45B (estimates to $90B) | Inside Climate News, Jan 2026 (EPA count ~4M lines, disputed) | current |
-| Biden debt relief | ~$400B | CBO 2022 (via NPR) | historical; a funded program on the 400's bar (Nov 2026), with the other $1.3T of student loans as its own program |
 | Musk's Twitter purchase | $44B (Oct 2022) | NPR | historical |
 | Musk 2026 midterm spending | at least $445M | AP via PBS NewsHour, Nov 5 2026 (NYT tally ~$474M) | current |
 | Musk taxes 2014–2018 | $455M; wealth +$13.9B; 3.27% "true tax rate"; $0 federal income tax in 2018 | ProPublica (IRS data), 2021 | historical |
@@ -213,7 +214,15 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | Billionaire midterm spending | $1.7B (81% super PACs), 53× since 2010 | Americans for Tax Fairness, FEC data to Aug 2026 | current, advocacy source |
 | Musk 2024 election spending | ~$290M | CNN (FEC filings) | current; now a cost bar on Musk's bar (moved from the political ending) |
 | Federal lobbying 2025 | >$5B (~$9M per member of Congress) | LegiStorm; matches OpenSecrets, Bloomberg Gov | current |
-| Poverty cost | ~$195B | 2019 Census-based $170B, adjusted for inflation and today's count | estimate (stated on page) |
+| Gavi 2026–2030 | $11.9B; 500M children, ≥8M lives; ~$9B pledged | Gavi; TimesLIVE, June 2025 | current |
+| Transit repair backlog | $140.2B (up from $101.4B in 2018) | FTA National Backlog Analysis, Jan 2025 | current |
+| Free school meals endowment | $224B ($11B/yr extra ÷ 4.9%; ~$30B/yr total vs $19B now) | Baker Institute, Rice; NACUBO FY2025 | estimate |
+| Electricity + clean cooking | $263B ($23B/yr × 2027–2035 + $4B/yr × 2027–2040); 730M without power, ~2B without clean cooking | IEA WEO 2025 (ACCESS scenario) | current |
+| Household air pollution deaths | 2.9M (2021), >309k under 5 | WHO fact sheet | current |
+| Internet for everyone by 2030 | $428B, 3B offline | ITU Connecting Humanity, 2020 | dated estimate |
+| Clean water by 2030 | $456B ($114B/yr × 2027–2030) | World Bank, 2016 | dated estimate |
+| US drinking water needs | $625B over 20 yrs (includes lead lines) | EPA 7th DWINSA, 2023 | current |
+| 2021 child tax credit endowment | $2.14T ($105B/yr ÷ 4.9%); child poverty 5.2% (2021) → 12.4% (2022) | JCT via CRS IN11851 (Feb 2022); Census SEHSD WP 2022-24; CBS News | estimate |
 | Lifetime earnings $1.7M, chemo $9B, veterans housing, Solomon $50M, doctor/lawyer/hedge fund | | Original 2020 figures | **not updated**; refresh or cut |
 | COVID testing $100B, CARES $2.2T, 2018 taxes $200B, COVID/malaria Jan–Apr 2020 | | Original 2020 sources | historical |
 
@@ -227,7 +236,7 @@ update the political section when OpenSecrets publishes them.
 | `index.html` | All content. Musk's bar is `#bezos` (id kept from the original); the 400 bar is `#four-hundred`. |
 | `main.css` | All styles. Bar widths, square sizes, money-bar colors, nav, scale key. |
 | `main.js` | Scroll counters (`update_wealth_counter`), people/babies scroll counters, zoom toggle, Back/Next navigation. |
-| `img/cares.svg`, `img/poverty.svg`, `img/combined.svg` | Charts rebuilt for 2026 (combined = the 48% pie). `img/ninety.svg` is the old 2020 pie, now unused. |
+| `img/cares.svg`, `img/poverty.svg`, `img/combined.svg` | Charts rebuilt for 2026 (combined = the 55% pie, nine programs). `img/ninety.svg` is the old 2020 pie, now unused. |
 | `de/` | German page; `de/i18n_de.js` has the strings and `images: ['plane.png']`. |
 | `tools/` | Helper scripts (below). |
 
