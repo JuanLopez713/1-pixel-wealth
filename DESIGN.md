@@ -239,9 +239,9 @@ One horizontal row, roughly 17.82 million px wide, read by scrolling sideways or
 - **Grid zone and lane (wider than 450px):** the left 158.11px of each bar (5 $1 million squares) belong to the $100 million grid. Everything a Back/Next stop lands on (box figures, text, charts, a bar's start) puts its left edge on the lane, one square (31.62px) right of the grid: `--lane`, 189.74px, 6 squares from the left. Sticky content holds on the lane. Text widths cap at min(600px, calc(100vw − lane − 60px)), wide charts and photos at calc(100vw − lane − 60px), sources at min(720px, calc(100vw − lane − 60px)).
 - **Infobox rhythm:** text boxes are spaced by fixed left margins (500px close, 2000/4000px quarter/half, 6000px default, 30000px for the first) and their content sticks to the center line.
 - **Phones (450px and under):** no grid and no snapping. Box figures sit 10px from the left and text centers on the screen.
-- **The strip:** fixed below the bars (8px under the bar's bottom edge, set by main.js) and above the tabs (64px from the bottom). Three columns: counter, progress bar and scale key; the deaths widget; the pie. Gaps 12px by 32px, padding 4px 16px.
+- **The strip:** fixed below the bars (8px under the bar's bottom edge, set by main.js) and above the tabs (64px from the bottom). Columns: the counter with the scale key on its line (beside the progress bar below 1200px), and the pie. Gaps 12px by 32px, padding 4px 16px.
 - **Spacing:** small fixed steps (8px tab gap and dateline offset, 10px label padding, 16px window padding, 24px rows). There is no fluid spacing scale.
-- **Breakpoints:** 450px is the phone break (counter and pie share a row, smaller capitals, datelines hidden, box figures at 10px, no grid). Below 1300px the deaths widget takes the scale key's place. Short screens (wider than 450px, 800px tall or less) drop the deaths note and widen its captions.
+- **Breakpoints:** 450px is the phone break (counter and pie share a row, smaller capitals, datelines hidden, box figures at 10px, no grid).
 
 ### Named Rules
 **The Scale Is Sacred Rule.** A drawn money shape's area is its dollars divided by 1,000, in pixels. Changing a number means changing its drawn size; no style may change a drawn size.
@@ -329,10 +329,10 @@ Printed ink tabs, fixed at the bottom center of the screen.
 - A key ink band 10px wide and the bar's full height, pinned beside the "Every 10 pixels…" note (at calc(50% − 51px) on wider screens, 10px from the left on phones), so the note shows the strip it describes.
 
 ### Careers box
-- Lifetime earnings for familiar jobs as key ink squares to scale, smallest to largest, in a 5-column grid (132px columns, 26px by 12px gaps); 3 columns on phones. Each row's squares start level, on one grid line, with their labels set right on top (subgrid rows); main.js snaps a row as a unit, downward, clear of the ruler band. Each label sits above its square as a three-line figure label: the job in poster capitals (16px), the working in Public Sans (12.5px; the pay, then "× 40 years" on its own line, hidden on phones), and the total as a poster-capital figure (21px, no wrap; 14px and 18px on phones). On Musk's bar each label line backs onto the orange, hugging its words, so the grid's lines never run through it (careers and celebrities alike). The box starts on the lane with the other box figures.
+- Lifetime earnings for familiar jobs as key ink squares to scale, smallest to largest, in a 5-column grid (132px columns, 26px by 12px gaps); 3 columns on phones. Each row's squares start level, on one grid line, with their labels set right on top (subgrid rows); main.js snaps a row as a unit, downward, clear of the ruler band. Each label sits above its square as a three-line figure label: the job in poster capitals (16px), the working in Public Sans (12.5px; the pay, then "× 40 years" on its own line, hidden on phones), and the total as a poster-capital figure (21px, no wrap; 14px and 18px on phones). On Musk's bar each label line backs onto the orange, hugging its words, so the grid's lines never run through it (careers and celebrities alike). Typical retirement savings (the median for families aged 55–64) sit in a sixth column, 36px apart and level with the first row, its square in Ledger Blue because it is savings, not pay; from 451px to 1100px the job columns narrow to 112px (totals 19px) so it stays beside them, and only on phones does it start its own row under the jobs. The box starts on the lane with the other box figures.
 
 ### Familiar amounts on Musk's bar
-- The high school graduate's lifetime earnings, family health insurance, Amazon warehouse pay and teacher pay each carry the same three-line figure label as the celebrities row (name 26px, working 16px, amount 34px), above a key ink square on the lane. A fourth Public Sans line may follow the amount (teacher pay: how many years of it Elon's fortune could pay).
+- Amazon warehouse pay and teacher pay (one year each) carry the same three-line figure label as the celebrities row (name 26px, working 16px, amount 34px), above a key ink square on the lane. A sentence after them says how many years each would take to earn Elon's fortune.
 
 ### Creators and celebrities row
 - A row of squares and bars, bottom-aligned: key ink for one year's earnings, Ledger Blue for net worth. Labels sit above each shape as three-line figure labels: the name in poster capitals (26px), what the amount is and its source in Public Sans (16px), and the amount as a poster-capital figure (34px), linked to its source (22px, 14px, 28px on phones). On wider screens a label wider than the screen stays pinned on the lane.
@@ -340,14 +340,14 @@ Printed ink tabs, fixed at the bottom center of the screen.
 ### Ink labels
 - Key ink box, stock poster-capital text, square: the people-chart labels, the sticky percentage and the grid's label. Sub-labels drop back to Public Sans.
 
-### Deaths widget
-- Lives in the strip, never on the bars, because it is not money. Squares to scale with each other in key ink, growing from the bottom-left (1.2s, cubic-bezier(0.16, 1, 0.3, 1), staggered 0.4s); then a canvas grid of 3px key-ink dots on a 4px pitch, one dot per 100 children.
+### Deaths figures
+- Chart windows of bare stock on the bars, never boxes, because lives are not money: "Deaths, not dollars" (COVID/malaria/Ebola squares to scale with each other, in key ink, growing from the bottom-left in 1.2s, cubic-bezier(0.16, 1, 0.3, 1), staggered 0.4s) and the malaria grid (a canvas of 3px key-ink dots on a 4px pitch, one dot per 100 children) on the 400's bar; "Lives, not dollars" (DOGE: one dot per 1,000 people, children in Cancellation Orange) on Musk's bar. Each animates once when it comes on screen.
 
 ## Do's and Don'ts
 
 ### Do:
 - **Do** draw every amount at $1,000 per square pixel: bars 500px tall, money bars 400px tall at dollars / 400,000 wide, squares sqrt(dollars / 1000) on a side ($1 million = 31.62px).
-- **Do** paint program bars with the stock-to-blue gradient driven by `--cut`; change paint, never width.
+- **Do** cut program bars back with the stock panel driven by `--cut` over a plain blue bar; never a gradient across the whole bar, never a width change.
 - **Do** keep gold (#c9a227) for "now" only: the in-progress slice, the reading mark, text selection.
 - **Do** use Cancellation Orange (#b4441a) for stamps and marks on bare stock, and only at stamp or bold-mark size.
 - **Do** set key ink on orange, stock on blue and on ink fields, and put charts and photos in stock windows with 16px padding.
@@ -356,6 +356,8 @@ Printed ink tabs, fixed at the bottom center of the screen.
 - **Do** keep the left of a bar clear up to the lane on screens wider than 450px: box figures, text and charts start on the lane (189.74px), widths capped at calc(100vw − lane − 60px).
 - **Do** measure bars with the $100 million ruler (158.11px sections) and land Back/Next stops with their content on the lane.
 - **Do** give each figure a printed source line (dateline) in 13-14px Public Sans.
+- **Do** put a graphic and the passage that explains it in one stock window (`.window-text`, 16px Public Sans in key ink, above the graphic; under a pie it sums up), sized to fit inside the bar.
+- **Do** end every funded topic on its program bar: all of a topic's text and graphics come before the bar, and its FUNDED stamp leads into the next topic.
 
 ### Don't:
 - **Don't** let anything in a bar's flex row change width at runtime, and don't add page width; the page is about 17.82 million px wide, near Firefox's limit.

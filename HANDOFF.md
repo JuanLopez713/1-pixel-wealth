@@ -89,12 +89,18 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 1. **Title:** "Wealth shown to scale" + fork credit, Next button.
 2. **The familiar:** $1,000 → $87,460 median household income → $1 million →
    $1 billion.
-3. **Musk's bar ($908B): fun facts and perspective.** "Elon is so wealthy…",
-   the joke ("coming up on the end… lol, less than a tenth"), lifetime
-   earnings, health insurance, Amazon pay, teacher pay, homeless veterans,
-   chemotherapy + "$9 billion every week", the celebrities, the $200M vs Bezos
-   chart, "No single human needs…", then "What could Elon Musk alone pay
-   for?" in ascending order, ending at the bar's end with the public-schools note.
+3. **Musk's bar ($908B), in titled sections** (each title is an
+   `h2.what-could-we-do` in its own half-spaced box):
+   - *How big is $908 billion?* "Elon is so wealthy…", the strip, the joke
+     ("coming up on the end… lol, less than a tenth").
+   - *Where does his money come from?* His stakes, then "$9 billion every week".
+   - *How long would you have to work to earn it?* One year of Amazon and
+     teacher pay, then *What do people typically earn in a lifetime?* and the grid (high school graduate + 9 jobs).
+   - *How does he compare with other rich people?* Creators and celebrities,
+     the $200M vs Bezos chart, Oxfam, "No single human needs…".
+   - *How does it compare with what the US spends?* Homeless veterans, cancer drugs.
+   - *What could Elon Musk alone pay for?*, *What has Elon actually spent it
+     on?*, *And what did he take away?*, ending at the bar's end.
 4. **The 400 richest ($8T): what this wealth could fund.** Who they are (the
    747), then programs in ascending cost, each
    taking a slice out of the always-visible pie: malaria, $1,200 per household,
@@ -106,8 +112,9 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
    midterm spending, Musk's 2024 spending, lobbying, oligarchy → "We cannot
    accept this level of inequality any longer." → sources.
 7. **Below-the-bar layer (not on the money scale):** the persistent "For
-   scale" key, the persistent pie (400 section), the Musk/400 counters, and the
-   deaths widget (auto-animating; shows when the malaria content is on screen).
+   scale" key, the persistent pie (400 section) and the Musk/400 counters. The
+   malaria figures (death squares and the dot grid) moved out of the strip
+   into chart windows on the 400's bar in Nov 2026.
 
 ## Open questions for `shape`
 
@@ -178,7 +185,8 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | Median household income | $87,460 | Census P60-289 (2025) | current |
 | People in poverty | 34.5M | Census P60-290 (2025) | current |
 | US population / households | 341.8M / 134.8M | Census Vintage 2025 / FRED TTLHH | current |
-| Family health premium | $28,303 | KFF 2026 EHBS | current |
+| High school graduate pay | $966/week | BLS Education pays, 2025 | current |
+| Typical retirement savings, ages 55–64 | $239,000 median (63% hold any) | Fed SCF 2025, summary table 6 (all retirement accounts, families holding) | current |
 | Amazon warehouse pay | ~$47,800 ($23/hr) | Fortune, Sept 2025 | current |
 | Teacher average pay | $74,495 | NEA 2026 Rankings & Estimates (via NPR) | current |
 | Beyoncé / Tim Cook | ~$1B / ~$3B | Forbes (Dec 2025) / secondary reports | approximate |
@@ -195,6 +203,11 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | Musk 2026 midterm spending | at least $445M | AP via PBS NewsHour, Nov 5 2026 (NYT tally ~$474M) | current |
 | Musk taxes 2014–2018 | $455M; wealth +$13.9B; 3.27% "true tax rate"; $0 federal income tax in 2018 | ProPublica (IRS data), 2021 | historical |
 | Musk taxes 2021 | over $11B, his own statement | CNBC, Dec 2021 | historical, self-reported |
+| DOGE claimed savings | ~$215B claimed; GAO found $110B tested unreliable, 2,503 of 13,476 contracts never terminated | GAO-26-108615 via CNBC, Aug 2026 | current |
+| Cost of DOGE's workforce cuts | $135B in FY2025 | Partnership for Public Service (nonpartisan), via CBS News, Apr 2025 | estimate |
+| EPA spending canceled with DOGE | at least $29B, EPA's own count | FedScoop, Oct 2025 | agency claim |
+| Deaths from foreign aid cuts | >750,000 (>500,000 children) by Jan 2026 | Brooke Nichols (BU) Impact Counter, via AFP/Taipei Times; model estimate, not peer-reviewed | estimate; drawn as dots (1 per 1,000), never a box |
+| Projected deaths to 2030 | >14M, ~4.5M children under 5 | The Lancet (2025), via NPR | projection |
 | US public K-12 spending | $927B/yr | NCES Fast Facts (2020–21, 2022–23 $) | removed from the page (Nov 2026) |
 | Billionaire midterm spending | $1.7B (81% super PACs), 53× since 2010 | Americans for Tax Fairness, FEC data to Aug 2026 | current, advocacy source |
 | Musk 2024 election spending | ~$290M | CNN (FEC filings) | current; now a cost bar on Musk's bar (moved from the political ending) |

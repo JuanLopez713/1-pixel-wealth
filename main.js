@@ -20,9 +20,8 @@ var pieDisc = document.getElementById('pie-disc');
 var piePct = document.getElementById('pie-pct');
 var pieLeft = document.getElementById('pie-left');
 var pieNow = document.getElementById('pie-now');
-var deaths = document.getElementById('deaths');
-var malariaStart = document.getElementById('malaria-start');
-var malariaEnd = document.getElementById('malaria-end');
+var deathSquares = document.querySelector('.malaria-squares');
+var deathGrid = document.querySelector('.malaria-grid');
 
 var MUSK_WEALTH = 908000000000;
 var FOUR_HUNDRED_WEALTH = 8000000000000;
@@ -217,25 +216,28 @@ function setScaleMode(grid) {
 }
 window.addEventListener('resize', queueStrip);
 
-// The width of the counter's longest text, so what sits beside it holds
-// still as the digits climb. Measured once the fonts have loaded.
-var counterWidthCache = 0;
-function counterWidth() {
-  if (!counterWidthCache) {
+// The width of a counter's longest text, so what sits beside it holds still
+// as the digits climb: Musk's dollars and percentage, or the 400's dollars.
+// Measured once the fonts have loaded.
+var counterWidthCache = {};
+function counterWidth(kind) {
+  if (!counterWidthCache[kind]) {
     var probe = stripCounter.cloneNode(false);
     probe.removeAttribute('id');
     probe.style.cssText = 'position:absolute;visibility:hidden;min-width:0;width:auto';
-    probe.innerHTML = money.format(MUSK_WEALTH) + ' &middot; <strong>100.0%</strong> of Elon Musk\'s wealth';
+    probe.innerHTML = kind === 'musk'
+      ? money.format(MUSK_WEALTH) + ' &middot; <strong>100.0%</strong> of Elon Musk\'s wealth'
+      : money.format(FOUR_HUNDRED_WEALTH);
     stripCounter.parentNode.appendChild(probe);
-    counterWidthCache = Math.ceil(probe.offsetWidth);
+    counterWidthCache[kind] = Math.ceil(probe.offsetWidth);
     probe.remove();
   }
-  return counterWidthCache;
+  return counterWidthCache[kind];
 }
 if (document.fonts) {
-  document.fonts.ready.then(function () { counterWidthCache = 0; queueStrip(); });
+  document.fonts.ready.then(function () { counterWidthCache = {}; queueStrip(); });
 }
-window.addEventListener('resize', function () { counterWidthCache = 0; });
+window.addEventListener('resize', function () { counterWidthCache = {}; });
 
 function update_strip() {
   var vw = window.innerWidth, x = window.scrollX;
@@ -266,7 +268,7 @@ function update_strip() {
   }
   if (stripCounter.innerHTML !== text) { stripCounter.innerHTML = text; }
   strip.classList.toggle('counter-on', text !== '');
-  stripCounter.style.minWidth = (text !== '' && vw > 450) ? counterWidth() + 'px' : '';
+  stripCounter.style.minWidth = (text !== '' && vw > 450) ? counterWidth(x < muskEnd + 100 ? 'musk' : 'four') + 'px' : '';
   // The progress bar returns at the political section: what billionaire
   // families spent on the 2026 midterms, as a share of the 400's wealth.
   if (progress === null && pageLeft(politicalStart) - x < vw * 0.75) {
@@ -329,31 +331,33 @@ function update_pie(x, vw) {
   pieNow.textContent = name;
 }
 
-// Deaths widget: shows while the malaria passage is on screen. The squares
-// grow in, then a grid fills with one year of under-five malaria deaths.
+// Malaria figures on the 400's bar. The death squares grow in when their
+// window comes on screen; the grid then fills with one year of under-five
+// malaria deaths when its window does.
 var UNDER_FIVE_DEATHS = 434000, PER_DOT = 100, GRID_COLS = 140;
 var SECONDS_PER_DEATH = 365.25 * 24 * 3600 / UNDER_FIVE_DEATHS;   // about 73
-var deathsStarted = false;
+var squaresStarted = false, gridStarted = false;
 var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function update_deaths(x, vw) {
-  var start = pageLeft(malariaStart), end = pageLeft(malariaEnd) + malariaEnd.offsetWidth;
-  var on = x + vw > start + vw * 0.3 && x < end - vw * 0.3;
-  strip.classList.toggle('deaths-on', on);
-  if (on && !deathsStarted) {
-    deathsStarted = true;
-    start_deaths();
+  if (!squaresStarted && pageLeft(deathSquares) - x < vw * 0.7) {
+    squaresStarted = true;
+    // Let the squares paint at scale(0) first, so they grow.
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () { deathSquares.classList.add('play'); });
+    });
+  }
+  if (!gridStarted && pageLeft(deathGrid) - x < vw * 0.7) {
+    gridStarted = true;
+    start_grid();
   }
 }
 
-function start_deaths() {
+function start_grid() {
   var canvas = document.getElementById('deaths-canvas');
   var live = document.getElementById('deaths-live');
-  var dots = UNDER_FIVE_DEATHS / PER_DOT, rows = Math.ceil(dots / GRID_COLS), pitch = 4, size = 3;
+  var dots = UNDER_FIVE_DEATHS / PER_DOT, pitch = 4, size = 3;
   var ratio = window.devicePixelRatio || 1;
-  canvas.width = GRID_COLS * pitch * ratio;
-  canvas.height = rows * pitch * ratio;
-  canvas.style.aspectRatio = GRID_COLS + ' / ' + rows;
   var ctx = canvas.getContext('2d');
   ctx.scale(ratio, ratio);
   ctx.fillStyle = getComputedStyle(canvas).color;
@@ -363,14 +367,6 @@ function start_deaths() {
       ctx.fillRect((drawn % GRID_COLS) * pitch, Math.floor(drawn / GRID_COLS) * pitch, size, size);
     }
   }
-  function fill() {
-    if (reduceMotion) { drawTo(dots); return; }
-    var t0 = performance.now(), duration = 20000;
-    (function frame(now) {
-      drawTo(Math.min(dots, Math.floor((now - t0) / duration * dots)));
-      if (drawn < dots) { window.requestAnimationFrame(frame); }
-    })(t0);
-  }
   function tick() {
     var n = Math.floor((Date.now() - pageOpened) / 1000 / SECONDS_PER_DEATH);
     live.textContent = 'At the real pace, a child under five dies of malaria about every ' +
@@ -379,13 +375,23 @@ function start_deaths() {
   }
   tick();
   window.setInterval(tick, 1000);
-  // Let the squares paint at scale(0) first, so they grow.
-  window.requestAnimationFrame(function () {
-    window.requestAnimationFrame(function () { deaths.classList.add('play'); });
-  });
-  // The two parts take turns: the squares grow in, then the grid fills.
-  window.setTimeout(function () { deaths.classList.add('phase-grid'); fill(); }, 7000);
+  if (reduceMotion) { drawTo(dots); return; }
+  var t0 = performance.now(), duration = 20000;
+  (function frame(now) {
+    drawTo(Math.min(dots, Math.floor((now - t0) / duration * dots)));
+    if (drawn < dots) { window.requestAnimationFrame(frame); }
+  })(t0);
 }
+
+// Size the grid's canvas from the start, so its window never changes size.
+(function () {
+  var canvas = document.getElementById('deaths-canvas');
+  var rows = Math.ceil(UNDER_FIVE_DEATHS / PER_DOT / GRID_COLS), pitch = 4;
+  var ratio = window.devicePixelRatio || 1;
+  canvas.width = GRID_COLS * pitch * ratio;
+  canvas.height = rows * pitch * ratio;
+  canvas.style.aspectRatio = GRID_COLS + ' / ' + rows;
+})();
 
 update_strip();
 
@@ -414,7 +420,7 @@ function toggleZoom() {
   // from the left). Content that sticks in place holds there as the page
   // scrolls on. On phones boxes sit 10px from the left and text is centered
   // on the screen; there is no grid.
-  var BOX_FIGURES = '.celebrities > *, .careers, .lifetime, .healthcare, .amazon-year, .money-bar, .teacher-pay';
+  var BOX_FIGURES = '.celebrities > *, .careers, .amazon-year, .money-bar, .teacher-pay';
   var LANE = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--lane')) || 6 * SQUARE;
 
   function phone() { return window.innerWidth <= 450; }

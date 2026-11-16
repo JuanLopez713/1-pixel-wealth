@@ -17,7 +17,7 @@
   <meta property="og:description" content="Wealth inequality in the United States is out of control. Here we visualize the issue in a unique way." />
   <meta property="og:image" content="https://juanlopez713.github.io/1-pixel-wealth/img/off-the-chart.png" />
 
-  <link rel="stylesheet" type="text/css" href="main.css?version=2026.11k">
+  <link rel="stylesheet" type="text/css" href="main.css?version=2026.11n">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 </head>
 <body>
@@ -37,23 +37,6 @@
           <span class="scale-item"><span class="scale-square" style="width: 1px; height: 1px"></span>$1,000</span>
           <span class="scale-item"><span class="scale-square" style="width: 9.35px; height: 9.35px"></span>$87,460 (median household income)</span>
           <span class="scale-item"><span class="scale-square million-square" style="width: 31.62px; height: 31.62px"></span>$1 million</span>
-        </div>
-      </div>
-      <div id="deaths" class="deaths">
-        <div class="deaths-squares">
-          <p class="deaths-head">Deaths, not dollars.</p>
-          <p class="deaths-note">These squares are to scale with each other.</p>
-          <div class="deaths-row">
-            <figure class="death covid"><div class="death-square"></div><figcaption>COVID-19 worldwide, Jan&ndash;Apr 2020: <a href="https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200430-sitrep-101-covid-19.pdf" target="_blank">about 218,000</a></figcaption></figure>
-            <figure class="death malaria"><div class="death-square"></div><figcaption>Malaria, Jan&ndash;Apr 2020: about 209,000 (a third of <a href="https://news.un.org/en/story/2021/12/1107162" target="_blank">627,000 for the year</a>)</figcaption></figure>
-            <figure class="death ebola"><div class="death-square"></div><figcaption>Ebola, the worst epidemic ever (West Africa, 2014&ndash;16): <a href="https://www.cdc.gov/ebola/outbreaks/index.html" target="_blank">11,308</a></figcaption></figure>
-          </div>
-        </div>
-        <div class="deaths-grid">
-          <p class="deaths-head">Children under five killed by malaria in Africa in one year: <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">about 434,000</a>.</p>
-          <p class="deaths-note">Each dot is 100 children, shown sped up.</p>
-          <p id="deaths-live" class="deaths-live"></p>
-          <canvas id="deaths-canvas" class="deaths-canvas" aria-hidden="true"></canvas>
         </div>
       </div>
       <div id="pie" class="pie">
@@ -106,7 +89,11 @@
             <span class="i18n-USD100-million">$100 million</span>
           </div>
 
-          <div class="text-infobox infobox first">
+          <div class="infobox text-infobox first">
+            <h2 class="title what-could-we-do">How big is $908 billion?</h2>
+          </div>
+
+          <div class="text-infobox infobox infobox-half opener-text">
             <div class="title i18n-elon-is-so-wealthy-2026">Elon is so wealthy, that it is quite literally unimaginable.</div>
           </div>
 
@@ -130,32 +117,26 @@
           </div>
 
 
-          <div class="text-infobox infobox infobox-half musk-sources">
+          <div class="infobox text-infobox infobox-half">
+            <h2 class="title what-could-we-do">Where does his money come from?</h2>
+          </div>
+
+          <div class="text-infobox infobox infobox-close musk-sources">
             <div class="title">
-              <p>Where does Elon&#8217;s money come from? Almost none of it is cash in a bank. It is mostly shares in companies. He owns <a href="https://www.forbes.com/profile/elon-musk/" target="_blank">38% of SpaceX</a> (counting options), the rocket company he founded in 2002. SpaceX bought his AI company, xAI, in February and went public in June in <a href="https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/" target="_blank">the biggest IPO in history</a>. He also owns nearly 11% of Tesla, plus stakes in The Boring Company and Neuralink.</p>
+              <p>Almost none of it is cash in a bank. It is mostly shares in companies. He owns <a href="https://www.forbes.com/profile/elon-musk/" target="_blank">38% of SpaceX</a> (counting options), the rocket company he founded in 2002. SpaceX bought his AI company, xAI, in February and went public in June in <a href="https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/" target="_blank">the biggest IPO in history</a>. He also owns nearly 11% of Tesla, plus stakes in The Boring Company and Neuralink.</p>
               <p>So his fortune rises and falls with stock prices. When SpaceX started trading, he briefly became <a href="https://www.cnbc.com/2026/06/12/elon-musk-trillionaire-spacex.html" target="_blank">the world&#8217;s first trillionaire</a>.</p>
             </div>
           </div>
 
-          <div class="text-infobox infobox infobox-half">
-            <div class="title i18n-lets-put-this-wealth">Let's put this wealth in perspective by comparing it to some familiar things.</div>
+          <div class="infobox infobox-close text-infobox">
+            <div class="title i18n-musk-made-2026">Between the 2025 and 2026 Forbes 400 lists, Elon Musk's fortune <a href="https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/" target="_blank">grew by $480 billion</a>. That's $9 billion about <strong>every week</strong>: enough to buy more than 21,000 homes at the <a href="https://www.nar.realtor/newsroom/existing-home-sales-increased-1-5-in-september-according-to-nar-report" target="_blank">median US price of $417,500</a>, <strong>every week</strong>.</div>
           </div>
 
-          <div class="infobox infobox-half lifetime">
-            <div class="title-square-wrapper">
-              <div class="title fig-label i18n-lifetime-high-school-2026"><span class="fig-name">High school graduate</span><span class="fig-math">Lifetime earnings, working full time from age 25 to 64 (Georgetown University)</span><span class="fig-total"><a href="https://cew.georgetown.edu/cew-reports/collegepayoff/" target="_blank">&asymp; $1.6 million</a></span></div>
-              <div class="square"></div>
-            </div>
+          <div class="infobox text-infobox infobox-half">
+            <h2 class="title what-could-we-do">How long would you have to work to earn it?</h2>
           </div>
 
-          <div class="infobox infobox-half healthcare">
-            <div class="title-square-wrapper">
-              <div class="title fig-label i18n-annual-cost-of-health-2026"><span class="fig-name">Health insurance for a family</span><span class="fig-math">Annual cost (KFF, 2026)</span><span class="fig-total"><a href="https://www.kff.org/health-costs/2026-employer-health-benefits-survey/" target="_blank">$28,303</a></span></div>
-              <div class="square"></div>
-            </div>
-          </div>
-
-          <div class="infobox infobox-half amazon-year">
+          <div class="infobox infobox-close amazon-year">
             <div class="title-square-wrapper">
               <div class="title fig-label i18n-annual-pay-of-amazon-2026"><span class="fig-name">Amazon warehouse worker</span><span class="fig-math">One year&#8217;s pay: <a href="https://fortune.com/2025/09/17/amazon-1-bllion-boost-fulfillment-transportation-pay-health-costs/" target="_blank">$23 an hour</a> &times; 2,080 hours</span><span class="fig-total">&asymp; $47,800</span></div>
               <div class="square"></div>
@@ -164,40 +145,32 @@
 
           <div class="infobox infobox-half teacher-pay">
             <div class="title-square-wrapper">
-              <div class="title fig-label"><span class="fig-name">Public school teacher</span><span class="fig-math">Average annual pay (NEA, 2026)</span><span class="fig-total"><a href="https://www.wunc.org/2026-04-27/inflation-is-sucking-the-life-out-of-teacher-pay-raises-report-says" target="_blank">$74,495</a></span><span class="fig-note">Elon&#8217;s fortune could pay about 12 million years of it.</span></div>
+              <div class="title fig-label"><span class="fig-name">Teacher</span><span class="fig-math">Average yearly pay in public schools (NEA, 2026)</span><span class="fig-total"><a href="https://www.wunc.org/2026-04-27/inflation-is-sucking-the-life-out-of-teacher-pay-raises-report-says" target="_blank">$74,495</a></span></div>
               <div class="square"></div>
             </div>
           </div>
 
-          <div class="infobox infobox-half money-bar cost-bar va-homeless">
-            <div class="square" style="width: 5621.83px">
-              <div class="title"><span class="program-name">The VA&#8217;s entire yearly budget for homeless veterans&#8217; programs</span><span class="program-cost">$3.2 billion</span><span class="program-share">About 0.35% of Elon&#8217;s wealth</span><span class="program-source"><a href="https://department.va.gov/homeless/but-where-does-the-money-go-a-closer-look-at-the-va-homeless-programs-fiscal-year-2025-budget/" target="_blank">Department of Veterans Affairs, 2025</a></span></div>
-            </div>
-          </div>
-
-          <div class="infobox infobox-half money-bar cost-bar cancer-drugs">
-            <div class="square" style="width: 61699.55px">
-              <div class="title"><span class="program-name">US spending on cancer drugs in one year</span><span class="program-cost">$35.1 billion</span><span class="program-share">About 3.9% of Elon&#8217;s wealth. Spending in 2021</span><span class="program-source"><a href="https://www.dovepress.com/substantial-increase-in-the-costs-of-antineoplastic-agents-in-the-usa--peer-reviewed-fulltext-article-CEOR" target="_blank">Althemery (2025)</a></span></div>
-            </div>
-          </div>
-
-          <div class="infobox infobox-close text-infobox">
-            <div class="title i18n-musk-made-2026">Between the 2025 and 2026 Forbes 400 lists, Elon Musk's fortune <a href="https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/" target="_blank">grew by $480 billion</a>. That's $9 billion about <strong>every week</strong>: enough to buy more than 21,000 homes at the <a href="https://www.nar.realtor/newsroom/existing-home-sales-increased-1-5-in-september-according-to-nar-report" target="_blank">median US price of $417,500</a>, <strong>every week</strong>.</div>
-          </div>
-
           <div class="infobox infobox-half text-infobox">
             <div class="title">
-              <p>Now let&#8217;s compare his wealth with what people earn in some common jobs over a whole working life.</p>
+              <p>To earn Elon&#8217;s fortune, the teacher would have to work for about 12 million years, and the warehouse worker for about 19 million.</p>
             </div>
+          </div>
+
+          <div class="infobox text-infobox infobox-half">
+            <h2 class="title what-could-we-do">What do people typically earn in a lifetime?</h2>
           </div>
 
           <div class="infobox infobox-close careers">
             <div class="title-square-wrapper">
-              <div class="title careers-head">Lifetime earnings for some familiar jobs. Our estimate: the median yearly pay (Bureau of Labor Statistics, May 2025) for 40 years of work.</div>
+              <div class="title careers-head">Our estimate: median pay (Bureau of Labor Statistics, 2025) for 40 years of full-time work.</div>
               <div class="career-grid">
                 <div class="career">
                   <div class="title fig-label"><span class="fig-name">Retail salesperson</span><span class="fig-math"><a href="https://www.bls.gov/ooh/sales/retail-sales-workers.htm" target="_blank">$17.03 an hour</a>, <span class="career-hours">40 hours a week</span><span class="career-calc"> &times; 40 years</span></span><span class="fig-total">&asymp; $1.4 million</span></div>
                   <div class="square" style="width: 37.64px; height: 37.64px"></div>
+                </div>
+                <div class="career">
+                  <div class="title fig-label"><span class="fig-name">High school graduate</span><span class="fig-math"><a href="https://www.bls.gov/careeroutlook/2026/data-on-display/education-pays.htm" target="_blank">$966 a week</a>, <span class="career-hours">any job</span><span class="career-calc"> &times; 40 years</span></span><span class="fig-total">&asymp; $2.0 million</span></div>
+                  <div class="square" style="width: 44.83px; height: 44.83px"></div>
                 </div>
                 <div class="career">
                   <div class="title fig-label"><span class="fig-name">Real estate sales agent</span><span class="fig-math"><a href="https://www.bls.gov/ooh/sales/real-estate-brokers-and-sales-agents.htm" target="_blank">$52,830 a year</a><span class="career-calc"> &times; 40 years</span></span><span class="fig-total">&asymp; $2.1 million</span></div>
@@ -212,7 +185,7 @@
                   <div class="square" style="width: 50.52px; height: 50.52px"></div>
                 </div>
                 <div class="career">
-                  <div class="title fig-label"><span class="fig-name">High school teacher</span><span class="fig-math"><a href="https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm" target="_blank">$72,040 a year</a><span class="career-calc"> &times; 40 years</span></span><span class="fig-total">&asymp; $2.9 million</span></div>
+                  <div class="title fig-label"><span class="fig-name">Teacher</span><span class="fig-math"><a href="https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm" target="_blank">$72,040 a year</a>, <span class="career-hours">high school</span><span class="career-calc"> &times; 40 years</span></span><span class="fig-total">&asymp; $2.9 million</span></div>
                   <div class="square" style="width: 53.68px; height: 53.68px"></div>
                 </div>
                 <div class="career">
@@ -231,11 +204,19 @@
                   <div class="title fig-label"><span class="fig-name">Doctor</span><span class="fig-math"><a href="https://www.bls.gov/ooh/healthcare/physicians-and-surgeons.htm" target="_blank">$275,930 a year</a><span class="career-calc"> &times; 40 years</span></span><span class="fig-total">&asymp; $11.0 million</span></div>
                   <div class="square" style="width: 105.06px; height: 105.06px"></div>
                 </div>
+                <div class="career career-retirement">
+                  <div class="title fig-label"><span class="fig-name">Typical retirement savings</span><span class="fig-math"><a href="https://www.federalreserve.gov/econres/files/scf2025_tables_public_real_historical.xlsx" target="_blank">Ages 55&#8211;64</a>, <span class="career-hours">all accounts</span><span class="career-calc"> (37% have none)</span></span><span class="fig-total">$239,000</span></div>
+                  <div class="square" style="width: 15.46px; height: 15.46px"></div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="infobox infobox-half text-infobox">
+          <div class="infobox text-infobox infobox-half">
+            <h2 class="title what-could-we-do">How does he compare with other rich people?</h2>
+          </div>
+
+          <div class="infobox infobox-close text-infobox">
             <div class="title">
               <p class="i18n-even-the-fortunes">Even the fortunes of very rich people are dwarfed by the incomprehensible wealth of the 0.0001%.</p>
             </div>
@@ -282,14 +263,9 @@
             </div>
           </div>
 
-          <div class="infobox infobox-close text-infobox">
-            <div class="title">
-              <p class="i18n-but-many-have-not">But many have not fully grasped the enormous gulf between themselves and the super rich.</p>
-            </div>
-          </div>
-
           <div id="line-chart" class="infobox infobox-quarter line-chart">
             <div class="chart-outer">
+              <p class="window-text i18n-but-many-have-not">But many have not fully grasped the enormous gulf between themselves and the super rich.</p>
               <div class="chart-inner">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="150 276 696 152" width="100%" height="100%" class="chart-full">
                     <defs>
@@ -379,6 +355,22 @@
           </div>
         </div>
 
+          <div class="infobox text-infobox infobox-half">
+            <h2 class="title what-could-we-do">How does it compare with what the US spends?</h2>
+          </div>
+
+          <div class="infobox infobox-close money-bar cost-bar va-homeless">
+            <div class="square" style="width: 5621.83px">
+              <div class="title"><span class="program-name">The VA&#8217;s entire yearly budget for homeless veterans&#8217; programs</span><span class="program-cost">$3.2 billion</span><span class="program-share">About 0.35% of Elon&#8217;s wealth</span><span class="program-source"><a href="https://department.va.gov/homeless/but-where-does-the-money-go-a-closer-look-at-the-va-homeless-programs-fiscal-year-2025-budget/" target="_blank">Department of Veterans Affairs, 2025</a></span></div>
+            </div>
+          </div>
+
+          <div class="infobox infobox-close money-bar cost-bar cancer-drugs">
+            <div class="square" style="width: 61699.55px">
+              <div class="title"><span class="program-name">US spending on cancer drugs in one year</span><span class="program-cost">$35.1 billion</span><span class="program-share">About 3.9% of Elon&#8217;s wealth. Spending in 2021</span><span class="program-source"><a href="https://www.dovepress.com/substantial-increase-in-the-costs-of-antineoplastic-agents-in-the-usa--peer-reviewed-fulltext-article-CEOR" target="_blank">Althemery (2025)</a></span></div>
+            </div>
+          </div>
+
         <div class="infobox text-infobox infobox-half">
           <h2 class="title what-could-we-do">What could Elon Musk alone pay for?</h2>
         </div>
@@ -442,6 +434,53 @@
           </div>
         </div>
 
+        <!-- DOGE: what Musk took away. Money is drawn as cost bars, to scale;
+             lives are drawn as dots, never as a box, so they can't be read
+             as dollars. -->
+        <div class="infobox text-infobox infobox-half">
+          <h2 class="title what-could-we-do">And what did he take away?</h2>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>From January to May 2025, Musk led the Department of Government Efficiency, or DOGE, the White House&#8217;s drive to cut federal spending. On February 3, he posted that DOGE had spent the weekend <a href="https://www.live5news.com/2025/02/03/trump-musk-put-usaid-through-wood-chipper/" target="_blank">&#8220;feeding USAID into the wood chipper.&#8221;</a> USAID, the agency that ran most American foreign aid, <a href="https://www.courthousenews.com/over-14-million-people-could-die-from-us-foreign-aid-cuts-study-finds-on-usaids-last-day/" target="_blank">closed for good</a> on July 1.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p>DOGE claimed it saved about $215 billion. In August 2026, the Government Accountability Office checked the $110 billion of that claimed from contracts, grants and leases, and found problems <a href="https://www.cnbc.com/2026/08/06/doge-elon-musk-gao-government-cost-cuts.html" target="_blank">&#8220;limiting the transparency and reliability&#8221;</a> of the numbers. Of the 13,476 contracts DOGE said it ended, 2,503 had never been terminated.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar doge-cost">
+          <div class="square" style="width: 237170.82px">
+            <div class="title"><span class="program-name">What DOGE&#8217;s cuts to the federal workforce cost taxpayers</span><span class="program-cost">$135 billion</span><span class="program-share">In one year: paid leave for workers pushed out, rehiring workers fired by mistake, and lost work. An estimate by the Partnership for Public Service, a nonpartisan nonprofit</span><span class="program-source"><a href="https://www.cbsnews.com/news/doge-cuts-cost-135-billion-analysis-elon-musk-department-of-government-efficiency/" target="_blank">CBS News, 2025</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar doge-epa">
+          <div class="square" style="width: 50947.8px">
+            <div class="title"><span class="program-name">Environmental spending the EPA says it canceled with DOGE</span><span class="program-cost">$29 billion</span><span class="program-share">At least that much, by the agency&#8217;s own count. Cut grants included air monitoring near an oil refinery and studies of pollution in drinking water</span><span class="program-source"><a href="https://fedscoop.com/doge-epa-grant-cuts-science-research-pollution/" target="_blank">FedScoop, 2025</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close doge-deaths">
+          <div class="chart">
+            <h3>Lives, not dollars</h3>
+            <svg class="dots" viewBox="0 0 500 150" role="img" aria-label="750 dots, one for every 1,000 people: 500 children and 250 adults">
+              <defs>
+                <pattern id="dot-child" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="3.6" fill="var(--stamp)"/></pattern>
+                <pattern id="dot-adult" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="3.6" fill="var(--ink)"/></pattern>
+              </defs>
+              <rect x="0" y="0" width="500" height="100" fill="url(#dot-child)"/>
+              <rect x="0" y="100" width="500" height="50" fill="url(#dot-adult)"/>
+            </svg>
+            <p class="dots-key"><span class="dot child"></span>Children <span class="dot adult"></span>Adults <span class="dots-scale">Each dot is 1,000 people.</span></p>
+            <p>By January 2026, a year after the cuts to American foreign aid began, more than 750,000 people had died because of them, more than 500,000 of them children, according to estimates by Brooke Nichols, a disease modeler at Boston University. They are model estimates, not a count, and they have not been peer-reviewed. <a href="https://www.taipeitimes.com/News/world/archives/2026/01/21/2003850973" target="_blank">AFP, via the Taipei Times, January 2026</a></p>
+            <p class="window-text">If the cuts last, a study in The Lancet projects <a href="https://www.npr.org/sections/goats-and-soda/2025/07/01/nx-s1-5452513/trump-usaid-foreign-aid-deaths" target="_blank">more than 14 million additional deaths by 2030</a>, about 4.5 million of them children under five.</p>
+          </div>
+        </div>
 
           <div class="infobox bar-end-note">
             <p>Elon&#8217;s money runs out here, and he has enough wealth to change the world. So imagine what the 400 richest Americans could pay for together.</p>
@@ -468,14 +507,9 @@
           </div>
         </div>
 
-        <div class="infobox text-infobox infobox-close">
-          <div class="title">
-            <p class="i18n-as-we-proceed-try">As we proceed, try to keep in mind: all of this wealth is controlled by a group so small, that they could fit on a single 747 airplane&#8212;with 260 seats left over (in the <a href="https://en.wikipedia.org/wiki/Boeing_747-400" target="_blank">660-seat 747-400D</a>).</p>
-          </div>
-        </div>
-
         <div class="plane-wrapper-outer infobox infobox-close">
           <div class="plane-wrapper center-sticky">
+            <p class="window-text i18n-as-we-proceed-try">As we proceed, try to keep in mind: all of this wealth is controlled by a group so small, that they could fit on a single 747 airplane&#8212;with 260 seats left over (in the <a href="https://en.wikipedia.org/wiki/Boeing_747-400" target="_blank">660-seat 747-400D</a>).</p>
             <div class="plane">
               <img src="img/plane.png" alt="A Boeing 747 airplane" />
             </div>
@@ -499,14 +533,9 @@
           </div>
         </div>
 
-        <div class="infobox text-infobox infobox-close">
-          <div class="title">
-            <p class="i18n-the-wealth-of-400-2026">The wealth of the 400 richest Americans today could pay for the entire <a href="https://fortune.com/2020/03/27/trump-signs-2-2-trillion-stimulus-coronavirus-package/" target="_blank">$2.2 trillion CARES act</a>, including the corporate bailouts, expanded unemployment, and expanded testing&#8212;with nearly $6 trillion left over.</p>
-          </div>
-        </div>
-
         <div class="infobox infobox-close cares">
           <div class="chart">
+            <p class="window-text i18n-the-wealth-of-400-2026">The wealth of the 400 richest Americans today could pay for the entire <a href="https://fortune.com/2020/03/27/trump-signs-2-2-trillion-stimulus-coronavirus-package/" target="_blank">$2.2 trillion CARES act</a>, including the corporate bailouts, expanded unemployment, and expanded testing&#8212;with nearly $6 trillion left over.</p>
             <img src="img/cares.svg" alt="Chart of the $2.2 trillion CARES Act">
           </div>
         </div>
@@ -530,16 +559,28 @@
           </div>
         </div>
 
-        <div id="malaria-start" class="infobox text-infobox infobox-close">
-          <div class="title">
-            <p class="i18n-malaria-is-one-of-2026">Malaria is one of the worst infectious diseases ever visited on mankind, possibly killing more people than any other infectious disease in history. In the 20th century alone, malaria killed <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC126857/" target="_blank">an estimated 150 to 300 million people</a>.</p>
-            <p class="i18n-coronavirus-has-2026">Coronavirus showed us all the horrors of living with a deadly disease. Sadly, for much of the world, this horror was a constant feature of daily life long before coronavirus, and it still is.</p>
+        <!-- Deaths, drawn to scale with each other: never as money. -->
+        <div id="malaria-start" class="infobox infobox-close malaria-figure malaria-squares">
+          <div class="chart">
+            <p class="window-text i18n-malaria-is-one-of-2026">Malaria is one of the worst infectious diseases ever visited on mankind, possibly killing more people than any other infectious disease in history. In the 20th century alone, malaria killed <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC126857/" target="_blank">an estimated 150 to 300 million people</a>.</p>
+            <p class="window-text i18n-coronavirus-has-2026">Coronavirus showed us all the horrors of living with a deadly disease. Sadly, for much of the world, this horror was a constant feature of daily life long before coronavirus, and it still is.</p>
+            <h3>Deaths, not dollars</h3>
+            <p class="deaths-note">These squares are to scale with each other.</p>
+            <div class="deaths-row">
+              <figure class="death covid"><div class="death-square"></div><figcaption>COVID-19 worldwide, Jan&ndash;Apr 2020: <a href="https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200430-sitrep-101-covid-19.pdf" target="_blank">about 218,000</a></figcaption></figure>
+              <figure class="death malaria"><div class="death-square"></div><figcaption>Malaria, Jan&ndash;Apr 2020: about 209,000 (a third of <a href="https://news.un.org/en/story/2021/12/1107162" target="_blank">627,000 for the year</a>)</figcaption></figure>
+              <figure class="death ebola"><div class="death-square"></div><figcaption>Ebola, the worst epidemic ever (West Africa, 2014&ndash;16): <a href="https://www.cdc.gov/ebola/outbreaks/index.html" target="_blank">11,308</a></figcaption></figure>
+            </div>
           </div>
         </div>
 
-        <div class="infobox text-infobox infobox-close">
-          <div class="title i18n-these-figures-are-v2-2026">
-            Malaria is still killing people at that pace. In 2024, it killed about <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">610,000 people</a>, 95% of them in Africa. These figures are even more shocking when you learn that malaria overwhelmingly kills children: around three-quarters of the malaria deaths in Africa are children under five. That's around 434,000 African children every year.
+        <div class="infobox infobox-close malaria-figure malaria-grid">
+          <div class="chart">
+            <p class="window-text i18n-these-figures-are-v2-2026">Malaria is still killing people at that pace. In 2024, it killed about <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">610,000 people</a>, 95% of them in Africa. These figures are even more shocking when you learn that malaria overwhelmingly kills children: around three-quarters of the malaria deaths in Africa are children under five. That's around 434,000 African children every year.</p>
+            <h3>Children under five killed by malaria in Africa in one year: <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">about 434,000</a>.</h3>
+            <p class="deaths-note">Each dot is 100 children, shown sped up.</p>
+            <canvas id="deaths-canvas" class="deaths-canvas" aria-hidden="true"></canvas>
+            <p id="deaths-live" class="deaths-live"></p>
           </div>
         </div>
 
@@ -550,6 +591,12 @@
           </div>
         </div>
 
+        <div id="malaria-end" class="infobox text-infobox infobox-close">
+          <div class="title">
+            <p class="i18n-around-1200-children-v2-2026">Around 1,200 children in Africa will die of malaria today. A small group of super rich people could stop it for a sum of money so small that they would likely never even notice its absence. But they choose not to.</p>
+          </div>
+        </div>
+
         <div class="infobox infobox-close money-bar program malaria-bar-money" data-cost="100000000000" data-name="Eradicate malaria">
           <div class="square" style="width: 250000px">
             <div class="title"><span class="program-name"><span class="i18n-permanently-eradicate">Permanently Eradicate Malaria</span></span><span class="program-cost">$100 billion</span><span class="program-share">About 1.25% of the 400&#8217;s wealth</span><span class="program-source"><a href="https://www.cfr.org/backgrounders/can-malaria-be-eradicated" target="_blank">Gates Foundation estimate, via the Council on Foreign Relations</a></span></div>
@@ -557,20 +604,9 @@
           </div>
         </div>
 
-        <div id="malaria-end" class="infobox text-infobox infobox-close">
-          <div class="title">
-            <p class="i18n-around-1200-children-v2-2026">Around 1,200 children in Africa will die of malaria today. A small group of super rich people could stop it for a sum of money so small that they would likely never even notice its absence. But they choose not to.</p>
-          </div>
-        </div>
-
-        <div class="infobox text-infobox infobox-close">
-          <div class="title i18n-as-of-2025-around-2026">
-            As of 2025, about <a href="https://www.census.gov/library/publications/2026/demo/p60-290.html" target="_blank">34.5 million Americans</a> lived in poverty. If Americans in poverty were a state, they would be the second largest by population, <a href="https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html" target="_blank">bigger than Texas</a>.
-          </div>
-        </div>
-
-        <div class="infobox infobox-close">
+        <div class="infobox infobox-close poverty-figure">
           <div class="chart">
+            <p class="window-text i18n-as-of-2025-around-2026">As of 2025, about <a href="https://www.census.gov/library/publications/2026/demo/p60-290.html" target="_blank">34.5 million Americans</a> lived in poverty. If Americans in poverty were a state, they would be the second largest by population, <a href="https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html" target="_blank">bigger than Texas</a>.</p>
             <h3 class="i18n-population-of-us-states-2026">Population of US States compared to poverty, 2025</h3>
             <img src="img/poverty.svg" alt="Bar chart: population of US states compared with the number of Americans in poverty, 2025">
           </div>
@@ -579,13 +615,6 @@
         <div class="infobox text-infobox infobox-close">
           <div class="title">
             <p class="i18n-every-single-person-v2-2026">In 2018, <a href="https://www.census.gov/content/dam/Census/library/publications/2019/demo/p60-266.pdf" target="_blank">every single person</a> in America could have been lifted above the poverty line with a one-time cash subsidy of around $10,500 per impoverished family (and about $7,500 for impoverished individuals), for a total of about $170 billion. Adjusted for inflation and for today's 34.5 million people in poverty, the same subsidy would cost roughly $195 billion, about 2.4% of the wealth currently controlled by 400 individuals.</p>
-          </div>
-        </div>
-
-        <div class="infobox infobox-close money-bar program poverty-bar-money" data-cost="195000000000" data-name="End poverty">
-          <div class="square" style="width: 487500px">
-            <div class="title"><span class="program-name"><span class="i18n-lift-every-american">Lift every American out of poverty.</span></span><span class="program-cost">$195 billion</span><span class="program-share">About 2.4% of the 400&#8217;s wealth</span><span class="program-source">Our estimate from <a href="https://www.census.gov/content/dam/Census/library/publications/2019/demo/p60-266.pdf" target="_blank">Census Bureau figures</a> (2018), adjusted for inflation and today&#8217;s count</span></div>
-            <div class="stamp">Funded</div>
           </div>
         </div>
 
@@ -609,6 +638,13 @@
           </div>
         </div>
 
+        <div class="infobox infobox-close money-bar program poverty-bar-money" data-cost="195000000000" data-name="End poverty">
+          <div class="square" style="width: 487500px">
+            <div class="title"><span class="program-name"><span class="i18n-lift-every-american">Lift every American out of poverty.</span></span><span class="program-cost">$195 billion</span><span class="program-share">About 2.4% of the 400&#8217;s wealth</span><span class="program-source">Our estimate from <a href="https://www.census.gov/content/dam/Census/library/publications/2019/demo/p60-266.pdf" target="_blank">Census Bureau figures</a> (2018), adjusted for inflation and today&#8217;s count</span></div>
+            <div class="stamp">Funded</div>
+          </div>
+        </div>
+
         <div class="infobox text-infobox infobox-close">
           <div class="title">
             <p>People in the United States owe at least <a href="https://www.kff.org/health-costs/issue-brief/the-burden-of-medical-debt-in-the-united-states/" target="_blank">$220 billion</a> in medical debt, and about 14 million of them owe more than $1,000. Nobody chooses to get sick. All of this debt could be erased with about 2.75% of the wealth controlled by the 400 richest Americans.</p>
@@ -623,13 +659,8 @@
         </div>
 
         <div class="infobox text-infobox infobox-close">
-          <div class="title">
-            <p class="i18n-around-2-billion-2026">Around <a href="https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef" target="_blank">2.1 billion people</a> still lack safe drinking water at home, and 106 million drink untreated water straight from rivers, lakes and ponds. About 354 million have no access to a toilet or latrine of any kind, and therefore defecate in the open.</p>
-          </div>
-        </div>
-
-        <div class="infobox text-infobox infobox-close">
-          <div class="worldchart">
+          <div class="worldchart with-text">
+            <p class="window-text i18n-around-2-billion-2026">Around <a href="https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef" target="_blank">2.1 billion people</a> still lack safe drinking water at home, and 106 million drink untreated water straight from rivers, lakes and ponds. About 354 million have no access to a toilet or latrine of any kind, and therefore defecate in the open.</p>
             <img src="img/no_clean_water.png" alt="World map of people without clean water"/>
             <h2 class="description i18n-no-clean-water">No clean water</h2>
           </div>
@@ -660,17 +691,17 @@
           </div>
         </div>
 
-        <div class="infobox infobox-close money-bar program household-bar" data-cost="1350000000000" data-name="$10,000 per household">
-          <div class="square" style="width: 3375000px">
-            <div class="title"><span class="program-name"><span class="i18n-give-USD10000-to">Give $10,000 to every American household</span></span><span class="program-cost">$1.35 trillion</span><span class="program-share">About 17% of the 400&#8217;s wealth</span><span class="program-source">$10,000 &times; 135 million households (<a href="https://fred.stlouisfed.org/series/TTLHH" target="_blank">Census, via FRED, 2025</a>)</span></div>
-            <div class="stamp">Funded</div>
-          </div>
-        </div>
-
         <div class="infobox text-infobox infobox-close">
           <div class="title">
             <p class="i18n-as-americans-debate-2026">In 2020, as Americans debated how and when to open the economy after coronavirus, we were presented with a seemingly impossible choice between risking millions of lives and sliding into a great depression through a continued lock down. This was a repugnant lie.</p>
             <p class="i18n-the-money-to-weather-2026">The money to weather that storm existed, and it still exists. It's just a matter of finding the political will to take it.</p>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar program household-bar" data-cost="1350000000000" data-name="$10,000 per household">
+          <div class="square" style="width: 3375000px">
+            <div class="title"><span class="program-name"><span class="i18n-give-USD10000-to">Give $10,000 to every American household</span></span><span class="program-cost">$1.35 trillion</span><span class="program-share">About 17% of the 400&#8217;s wealth</span><span class="program-source">$10,000 &times; 135 million households (<a href="https://fred.stlouisfed.org/series/TTLHH" target="_blank">Census, via FRED, 2025</a>)</span></div>
+            <div class="stamp">Funded</div>
           </div>
         </div>
 
@@ -709,12 +740,7 @@
             <div class="ninety">
               <img src="img/combined.svg" alt="Pie chart: student loans 21%, $10,000 per household 17%, medical debt 2.75%, poverty 2.4%, a year of clean water 1.4%, malaria 1.25%, with $4.3 trillion left over" />
             </div>
-          </div>
-        </div>
-
-        <div class="infobox text-infobox infobox-close">
-          <div class="title">
-            <p>Pay off every federal student loan, give $10,000 to every household, lift every American out of poverty, wipe out all medical debt, eradicate malaria, and bring clean water and toilets to every human on earth for a year. All of it together would cost about $3.7 trillion, less than half of what these 400 people own.</p>
+            <p class="window-text">Pay off every federal student loan, give $10,000 to every household, lift every American out of poverty, wipe out all medical debt, eradicate malaria, and bring clean water and toilets to every human on earth for a year. All of it together would cost about $3.7 trillion, less than half of what these 400 people own.</p>
           </div>
         </div>
 
@@ -784,7 +810,7 @@
 
         <div class="infobox text-infobox infobox-close sources">
           <div class="title">
-            <p>Figures updated in November 2026. Every number on this page links to its source. The main ones: Wealth: <a href="https://www.forbes.com/sites/pr/2026/09/15/forbes-releases-its-45th-annual-forbes-400-ranking-of-richest-americans/" target="_blank">Forbes 400</a> (September 2026; also <a href="https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/" target="_blank">Forbes Australia</a>) and the Federal Reserve&#8217;s <a href="https://fred.stlouisfed.org/series/WFRBLB50107" target="_blank">Distributional Financial Accounts</a> (Q2 2026). Income and poverty: <a href="https://www.census.gov/library/publications/2026/demo/p60-289.html" target="_blank">Census Bureau</a> (2025). Population: <a href="https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html" target="_blank">Census Bureau Vintage 2025 estimates</a>. Households: <a href="https://fred.stlouisfed.org/series/TTLHH" target="_blank">Census, via FRED</a> (2025). Malaria: <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">WHO World Malaria Report 2025</a>; eradication cost: the Gates Foundation, <a href="https://www.cfr.org/backgrounders/can-malaria-be-eradicated" target="_blank">via the Council on Foreign Relations</a>. Water: <a href="https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef" target="_blank">WHO/UNICEF JMP 2025</a>; cost: <a href="https://blogs.worldbank.org/en/water/can-we-really-put-price-meeting-global-targets-drinking-water-and-sanitation" target="_blank">World Bank</a>. Hunger: <a href="https://whyy.org/npr-story/how-6-billion-from-elon-musk-could-feed-millions-on-the-brink-of-famine" target="_blank">NPR</a> and <a href="https://globalnews.ca/news/8379773/un-response-elon-musk-world-hunger-challenge/" target="_blank">Global News</a> (World Food Programme, 2021) and <a href="https://www.ifpri.org/blog/big-costs-bigger-rewards-how-33-billion-spending-each-year-can-help-end-hunger-sustainably-2030" target="_blank">Ceres2030</a>. Education: Georgetown University (<a href="https://educationdata.org/how-much-would-free-college-cost" target="_blank">via EducationData</a>, and its <a href="https://cew.georgetown.edu/cew-reports/collegepayoff/" target="_blank">Center on Education and the Workforce</a>), <a href="https://www.npr.org/2022/09/27/1125272287/student-loan-forgiveness-cost-billion" target="_blank">CBO via NPR</a>, and the NEA&#8217;s 2026 Rankings and Estimates (<a href="https://www.wunc.org/2026-04-27/inflation-is-sucking-the-life-out-of-teacher-pay-raises-report-says" target="_blank">via NPR</a>). Careers: Bureau of Labor Statistics, <a href="https://www.bls.gov/ooh/" target="_blank">Occupational Outlook Handbook</a> (median pay, May 2025). Creators&#8217; yearly earnings and Taylor Swift&#8217;s wealth: <a href="https://www.forbes.com/profile/jimmy-donaldson/" target="_blank">Forbes</a> (Top Creators 2026; Forbes profiles). Cancer drug spending: <a href="https://www.dovepress.com/substantial-increase-in-the-costs-of-antineoplastic-agents-in-the-usa--peer-reviewed-fulltext-article-CEOR" target="_blank">Althemery (2025)</a>. Homeless veterans: <a href="https://department.va.gov/homeless/but-where-does-the-money-go-a-closer-look-at-the-va-homeless-programs-fiscal-year-2025-budget/" target="_blank">Department of Veterans Affairs</a>. Political spending: <a href="https://atfactionfund.org/billionaires-buying-elections-midterm-edition/" target="_blank">Americans for Tax Fairness</a>, a progressive advocacy group (FEC data through August 2026), and <a href="https://ktvz.com/politics/cnn-us-politics/2025/02/01/elon-musk-spent-more-than-290-million-on-the-2024-election-year-end-fec-filings-show/" target="_blank">CNN</a> and <a href="https://www.newser.com/story/366297/musk-easily-tops-all-donors-in-2024-race.html" target="_blank">OpenSecrets</a> (FEC filings); Musk&#8217;s 2026 midterm spending: the <a href="https://www.pbs.org/newshour/politics/elon-musk-gambled-445-million-to-boost-republicans-in-the-midterms-it-came-up-short" target="_blank">Associated Press, via PBS NewsHour</a>. Musk&#8217;s purchase of Twitter: <a href="https://www.npr.org/2022/10/28/1132163728/after-many-delays-elon-musk-is-now-the-proud-owner-of-twitter" target="_blank">NPR</a>. Musk&#8217;s taxes: <a href="https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax" target="_blank">ProPublica</a> (IRS data, 2014&#8211;2018) and <a href="https://www.cnbc.com/2021/12/20/elon-musk-says-he-will-pay-over-11-billion-in-taxes-this-year.html" target="_blank">CNBC</a> (his statement on 2021). Home prices: <a href="https://www.nar.realtor/newsroom/existing-home-sales-increased-1-5-in-september-according-to-nar-report" target="_blank">National Association of Realtors</a> (median existing-home price, September 2026). Musk&#8217;s holdings: <a href="https://www.forbes.com/profile/elon-musk/" target="_blank">Forbes profile</a> (October 2026) and <a href="https://www.cbsnews.com/news/elon-musk-spacex-ipo-trillionaire-wealth/" target="_blank">CBS News</a> (the SpaceX IPO). Lobbying: <a href="https://legistorm.com/pro_news/4371/lobbying-spending-tops-5-billion-in-2025.html" target="_blank">LegiStorm</a>, consistent with OpenSecrets and Bloomberg Government. Some numbers are our own arithmetic from these sources: lifetime earnings by job (median yearly pay &times; 40 years; retail at $17.03 an hour &times; 2,080 hours a year); about $47,800 a year ($23 an hour for 2,080 hours); 434,000 children (three-quarters of Africa&#8217;s 579,000 malaria deaths); about 1,200 a day, and one every 73 seconds; malaria deaths in early 2020 (a third of 2020&#8217;s 627,000); the cost of $1,200 and $10,000 for every household; the poverty estimate of $195 billion; $9 million per member of Congress; the $1.3 trillion in student loans left after Biden&#8217;s plan ($1.7 trillion less $400 billion); and more than 21,000 homes a week ($9 billion / $417,500). Original project by <a href="https://github.com/MKorostoff" target="_blank">Matt Korostoff</a>, forked from <a href="https://github.com/eattherichtextformat/1-pixel-wealth" target="_blank">eattherichtextformat/1-pixel-wealth</a>.</p>
+            <p>Figures updated in November 2026. Every number on this page links to its source. The main ones: Wealth: <a href="https://www.forbes.com/sites/pr/2026/09/15/forbes-releases-its-45th-annual-forbes-400-ranking-of-richest-americans/" target="_blank">Forbes 400</a> (September 2026; also <a href="https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/" target="_blank">Forbes Australia</a>) and the Federal Reserve&#8217;s <a href="https://fred.stlouisfed.org/series/WFRBLB50107" target="_blank">Distributional Financial Accounts</a> (Q2 2026). Income and poverty: <a href="https://www.census.gov/library/publications/2026/demo/p60-289.html" target="_blank">Census Bureau</a> (2025). Population: <a href="https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html" target="_blank">Census Bureau Vintage 2025 estimates</a>. Households: <a href="https://fred.stlouisfed.org/series/TTLHH" target="_blank">Census, via FRED</a> (2025). Malaria: <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">WHO World Malaria Report 2025</a>; eradication cost: the Gates Foundation, <a href="https://www.cfr.org/backgrounders/can-malaria-be-eradicated" target="_blank">via the Council on Foreign Relations</a>. Water: <a href="https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef" target="_blank">WHO/UNICEF JMP 2025</a>; cost: <a href="https://blogs.worldbank.org/en/water/can-we-really-put-price-meeting-global-targets-drinking-water-and-sanitation" target="_blank">World Bank</a>. Hunger: <a href="https://whyy.org/npr-story/how-6-billion-from-elon-musk-could-feed-millions-on-the-brink-of-famine" target="_blank">NPR</a> and <a href="https://globalnews.ca/news/8379773/un-response-elon-musk-world-hunger-challenge/" target="_blank">Global News</a> (World Food Programme, 2021) and <a href="https://www.ifpri.org/blog/big-costs-bigger-rewards-how-33-billion-spending-each-year-can-help-end-hunger-sustainably-2030" target="_blank">Ceres2030</a>. Education: Georgetown University (<a href="https://educationdata.org/how-much-would-free-college-cost" target="_blank">via EducationData</a>), <a href="https://www.npr.org/2022/09/27/1125272287/student-loan-forgiveness-cost-billion" target="_blank">CBO via NPR</a>, and the NEA&#8217;s 2026 Rankings and Estimates (<a href="https://www.wunc.org/2026-04-27/inflation-is-sucking-the-life-out-of-teacher-pay-raises-report-says" target="_blank">via NPR</a>). Careers: Bureau of Labor Statistics, <a href="https://www.bls.gov/ooh/" target="_blank">Occupational Outlook Handbook</a> (median pay, May 2025), and <a href="https://www.bls.gov/careeroutlook/2026/data-on-display/education-pays.htm" target="_blank">Education pays, 2025</a> (high school graduates&#8217; median weekly earnings). Retirement savings: the Federal Reserve&#8217;s <a href="https://www.federalreserve.gov/econres/files/scf2025_tables_public_real_historical.xlsx" target="_blank">2025 Survey of Consumer Finances</a> (table 6: the median value of all retirement accounts, such as 401(k)s and IRAs, for families aged 55&#8211;64 that have one; 63% do). Creators&#8217; yearly earnings and Taylor Swift&#8217;s wealth: <a href="https://www.forbes.com/profile/jimmy-donaldson/" target="_blank">Forbes</a> (Top Creators 2026; Forbes profiles). Cancer drug spending: <a href="https://www.dovepress.com/substantial-increase-in-the-costs-of-antineoplastic-agents-in-the-usa--peer-reviewed-fulltext-article-CEOR" target="_blank">Althemery (2025)</a>. Homeless veterans: <a href="https://department.va.gov/homeless/but-where-does-the-money-go-a-closer-look-at-the-va-homeless-programs-fiscal-year-2025-budget/" target="_blank">Department of Veterans Affairs</a>. Political spending: <a href="https://atfactionfund.org/billionaires-buying-elections-midterm-edition/" target="_blank">Americans for Tax Fairness</a>, a progressive advocacy group (FEC data through August 2026), and <a href="https://ktvz.com/politics/cnn-us-politics/2025/02/01/elon-musk-spent-more-than-290-million-on-the-2024-election-year-end-fec-filings-show/" target="_blank">CNN</a> and <a href="https://www.newser.com/story/366297/musk-easily-tops-all-donors-in-2024-race.html" target="_blank">OpenSecrets</a> (FEC filings); Musk&#8217;s 2026 midterm spending: the <a href="https://www.pbs.org/newshour/politics/elon-musk-gambled-445-million-to-boost-republicans-in-the-midterms-it-came-up-short" target="_blank">Associated Press, via PBS NewsHour</a>. Musk&#8217;s purchase of Twitter: <a href="https://www.npr.org/2022/10/28/1132163728/after-many-delays-elon-musk-is-now-the-proud-owner-of-twitter" target="_blank">NPR</a>. DOGE: <a href="https://www.live5news.com/2025/02/03/trump-musk-put-usaid-through-wood-chipper/" target="_blank">Live 5 News</a> (Musk&#8217;s post, February 2025), <a href="https://www.cnbc.com/2026/08/06/doge-elon-musk-gao-government-cost-cuts.html" target="_blank">CNBC</a> (the Government Accountability Office&#8217;s August 2026 review of DOGE&#8217;s savings), <a href="https://www.cbsnews.com/news/doge-cuts-cost-135-billion-analysis-elon-musk-department-of-government-efficiency/" target="_blank">CBS News</a> (the Partnership for Public Service&#8217;s cost estimate), <a href="https://fedscoop.com/doge-epa-grant-cuts-science-research-pollution/" target="_blank">FedScoop</a> (EPA cancellations), <a href="https://www.taipeitimes.com/News/world/archives/2026/01/21/2003850973" target="_blank">AFP, via the Taipei Times</a> (Boston University&#8217;s death estimates, January 2026), and <a href="https://www.npr.org/sections/goats-and-soda/2025/07/01/nx-s1-5452513/trump-usaid-foreign-aid-deaths" target="_blank">NPR</a> and <a href="https://www.courthousenews.com/over-14-million-people-could-die-from-us-foreign-aid-cuts-study-finds-on-usaids-last-day/" target="_blank">Courthouse News</a> (The Lancet&#8217;s projection; USAID&#8217;s closing). Musk&#8217;s taxes: <a href="https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax" target="_blank">ProPublica</a> (IRS data, 2014&#8211;2018) and <a href="https://www.cnbc.com/2021/12/20/elon-musk-says-he-will-pay-over-11-billion-in-taxes-this-year.html" target="_blank">CNBC</a> (his statement on 2021). Home prices: <a href="https://www.nar.realtor/newsroom/existing-home-sales-increased-1-5-in-september-according-to-nar-report" target="_blank">National Association of Realtors</a> (median existing-home price, September 2026). Musk&#8217;s holdings: <a href="https://www.forbes.com/profile/elon-musk/" target="_blank">Forbes profile</a> (October 2026) and <a href="https://www.cbsnews.com/news/elon-musk-spacex-ipo-trillionaire-wealth/" target="_blank">CBS News</a> (the SpaceX IPO). Lobbying: <a href="https://legistorm.com/pro_news/4371/lobbying-spending-tops-5-billion-in-2025.html" target="_blank">LegiStorm</a>, consistent with OpenSecrets and Bloomberg Government. Some numbers are our own arithmetic from these sources: lifetime earnings by job (median yearly pay &times; 40 years; retail at $17.03 an hour &times; 2,080 hours a year; a high school graduate at $966 a week &times; 52 weeks); about $47,800 a year ($23 an hour for 2,080 hours); about 12 million and 19 million years of work ($908 billion divided by a teacher&#8217;s $74,495 and a warehouse worker&#8217;s $47,840); 434,000 children (three-quarters of Africa&#8217;s 579,000 malaria deaths); about 1,200 a day, and one every 73 seconds; malaria deaths in early 2020 (a third of 2020&#8217;s 627,000); the cost of $1,200 and $10,000 for every household; the poverty estimate of $195 billion; $9 million per member of Congress; the $1.3 trillion in student loans left after Biden&#8217;s plan ($1.7 trillion less $400 billion); and more than 21,000 homes a week ($9 billion / $417,500). Original project by <a href="https://github.com/MKorostoff" target="_blank">Matt Korostoff</a>, forked from <a href="https://github.com/eattherichtextformat/1-pixel-wealth" target="_blank">eattherichtextformat/1-pixel-wealth</a>.</p>
           </div>
         </div>
 
@@ -793,6 +819,6 @@
   </div>
 <!--i18n-end-->
 </div>
-<script type="text/javascript" src="main.js?version=2026.11k"></script>
+<script type="text/javascript" src="main.js?version=2026.11n"></script>
 </body>
 </html>
