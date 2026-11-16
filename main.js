@@ -499,6 +499,18 @@ function toggleZoom() {
     return kept;
   }
 
+  // Glide to a stop. A smooth scroll across a long bar (the malaria program
+  // alone is 250,000px) outruns Chrome's painting, and the page flashes flat
+  // blue where it has not painted yet. So a long jump lands instantly just
+  // short of the stop and glides only the last screen and a half.
+  function glide(target) {
+    var x = window.scrollX, lead = window.innerWidth * 1.5;
+    if (Math.abs(target - x) > lead * 2) {
+      window.scrollTo({left: target - (target > x ? lead : -lead), top: window.scrollY, behavior: 'instant'});
+    }
+    window.scrollTo({left: target, top: window.scrollY, behavior: 'smooth'});
+  }
+
   function jump(direction) {
     // While a jump is still animating, count from where it is going.
     var from = (lastTarget !== null && Date.now() - lastJump < 1500) ? lastTarget : window.scrollX;
@@ -517,13 +529,13 @@ function toggleZoom() {
     if (target === null) { return; }
     lastTarget = target;
     lastJump = Date.now();
-    window.scrollTo({left: target, top: window.scrollY, behavior: 'smooth'});
+    glide(target);
   }
 
   nav.querySelector('.jump-home').addEventListener('click', function () {
     lastTarget = 0;
     lastJump = Date.now();
-    window.scrollTo({left: 0, top: window.scrollY, behavior: 'smooth'});
+    glide(0);
   });
   nav.querySelector('.jump-prev').addEventListener('click', function () { jump(-1); });
   nav.querySelector('.jump-next').addEventListener('click', function () { jump(1); });

@@ -341,7 +341,7 @@ Printed ink tabs, fixed at the bottom center of the screen.
 - Key ink box, stock poster-capital text, square: the people-chart labels, the sticky percentage and the grid's label. Sub-labels drop back to Public Sans.
 
 ### Deaths figures
-- Chart windows of bare stock on the bars, never boxes, because lives are not money: "Deaths, not dollars" (COVID/malaria/Ebola squares to scale with each other, in key ink, growing from the bottom-left in 1.2s, cubic-bezier(0.16, 1, 0.3, 1), staggered 0.4s) and the malaria grid (a canvas of 3px key-ink dots on a 4px pitch, one dot per 100 children) on the 400's bar; "Lives, not dollars" (DOGE: one dot per 1,000 people, children in Cancellation Orange) on Musk's bar. Each animates once when it comes on screen.
+- Chart windows of bare stock on the bars, never boxes, because lives are not money: "People killed by COVID-19, malaria and Ebola" (a plain horizontal bar chart, never squares, in key ink, bars to scale with each other, growing from the left in 1.2s, cubic-bezier(0.16, 1, 0.3, 1), staggered 0.4s) and the malaria grid (a canvas of 3px key-ink dots on a 4px pitch, one dot per 100 children) on the 400's bar; "Lives, not dollars" (DOGE: one dot per 1,000 people, children in Cancellation Orange) on Musk's bar. Each animates once when it comes on screen.
 
 ## Do's and Don'ts
 

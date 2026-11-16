@@ -566,17 +566,16 @@
           </div>
         </div>
 
-        <!-- Deaths, drawn to scale with each other: never as money. -->
+        <!-- Deaths as a plain bar chart: bars, not squares, so they never read as money. -->
         <div id="malaria-start" class="infobox infobox-close malaria-figure malaria-squares">
           <div class="chart">
             <p class="window-text i18n-malaria-is-one-of-2026">Malaria is one of the worst infectious diseases ever visited on mankind, possibly killing more people than any other infectious disease in history. In the 20th century alone, malaria killed <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC126857/" target="_blank">an estimated 150 to 300 million people</a>.</p>
             <p class="window-text i18n-coronavirus-has-2026">Coronavirus showed us all the horrors of living with a deadly disease. Sadly, for much of the world, this horror was a constant feature of daily life long before coronavirus, and it still is.</p>
-            <h3>Deaths, not dollars</h3>
-            <p class="deaths-note">These squares are to scale with each other.</p>
-            <div class="deaths-row">
-              <figure class="death covid"><div class="death-square"></div><figcaption>COVID-19 worldwide, Jan&ndash;Apr 2020: <a href="https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200430-sitrep-101-covid-19.pdf" target="_blank">about 218,000</a></figcaption></figure>
-              <figure class="death malaria"><div class="death-square"></div><figcaption>Malaria, Jan&ndash;Apr 2020: about 209,000 (a third of <a href="https://news.un.org/en/story/2021/12/1107162" target="_blank">627,000 for the year</a>)</figcaption></figure>
-              <figure class="death ebola"><div class="death-square"></div><figcaption>Ebola, the worst epidemic ever (West Africa, 2014&ndash;16): <a href="https://www.cdc.gov/ebola/outbreaks/index.html" target="_blank">11,308</a></figcaption></figure>
+            <h3>People killed by COVID-19, malaria and Ebola</h3>
+            <div class="deaths-bars">
+              <figure class="death covid"><figcaption>COVID-19 worldwide, Jan&ndash;Apr 2020</figcaption><div class="death-track"><div class="death-bar"></div><span class="death-count"><a href="https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200430-sitrep-101-covid-19.pdf" target="_blank">about 218,000</a></span></div></figure>
+              <figure class="death malaria"><figcaption>Malaria worldwide, Jan&ndash;Apr 2020 (a third of <a href="https://news.un.org/en/story/2021/12/1107162" target="_blank">627,000 for the year</a>)</figcaption><div class="death-track"><div class="death-bar"></div><span class="death-count">about 209,000</span></div></figure>
+              <figure class="death ebola"><figcaption>Ebola, the worst epidemic ever (West Africa, 2014&ndash;16)</figcaption><div class="death-track"><div class="death-bar"></div><span class="death-count"><a href="https://www.cdc.gov/ebola/outbreaks/index.html" target="_blank">11,308</a></span></div></figure>
             </div>
           </div>
         </div>
