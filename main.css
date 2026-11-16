@@ -1739,8 +1739,76 @@ body.scale-grid .wealth > .grid100-tag { display: block; }
   color: var(--ink);
   box-shadow: inset 0 0 0 3px var(--ink);
 }
+/* Sections: a printed tab that opens a list of every titled section above
+   the toolbar. The section you are in is marked in gold. */
+.jump-nav .jump-sections {
+  position: relative;
+  display: flex;
+}
+.jump-nav .jump-sections-toggle[aria-expanded="true"] {
+  background-color: var(--stock);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 3px var(--ink);
+}
+.jump-sections-menu {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  width: max-content;
+  max-width: min(420px, calc(100vw - 32px));
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+  background-color: var(--ink);
+  box-shadow: 0 0 0 3px var(--stock);
+}
+.jump-sections-menu[hidden] { display: none; }
+.jump-nav .jump-sections-menu .jump-section {
+  display: block;
+  width: 100%;
+  font-family: var(--text);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: left;
+  white-space: normal;
+  color: var(--stock);
+  background-color: transparent;
+  padding: 7px 18px 7px 30px;
+  border-left: 6px solid transparent;
+}
+.jump-nav .jump-sections-menu .jump-section-head {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-left: 18px;
+  margin-top: 6px;
+}
+.jump-nav .jump-sections-menu .jump-section-head:first-child { margin-top: 0; }
+.jump-nav .jump-sections-menu .jump-section:hover,
+.jump-nav .jump-sections-menu .jump-section:focus-visible {
+  background-color: var(--orange);
+  color: var(--ink);
+  outline: none;
+}
+.jump-nav .jump-sections-menu .jump-section[aria-current] {
+  border-left-color: var(--gold);
+}
+.jump-nav .jump-sections-menu .jump-section:active { transform: none; }
 @media (max-width: 450px) {
   .jump-nav { gap: 6px; }
+  .jump-nav .jump-sections-toggle { padding-left: 10px; padding-right: 10px; }
+  .jump-sections .sections-word { display: none; }
+  /* The menu spans the whole toolbar. */
+  .jump-nav .jump-sections { position: static; }
+  .jump-sections-menu { left: 0; right: 0; width: auto; max-width: none; }
   .jump-nav button { font-size: 19px; padding: 9px 11px 8px; gap: 6px; }
   .jump-nav .jump-home { padding-left: 10px; padding-right: 11px; }
   .jump-nav .jump-scale { margin-left: 4px; }

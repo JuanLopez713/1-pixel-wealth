@@ -630,6 +630,95 @@ function toggleZoom() {
   });
   nav.querySelector('.jump-prev').addEventListener('click', function () { jump(-1); });
   nav.querySelector('.jump-next').addEventListener('click', function () { jump(1); });
+
+  // Sections: a menu of every titled section, to skip ahead (or back).
+  // Built from the page's own headings each time it opens, so it follows
+  // the German strings and any section added later.
+  var sectionsWrap = document.createElement('span');
+  sectionsWrap.className = 'jump-sections';
+  sectionsWrap.innerHTML =
+    '<button type="button" class="jump-sections-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="jump-sections-menu" title="' + (german ? 'Abschnitte' : 'Jump to a section') + '"><svg class="chev" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1 3 H15 M1 8 H15 M1 13 H15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg><span class="sections-word">' + (german ? 'Abschnitte' : 'Sections') + '</span></button>' +
+    '<div id="jump-sections-menu" class="jump-sections-menu" role="menu" hidden></div>';
+  nav.insertBefore(sectionsWrap, nav.querySelector('.jump-prev'));
+  var toggle = sectionsWrap.querySelector('.jump-sections-toggle');
+  var menu = sectionsWrap.querySelector('.jump-sections-menu');
+
+  // A bar's own title, without its dateline.
+  function barLabel(wrapper) {
+    var h = wrapper.querySelector(':scope > .wealth-title');
+    if (!h) { return ''; }
+    var copy = h.cloneNode(true);
+    [].forEach.call(copy.querySelectorAll('.title-dateline'), function (d) { d.remove(); });
+    return copy.textContent.trim();
+  }
+
+  // Each entry: a label, where to scroll, and whether it heads a group.
+  function sections() {
+    var list = [{label: german ? 'Von $1.000 bis $1 Milliarde' : '$1,000 to $1 billion', target: 0, head: true}];
+    document.documentElement.classList.add('jump-measuring');
+    [bezos.parentNode, four_hundred_bar.parentNode].forEach(function (wrapper) {
+      list.push({label: barLabel(wrapper), target: targetFor(wrapper), head: true});
+      [].forEach.call(wrapper.querySelectorAll('.infobox > h2.what-could-we-do'), function (h) {
+        list.push({label: h.textContent.trim(), target: targetFor(h.parentNode)});
+      });
+    });
+    document.documentElement.classList.remove('jump-measuring');
+    var max = document.documentElement.scrollWidth - window.innerWidth;
+    list.forEach(function (s) { s.target = Math.max(0, Math.min(Math.round(s.target), max)); });
+    return list;
+  }
+
+  function closeMenu(refocus) {
+    if (menu.hidden) { return; }
+    menu.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+    if (refocus) { toggle.focus(); }
+  }
+
+  function openMenu() {
+    var list = sections(), x = window.scrollX, current = 0;
+    list.forEach(function (s, i) { if (s.target <= x + 20) { current = i; } });
+    menu.innerHTML = '';
+    list.forEach(function (s, i) {
+      var item = document.createElement('button');
+      item.type = 'button';
+      item.setAttribute('role', 'menuitem');
+      item.className = 'jump-section' + (s.head ? ' jump-section-head' : '');
+      item.textContent = s.label;
+      if (i === current) { item.setAttribute('aria-current', 'true'); }
+      item.addEventListener('click', function () {
+        closeMenu(false);
+        lastTarget = s.target;
+        lastJump = Date.now();
+        glide(s.target);
+        document.dispatchEvent(new Event('jump-stop'));
+      });
+      menu.appendChild(item);
+    });
+    menu.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+    var here = menu.querySelector('[aria-current]') || menu.firstChild;
+    here.scrollIntoView({block: 'nearest'});
+    here.focus({preventScroll: true});
+  }
+
+  toggle.addEventListener('click', function () {
+    if (menu.hidden) { openMenu(); } else { closeMenu(true); }
+  });
+  document.addEventListener('click', function (e) {
+    if (!sectionsWrap.contains(e.target)) { closeMenu(false); }
+  });
+  menu.addEventListener('keydown', function (e) {
+    var items = [].slice.call(menu.querySelectorAll('.jump-section'));
+    var i = items.indexOf(document.activeElement);
+    var next = null;
+    if (e.key === 'ArrowDown') { next = items[(i + 1) % items.length]; }
+    else if (e.key === 'ArrowUp') { next = items[(i - 1 + items.length) % items.length]; }
+    else if (e.key === 'Home') { next = items[0]; }
+    else if (e.key === 'End') { next = items[items.length - 1]; }
+    else if (e.key === 'Escape' || e.key === 'Tab') { closeMenu(e.key === 'Escape'); return; }
+    if (next) { e.preventDefault(); next.focus(); }
+  });
 })();
 
 // Scale | Grid: shows the $100 million scale as the marker or as the grid.
