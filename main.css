@@ -528,6 +528,28 @@ h1 {
 .lobbying-2025 .square {
   background-color: var(--ink);
 }
+.seid-gift .square {
+  background-color: var(--ink);
+}
+/* Crow's gifts to Clarence Thomas: the same ink box, sized to its words
+   rather than its dollars, so it says it is not to scale. */
+.crow-thomas .square {
+  width: max-content;
+  background-color: var(--ink);
+}
+/* The political ink boxes' words fit a phone screen. */
+.money-bar.billionaire-midterms .square .title,
+.money-bar.lobbying-2025 .square .title,
+.money-bar.seid-gift .square .title,
+.money-bar.crow-thomas .square .title {
+  max-width: min(460px, calc(100vw - 60px));
+}
+.crow-thomas .not-to-scale {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-style: italic;
+}
 /* Programs funded by the 400, drawn to scale (400 px tall, dollars / 400,000
    px wide). Each is knocked out of the bar; the strip's pie takes its slice. */
 .program .square {
@@ -537,7 +559,7 @@ h1 {
 .money-bar.program .square .title a {
   color: var(--blue);
 }
-/* The political ending is drawn on what's left, at the far end of the bar. */
+/* The political section is drawn on what's left, at the far end of the bar. */
 .infobox.political-start {
   margin-left: auto;
 }
@@ -617,6 +639,7 @@ h1 {
 .pie-disc {
   --pie-taken: var(--stock);
   --pie-now: var(--gold);
+  --pie-spent: var(--stamp);   /* money really spent: the pulled orange */
   --pie-rest: var(--blue);
   width: clamp(56px, calc(100vh - 660px), 130px);
   aspect-ratio: 1;
@@ -1842,4 +1865,89 @@ body.scale-grid .wealth > .grid100-tag { display: block; }
   max-height: 330px;
   width: auto;
   margin: 0 auto;
+}
+
+/* ---------- What the 400 have actually spent ---------- */
+/* Real purchases, drawn as cost bars like Musk's: 18 $1 million squares tall
+   (569.21px), centered on the 20-square bar, in key ink on the 400's blue.
+   Each width is its cost / $1,000 / 569.21px. The section follows what
+   the 400 could fund. */
+.four-hundred .infobox.cost-bar {
+  align-self: flex-start;
+  margin-top: 31.623px;
+}
+.four-hundred .cost-bar .square {
+  height: 569.21px;
+  background-color: var(--ink);
+}
+.four-hundred .infobox.cost-bar-small {
+  min-width: 640px;
+}
+/* The pie's orange slice (--pie-spent): money really spent, after what the
+   programs took. Its line under "left" carries a swatch of the same ink. */
+.pie-line {
+  display: block;
+}
+.pie-line[hidden] {
+  display: none;
+}
+.pie-spent::before {
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 6px;
+  background-color: var(--stamp);
+  vertical-align: 0;
+}
+
+/* The ticker: one of the 400, name and net worth, set like the title's
+   dateline at the top right of the screen. main.js sets its top. */
+.ticker {
+  position: fixed;
+  top: 0;
+  right: 16px;
+  z-index: 5;
+  display: none;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  white-space: nowrap;
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 13px;
+  line-height: 1.45;
+  pointer-events: none;
+}
+.ticker.on {
+  display: flex;
+}
+.ticker-name {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.ticker.ticker-in {
+  animation: ticker-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes ticker-in {
+  from { opacity: 0; transform: translateY(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker.ticker-in { animation: none; }
+}
+.ticker.crowded {
+  visibility: hidden;
+}
+/* Phones: the bar's own label names the purchase on screen, so the pie
+   keeps only the running total of what was spent. */
+@media (max-width: 450px) {
+  .pie-text.has-spent .pie-now { display: none; }
+}
+/* Room for the spent line beside the pie on wider screens. */
+@media (min-width: 451px) {
+  .pie-text { max-width: 250px; }
 }

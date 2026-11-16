@@ -1,5 +1,9 @@
 # Handoff: "What have they actually spent it on?" for the 400
 
+**Status: built 2026-11-15, then the 400's bar was reordered into titled
+sections (the placement below is superseded). Uncommitted, awaiting the
+owner's review.** See HANDOFF.md steps 4 and 6 and the sources table.
+
 Written 2026-11-15 at the end of the session that rebuilt the 400's program
 list. Read `HANDOFF.md`, `DESIGN.md` and `PRODUCT.md` first. Load the
 `impeccable` skill before any UI work; this page has a strict design system.

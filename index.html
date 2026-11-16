@@ -17,7 +17,7 @@
   <meta property="og:description" content="Wealth inequality in the United States is out of control. Here we visualize the issue in a unique way." />
   <meta property="og:image" content="https://juanlopez713.github.io/1-pixel-wealth/img/off-the-chart.png" />
 
-  <link rel="stylesheet" type="text/css" href="main.css?version=2026.11o">
+  <link rel="stylesheet" type="text/css" href="main.css?version=2026.11q">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 </head>
 <body>
@@ -41,10 +41,12 @@
       </div>
       <div id="pie" class="pie">
         <div id="pie-disc" class="pie-disc"></div>
-        <div class="pie-text"><b id="pie-pct">0%</b> taken<br><span id="pie-left">$8.0 trillion left</span><br><span id="pie-now" class="pie-now"></span></div>
+        <div class="pie-text"><b id="pie-pct">0%</b> taken<span id="pie-left" class="pie-line">$8.0 trillion left</span><span id="pie-spent" class="pie-line pie-spent" hidden></span><span id="pie-now" class="pie-line pie-now"></span></div>
       </div>
     </aside>
     <div id="reading-mark" class="reading-mark" aria-hidden="true"></div>
+    <!-- One of the 400 at a time, level with their bar's title (main.js). -->
+    <p id="ticker" class="ticker" aria-hidden="true"></p>
     <div class=wealth-row wealth-row-one>
       <div class="title-screen">
         <h1 class="i18n-wealth-shown-to">Wealth shown to scale</h1>
@@ -502,7 +504,11 @@
           <span class="i18n-USD100-million">$100 million</span>
         </div>
 
-        <div class="infobox infobox text-infobox intro intro-first">
+        <div class="infobox text-infobox intro-first">
+          <h2 class="title what-could-we-do">How much do the 400 own?</h2>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
           <div class="title i18n-elon-musk-may-be-2026">
             Elon Musk may be insanely rich, but he is only one of 400. The <a href="https://www.forbes.com/sites/pr/2026/09/15/forbes-releases-its-45th-annual-forbes-400-ranking-of-richest-americans/" target="_blank">400 richest Americans</a> own about $8 trillion, nearly twice as much as the <a href="https://fred.stlouisfed.org/series/WFRBLB50107" target="_blank">entire bottom half of Americans</a> combined ($4.3 trillion).
           </div>
@@ -525,7 +531,7 @@
 
         <!-- 2020: one look back, not counted in the pie. -->
         <div class="infobox text-infobox infobox-half">
-          <h2 class="title what-could-we-do">First, a look back at 2020.</h2>
+          <h2 class="title what-could-we-do">Could they have paid for 2020?</h2>
         </div>
 
         <div class="infobox text-infobox infobox-close">
@@ -557,7 +563,7 @@
              .program bar is 400 px tall and dollars / 400,000 px wide; the pie
              under the bar takes its slice as you scroll through it. -->
         <div id="ledger-start" class="infobox text-infobox infobox-half">
-          <h2 class="title what-could-we-do">What could we do with this money?</h2>
+          <h2 class="title what-could-we-do">What could the 400 pay for?</h2>
         </div>
 
         <div class="infobox text-infobox infobox-close">
@@ -711,10 +717,8 @@
           </div>
         </div>
 
-        <div class="infobox text-infobox infobox-close">
-          <div class="title i18n-ok-now-that-weve">
-            OK, now that we've established the scale of inequality in the United States, let's dare to dream a little bigger.
-          </div>
+        <div class="infobox text-infobox infobox-half">
+          <h2 class="title what-could-we-do">What could they do for America&#8217;s poor?</h2>
         </div>
 
         <div class="infobox infobox-close poverty-figure">
@@ -745,8 +749,8 @@
           </div>
         </div>
 
-        <div class="infobox text-infobox infobox-close">
-          <h2 class="title what-could-we-do">What could we do with 55% of this money?</h2>
+        <div class="infobox text-infobox infobox-half">
+          <h2 class="title what-could-we-do">What would they have left?</h2>
         </div>
 
         <div class="ninety-wrapper-outer infobox infobox-close">
@@ -770,9 +774,80 @@
           </div>
         </div>
 
+        <!-- What they have really spent, drawn to scale like Musk's cost bars,
+             right after what they could fund. Each purchase feeds the pie's
+             orange slice (main.js, .spent). -->
+        <div class="infobox text-infobox infobox-half">
+          <h2 class="title what-could-we-do">What have they actually spent it on?</h2>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar cost-bar-small spent griffin-penthouse" data-cost="238000000" data-name="Ken Griffin's penthouse">
+          <div class="square" style="width: 418.12px">
+            <div class="title"><span class="program-name">Ken Griffin&#8217;s penthouse</span><span class="program-cost">$238 million</span><span class="program-share">Above Central Park in Manhattan, bought in 2019 by the founder of the hedge fund Citadel. The most anyone had paid for a home in the US. About 0.003% of the 400&#8217;s wealth</span><span class="program-source"><a href="https://www.nbcnews.com/news/us-news/new-york-city-condo-sold-u-s-record-238-million-n962346" target="_blank">Reuters, via NBC News, 2019</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar cost-bar-small spent bezos-post" data-cost="250000000" data-name="Jeff Bezos buys the Washington Post">
+          <div class="square" style="width: 439.21px">
+            <div class="title"><span class="program-name">Jeff Bezos buys the Washington Post</span><span class="program-cost">$250 million</span><span class="program-share">In cash, in 2013, with his own money rather than Amazon&#8217;s. About 0.003% of the 400&#8217;s wealth</span><span class="program-source"><a href="https://www.aljazeera.com/economy/2013/8/6/amazon-boss-buys-washington-post-for-250m" target="_blank">Al Jazeera, 2013</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar cost-bar-small spent bezos-koru" data-cost="500000000" data-name="Jeff Bezos's yacht">
+          <div class="square" style="width: 878.41px">
+            <div class="title"><span class="program-name">Jeff Bezos&#8217;s yacht, Koru</span><span class="program-cost">$500 million</span><span class="program-share">More than that, by Bloomberg&#8217;s estimate: a three-masted sailing yacht, finished in 2023. About 0.006% of the 400&#8217;s wealth</span><span class="program-source"><a href="https://gcaptain.com/bezoss-new-500-million-superyacht-is-undergoing-sea-trials/" target="_blank">Bloomberg, via gCaptain, 2023</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar cost-bar-small spent griffin-paintings" data-cost="500000000" data-name="Ken Griffin's two paintings">
+          <div class="square" style="width: 878.41px">
+            <div class="title"><span class="program-name">Ken Griffin&#8217;s two paintings</span><span class="program-cost">$500 million</span><span class="program-share">Willem de Kooning&#8217;s &#8220;Interchange&#8221; and Jackson Pollock&#8217;s &#8220;Number 17A,&#8221; bought together from David Geffen in 2015. About 0.006% of the 400&#8217;s wealth</span><span class="program-source"><a href="https://www.cnbc.com/2016/02/18/ken-griffin-spent-500-million-on-two-paintings-sources.html" target="_blank">CNBC, 2016</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar spent blue-origin" data-cost="1000000000" data-name="Jeff Bezos's rocket company, one year">
+          <div class="square" style="width: 1756.82px">
+            <div class="title"><span class="program-name">Jeff Bezos&#8217;s rocket company, every year</span><span class="program-cost">$1 billion</span><span class="program-share">&#8220;I sell about $1 billion of Amazon stock a year and I use it to invest in Blue Origin,&#8221; he said in 2017. About 0.01% of the 400&#8217;s wealth, each year</span><span class="program-source"><a href="https://www.cnbc.com/2017/04/06/bezos-is-selling-amazon-stock-to-fund-rocket-venture.html" target="_blank">CNBC, 2017</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar spent ballmer-clippers" data-cost="2000000000" data-name="Steve Ballmer buys the Clippers">
+          <div class="square" style="width: 3513.64px">
+            <div class="title"><span class="program-name">Steve Ballmer buys the Los Angeles Clippers</span><span class="program-cost">$2 billion</span><span class="program-share">A basketball team, bought in 2014 by Microsoft&#8217;s former CEO. About 0.03% of the 400&#8217;s wealth</span><span class="program-source"><a href="https://www.espn.com/los-angeles/nba/story/_/id/11343259/steve-ballmer-officially-new-owner-los-angeles-clippers" target="_blank">ESPN, 2014</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar spent ballmer-arena" data-cost="2000000000" data-name="Steve Ballmer's arena">
+          <div class="square" style="width: 3513.64px">
+            <div class="title"><span class="program-name">And builds the team an arena</span><span class="program-cost">$2 billion</span><span class="program-share">Upward of that, for the Intuit Dome, which opened in 2024: about what he paid for the team. About 0.03% of the 400&#8217;s wealth</span><span class="program-source"><a href="https://www.espn.com/nba/story/_/id/32223760/la-clippers-owner-steve-ballmer-building-our-own-presence-identity-new-arena" target="_blank">ESPN, 2021</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar spent walton-broncos" data-cost="4650000000" data-name="The Waltons buy the Denver Broncos">
+          <div class="square" style="width: 8169.22px">
+            <div class="title"><span class="program-name">The Waltons buy the Denver Broncos</span><span class="program-cost">$4.65 billion</span><span class="program-share">A football team, bought in 2022 by a group led by Rob Walton, of the Walmart family. About 0.06% of the 400&#8217;s wealth</span><span class="program-source"><a href="https://www.espn.com/nfl/story/_/id/34374799/nfl-owners-unanimously-approve-sale-denver-broncos" target="_blank">ESPN, 2022</a></span></div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-close money-bar cost-bar spent harris-commanders" data-cost="6050000000" data-name="Josh Harris buys the Washington Commanders">
+          <div class="square" style="width: 10628.77px">
+            <div class="title"><span class="program-name">Josh Harris buys the Washington Commanders</span><span class="program-cost">$6.05 billion</span><span class="program-share">Bought in 2023 by a group led by the private equity investor, a record for a North American sports team. About the $6 billion the World Food Programme asked for in 2021 to save 42 million people from famine. About 0.08% of the 400&#8217;s wealth</span><span class="program-source"><a href="https://www.espn.com/nfl/story/_/id/38043528/nfl-owners-approve-605b-sale-commanders-harris-group" target="_blank">ESPN, 2023</a></span></div>
+          </div>
+        </div>
+
         <div class="infobox text-infobox infobox-close">
-          <div class="title i18n-is-it-really-so">
-            Is it really so radical to suggest that this is the right thing to do? Given the choice between millions of deaths, and slightly shrinking the fortunes of a few super rich people, how could anyone conclude that the death of millions is preferable?
+          <div class="title">
+            <p>All nine together: about $17.2 billion, or 0.2% of what the 400 own.</p>
+          </div>
+        </div>
+
+        <div class="infobox text-infobox infobox-half">
+          <h2 class="title what-could-we-do">Is it really so radical?</h2>
+        </div>
+
+        <div class="infobox text-infobox infobox-close">
+          <div class="title i18n-is-it-really-so-2026">
+            Given the choice between millions of deaths, and slightly shrinking the fortunes of a few super rich people, how could anyone conclude that the death of millions is preferable?
           </div>
         </div>
 
@@ -782,14 +857,14 @@
           </div>
         </div>
 
-        <!-- The political ending sits at the far end of the bar, drawn on what's left. -->
-        <div class="infobox text-infobox infobox-half political-start ending">
-          <h2 class="title what-could-we-do">So why hasn't any of this happened?</h2>
+        <!-- The political section, at the far end of the bar, drawn on what's left. -->
+        <div class="infobox text-infobox infobox-half political-start">
+          <h2 class="title what-could-we-do">What does their money buy in politics?</h2>
         </div>
 
         <div class="infobox text-infobox infobox-close">
           <div class="title">
-            <p>Because a sliver of this wealth buys political power.</p>
+            <p>A sliver of this wealth buys political power.</p>
           </div>
         </div>
 
@@ -802,6 +877,22 @@
         <div class="infobox text-infobox infobox-close">
           <div class="title">
             <p>About 81% of that money went to super PACs. A super PAC can't hand money to a candidate, but it can spend unlimited amounts on ads and campaigns to elect or defeat one. Billionaire political spending is 53 times what it was in 2010, according to Americans for Tax Fairness, a progressive advocacy group.</p>
+          </div>
+        </div>
+
+        <!-- Seid's gift, to scale like the midterms bar: $1.6 billion is
+             1.6e9 / 400,000 = 4,000 px wide, 400 px tall. -->
+        <div class="infobox infobox-close money-bar seid-gift">
+          <div class="square" style="width: 4000px">
+            <div class="title">Barre Seid, a Chicago businessman who is not on Forbes&#8217; list, gave <a href="https://www.propublica.org/article/dark-money-leonard-leo-barre-seid" target="_blank">$1.6 billion</a> to a group run by the conservative legal activist Leonard Leo in 2020 and 2021. It is the largest known donation to a political advocacy group in US history.</div>
+          </div>
+        </div>
+
+        <!-- Crow's gifts to Justice Thomas: an ink box like the midterms bar,
+             but not to scale (owner, 2026-11-15); the box says so. -->
+        <div class="infobox infobox-close money-bar crow-thomas">
+          <div class="square">
+            <div class="title">For more than 20 years, Justice Clarence Thomas of the Supreme Court took luxury vacations paid for by Harlan Crow, a billionaire Republican donor, and did not disclose them. One trip, to Indonesia in 2019 on Crow&#8217;s jet and yacht, could have cost more than $500,000 if Thomas had paid for it, <a href="https://www.propublica.org/article/clarence-thomas-scotus-undisclosed-luxury-travel-gifts-crow" target="_blank">ProPublica found</a>. <span class="not-to-scale">This box is not drawn to scale: at $1,000 a pixel, $500,000 would be a sliver 1.25 pixels wide.</span></div>
           </div>
         </div>
 
@@ -824,7 +915,7 @@
 
         <div class="infobox text-infobox infobox-close sources">
           <div class="title">
-            <p>Figures updated in November 2026. Every number on this page links to its source. The main ones: Wealth: <a href="https://www.forbes.com/sites/pr/2026/09/15/forbes-releases-its-45th-annual-forbes-400-ranking-of-richest-americans/" target="_blank">Forbes 400</a> (September 2026; also <a href="https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/" target="_blank">Forbes Australia</a>) and the Federal Reserve&#8217;s <a href="https://fred.stlouisfed.org/series/WFRBLB50107" target="_blank">Distributional Financial Accounts</a> (Q2 2026). Income and poverty: <a href="https://www.census.gov/library/publications/2026/demo/p60-289.html" target="_blank">Census Bureau</a> (2025); poverty lines: <a href="https://www.everycrsreport.com/reports/IN12737.html" target="_blank">Congressional Research Service</a> (2025 thresholds). Population: <a href="https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html" target="_blank">Census Bureau Vintage 2025 estimates</a>. Households: <a href="https://fred.stlouisfed.org/series/TTLHH" target="_blank">Census, via FRED</a> (2025). Malaria: <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">WHO World Malaria Report 2025</a>; eradication cost: the Gates Foundation, <a href="https://www.cfr.org/backgrounders/can-malaria-be-eradicated" target="_blank">via the Council on Foreign Relations</a>. Water: <a href="https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef" target="_blank">WHO/UNICEF JMP 2025</a>; cost: <a href="https://blogs.worldbank.org/en/water/can-we-really-put-price-meeting-global-targets-drinking-water-and-sanitation" target="_blank">World Bank</a>; America&#8217;s water systems: <a href="https://www.epa.gov/dwsrf/epas-7th-drinking-water-infrastructure-needs-survey-and-assessment" target="_blank">the EPA&#8217;s 7th Drinking Water Infrastructure Needs Survey</a> (2023). Vaccines: <a href="https://www.gavi.org/investing-gavi/resource-mobilisation-process/protecting-our-future" target="_blank">Gavi</a> (2025) and <a href="https://www.timeslive.co.za/news/sci-tech/2025-06-26-global-vaccine-group-gavi-has-9bn-short-of-its-target/" target="_blank">TimesLIVE</a> (pledges). Transit: <a href="https://www.transit.dot.gov/sites/fta.dot.gov/files/2025-01/Transit-State-of-Good-Repair-National-Backlog-Analysis_0.pdf" target="_blank">Federal Transit Administration</a> (January 2025). School meals: <a href="https://bakerinstitute.org/research/address-child-hunger-through-free-school-meals-all" target="_blank">the Baker Institute, Rice University</a>. Energy: <a href="https://www.iea.org/reports/world-energy-outlook-2025/achieving-access-for-all" target="_blank">International Energy Agency</a> (World Energy Outlook 2025) and <a href="https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health" target="_blank">WHO</a> (household air pollution). Internet: <a href="https://www.itu.int/en/mediacentre/Pages/PR16-2020-ITU-publishes-Connecting-Humanity-study.aspx" target="_blank">International Telecommunication Union</a> (2020). Child tax credit: <a href="https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-24.html" target="_blank">Census Bureau</a> (2021), <a href="https://www.cbsnews.com/news/poverty-rate-census-income" target="_blank">CBS News</a> (2022), and <a href="https://www.everycrsreport.com/reports/IN11851.html" target="_blank">the Congressional Research Service</a> (Joint Committee on Taxation estimates, 2022). Hunger: <a href="https://whyy.org/npr-story/how-6-billion-from-elon-musk-could-feed-millions-on-the-brink-of-famine" target="_blank">NPR</a> and <a href="https://globalnews.ca/news/8379773/un-response-elon-musk-world-hunger-challenge/" target="_blank">Global News</a> (World Food Programme, 2021) and <a href="https://www.ifpri.org/blog/big-costs-bigger-rewards-how-33-billion-spending-each-year-can-help-end-hunger-sustainably-2030" target="_blank">Ceres2030</a>. Education: the Education Department&#8217;s 2025 budget plan for free community college (<a href="https://educationdata.org/how-much-would-free-college-cost" target="_blank">via EducationData</a>) and the <a href="https://edge.sitecorecloud.io/nacubo1-nacubo-prd-dc8b/media/Nacubo/Documents/EndowmentFiles/2025-NCSE---Summary-and-Key-Insights-from-the-2025-NCSE-FINAL.pdf" target="_blank">NACUBO-Commonfund Study of Endowments</a> (FY2025 spending rate), and the NEA&#8217;s 2026 Rankings and Estimates (<a href="https://www.wunc.org/2026-04-27/inflation-is-sucking-the-life-out-of-teacher-pay-raises-report-says" target="_blank">via NPR</a>). Careers: Bureau of Labor Statistics, <a href="https://www.bls.gov/ooh/" target="_blank">Occupational Outlook Handbook</a> (median pay, May 2025), and <a href="https://www.bls.gov/careeroutlook/2026/data-on-display/education-pays.htm" target="_blank">Education pays, 2025</a> (high school graduates&#8217; median weekly earnings). Retirement savings: the Federal Reserve&#8217;s <a href="https://www.federalreserve.gov/econres/files/scf2025_tables_public_real_historical.xlsx" target="_blank">2025 Survey of Consumer Finances</a> (table 6: the median value of all retirement accounts, such as 401(k)s and IRAs, for families aged 55&#8211;64 that have one; 63% do). Creators&#8217; yearly earnings and Taylor Swift&#8217;s wealth: <a href="https://www.forbes.com/profile/jimmy-donaldson/" target="_blank">Forbes</a> (Top Creators 2026; Forbes profiles). Lead pipes: <a href="https://insideclimatenews.org/news/12012026/congress-may-cut-lead-pipe-replacement-funding/" target="_blank">Inside Climate News</a> (January 2026). Cancer drug spending: <a href="https://www.dovepress.com/substantial-increase-in-the-costs-of-antineoplastic-agents-in-the-usa--peer-reviewed-fulltext-article-CEOR" target="_blank">Althemery (2025)</a>. Homeless veterans: <a href="https://department.va.gov/homeless/but-where-does-the-money-go-a-closer-look-at-the-va-homeless-programs-fiscal-year-2025-budget/" target="_blank">Department of Veterans Affairs</a>. Political spending: <a href="https://atfactionfund.org/billionaires-buying-elections-midterm-edition/" target="_blank">Americans for Tax Fairness</a>, a progressive advocacy group (FEC data through August 2026), and <a href="https://ktvz.com/politics/cnn-us-politics/2025/02/01/elon-musk-spent-more-than-290-million-on-the-2024-election-year-end-fec-filings-show/" target="_blank">CNN</a> and <a href="https://www.newser.com/story/366297/musk-easily-tops-all-donors-in-2024-race.html" target="_blank">OpenSecrets</a> (FEC filings); Musk&#8217;s 2026 midterm spending: the <a href="https://www.pbs.org/newshour/politics/elon-musk-gambled-445-million-to-boost-republicans-in-the-midterms-it-came-up-short" target="_blank">Associated Press, via PBS NewsHour</a>. Musk&#8217;s purchase of Twitter: <a href="https://www.npr.org/2022/10/28/1132163728/after-many-delays-elon-musk-is-now-the-proud-owner-of-twitter" target="_blank">NPR</a>. DOGE: <a href="https://www.live5news.com/2025/02/03/trump-musk-put-usaid-through-wood-chipper/" target="_blank">Live 5 News</a> (Musk&#8217;s post, February 2025), <a href="https://www.cnbc.com/2026/08/06/doge-elon-musk-gao-government-cost-cuts.html" target="_blank">CNBC</a> (the Government Accountability Office&#8217;s August 2026 review of DOGE&#8217;s savings), <a href="https://www.cbsnews.com/news/doge-cuts-cost-135-billion-analysis-elon-musk-department-of-government-efficiency/" target="_blank">CBS News</a> (the Partnership for Public Service&#8217;s cost estimate), <a href="https://fedscoop.com/doge-epa-grant-cuts-science-research-pollution/" target="_blank">FedScoop</a> (EPA cancellations), <a href="https://www.taipeitimes.com/News/world/archives/2026/01/21/2003850973" target="_blank">AFP, via the Taipei Times</a> (Boston University&#8217;s death estimates, January 2026), and <a href="https://www.npr.org/sections/goats-and-soda/2025/07/01/nx-s1-5452513/trump-usaid-foreign-aid-deaths" target="_blank">NPR</a> and <a href="https://www.courthousenews.com/over-14-million-people-could-die-from-us-foreign-aid-cuts-study-finds-on-usaids-last-day/" target="_blank">Courthouse News</a> (The Lancet&#8217;s projection; USAID&#8217;s closing). Musk&#8217;s taxes: <a href="https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax" target="_blank">ProPublica</a> (IRS data, 2014&#8211;2018) and <a href="https://www.cnbc.com/2021/12/20/elon-musk-says-he-will-pay-over-11-billion-in-taxes-this-year.html" target="_blank">CNBC</a> (his statement on 2021). Home prices: <a href="https://www.nar.realtor/newsroom/existing-home-sales-increased-1-5-in-september-according-to-nar-report" target="_blank">National Association of Realtors</a> (median existing-home price, September 2026). Musk&#8217;s holdings: <a href="https://www.forbes.com/profile/elon-musk/" target="_blank">Forbes profile</a> (October 2026) and <a href="https://www.cbsnews.com/news/elon-musk-spacex-ipo-trillionaire-wealth/" target="_blank">CBS News</a> (the SpaceX IPO). Lobbying: <a href="https://legistorm.com/pro_news/4371/lobbying-spending-tops-5-billion-in-2025.html" target="_blank">LegiStorm</a>, consistent with OpenSecrets and Bloomberg Government. Some numbers are our own arithmetic from these sources: lifetime earnings by job (median yearly pay &times; 40 years; retail at $17.03 an hour &times; 2,080 hours a year; a high school graduate at $966 a week &times; 52 weeks); about $47,800 a year ($23 an hour for 2,080 hours); about 12 million and 19 million years of work ($908 billion divided by a teacher&#8217;s $74,495 and a warehouse worker&#8217;s $47,840); 434,000 children (three-quarters of Africa&#8217;s 579,000 malaria deaths); about 1,200 a day, and one every 73 seconds; malaria deaths in early 2020 (a third of 2020&#8217;s 627,000); the cost of $1,200 for every household; about $22 a day per person at the poverty line ($32,649 / 4 people / 365 days); $9 million per member of Congress; more than 21,000 homes a week ($9 billion / $417,500); a $184 billion endowment for community college ($9 billion a year / 4.9%); $132 billion to end hunger by 2030 ($33 billion a year &times; four years, 2027&#8211;2030); $456 billion for clean water by 2030 ($114 billion a year &times; four years); $263 billion for electricity and clean cooking ($23 billion a year &times; nine years, 2027&#8211;2035, plus $4 billion a year &times; 14 years, 2027&#8211;2040); endowments of $224 billion for school meals ($11 billion a year / 4.9%) and $2.14 trillion for the child tax credit ($105 billion a year / 4.9%); and $200 million as 0.05% of Jeff Bezos&#8217;s wealth ($200 million / $378 billion). Original project by <a href="https://github.com/MKorostoff" target="_blank">Matt Korostoff</a>, forked from <a href="https://github.com/eattherichtextformat/1-pixel-wealth" target="_blank">eattherichtextformat/1-pixel-wealth</a>.</p>
+            <p>Figures updated in November 2026. Every number on this page links to its source. The main ones: Wealth: <a href="https://www.forbes.com/sites/pr/2026/09/15/forbes-releases-its-45th-annual-forbes-400-ranking-of-richest-americans/" target="_blank">Forbes 400</a> (September 2026; also <a href="https://www.forbes.com.au/news/billionaires/inside-forbes-ranking-of-the-richest-us-billionaires/" target="_blank">Forbes Australia</a>) and the Federal Reserve&#8217;s <a href="https://fred.stlouisfed.org/series/WFRBLB50107" target="_blank">Distributional Financial Accounts</a> (Q2 2026). Income and poverty: <a href="https://www.census.gov/library/publications/2026/demo/p60-289.html" target="_blank">Census Bureau</a> (2025); poverty lines: <a href="https://www.everycrsreport.com/reports/IN12737.html" target="_blank">Congressional Research Service</a> (2025 thresholds). Population: <a href="https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html" target="_blank">Census Bureau Vintage 2025 estimates</a>. Households: <a href="https://fred.stlouisfed.org/series/TTLHH" target="_blank">Census, via FRED</a> (2025). Malaria: <a href="https://cdn.who.int/media/docs/default-source/malaria/world-malaria-reports/world-malaria-report-2025-partner-briefing-eng.pdf" target="_blank">WHO World Malaria Report 2025</a>; eradication cost: the Gates Foundation, <a href="https://www.cfr.org/backgrounders/can-malaria-be-eradicated" target="_blank">via the Council on Foreign Relations</a>. Water: <a href="https://www.who.int/news/item/26-08-2025-1-in-4-people-globally-still-lack-access-to-safe-drinking-water---who--unicef" target="_blank">WHO/UNICEF JMP 2025</a>; cost: <a href="https://blogs.worldbank.org/en/water/can-we-really-put-price-meeting-global-targets-drinking-water-and-sanitation" target="_blank">World Bank</a>; America&#8217;s water systems: <a href="https://www.epa.gov/dwsrf/epas-7th-drinking-water-infrastructure-needs-survey-and-assessment" target="_blank">the EPA&#8217;s 7th Drinking Water Infrastructure Needs Survey</a> (2023). Vaccines: <a href="https://www.gavi.org/investing-gavi/resource-mobilisation-process/protecting-our-future" target="_blank">Gavi</a> (2025) and <a href="https://www.timeslive.co.za/news/sci-tech/2025-06-26-global-vaccine-group-gavi-has-9bn-short-of-its-target/" target="_blank">TimesLIVE</a> (pledges). Transit: <a href="https://www.transit.dot.gov/sites/fta.dot.gov/files/2025-01/Transit-State-of-Good-Repair-National-Backlog-Analysis_0.pdf" target="_blank">Federal Transit Administration</a> (January 2025). School meals: <a href="https://bakerinstitute.org/research/address-child-hunger-through-free-school-meals-all" target="_blank">the Baker Institute, Rice University</a>. Energy: <a href="https://www.iea.org/reports/world-energy-outlook-2025/achieving-access-for-all" target="_blank">International Energy Agency</a> (World Energy Outlook 2025) and <a href="https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health" target="_blank">WHO</a> (household air pollution). Internet: <a href="https://www.itu.int/en/mediacentre/Pages/PR16-2020-ITU-publishes-Connecting-Humanity-study.aspx" target="_blank">International Telecommunication Union</a> (2020). Child tax credit: <a href="https://www.census.gov/library/working-papers/2022/demo/SEHSD-wp2022-24.html" target="_blank">Census Bureau</a> (2021), <a href="https://www.cbsnews.com/news/poverty-rate-census-income" target="_blank">CBS News</a> (2022), and <a href="https://www.everycrsreport.com/reports/IN11851.html" target="_blank">the Congressional Research Service</a> (Joint Committee on Taxation estimates, 2022). Hunger: <a href="https://whyy.org/npr-story/how-6-billion-from-elon-musk-could-feed-millions-on-the-brink-of-famine" target="_blank">NPR</a> and <a href="https://globalnews.ca/news/8379773/un-response-elon-musk-world-hunger-challenge/" target="_blank">Global News</a> (World Food Programme, 2021) and <a href="https://www.ifpri.org/blog/big-costs-bigger-rewards-how-33-billion-spending-each-year-can-help-end-hunger-sustainably-2030" target="_blank">Ceres2030</a>. Education: the Education Department&#8217;s 2025 budget plan for free community college (<a href="https://educationdata.org/how-much-would-free-college-cost" target="_blank">via EducationData</a>) and the <a href="https://edge.sitecorecloud.io/nacubo1-nacubo-prd-dc8b/media/Nacubo/Documents/EndowmentFiles/2025-NCSE---Summary-and-Key-Insights-from-the-2025-NCSE-FINAL.pdf" target="_blank">NACUBO-Commonfund Study of Endowments</a> (FY2025 spending rate), and the NEA&#8217;s 2026 Rankings and Estimates (<a href="https://www.wunc.org/2026-04-27/inflation-is-sucking-the-life-out-of-teacher-pay-raises-report-says" target="_blank">via NPR</a>). Careers: Bureau of Labor Statistics, <a href="https://www.bls.gov/ooh/" target="_blank">Occupational Outlook Handbook</a> (median pay, May 2025), and <a href="https://www.bls.gov/careeroutlook/2026/data-on-display/education-pays.htm" target="_blank">Education pays, 2025</a> (high school graduates&#8217; median weekly earnings). Retirement savings: the Federal Reserve&#8217;s <a href="https://www.federalreserve.gov/econres/files/scf2025_tables_public_real_historical.xlsx" target="_blank">2025 Survey of Consumer Finances</a> (table 6: the median value of all retirement accounts, such as 401(k)s and IRAs, for families aged 55&#8211;64 that have one; 63% do). Creators&#8217; yearly earnings and Taylor Swift&#8217;s wealth: <a href="https://www.forbes.com/profile/jimmy-donaldson/" target="_blank">Forbes</a> (Top Creators 2026; Forbes profiles). Lead pipes: <a href="https://insideclimatenews.org/news/12012026/congress-may-cut-lead-pipe-replacement-funding/" target="_blank">Inside Climate News</a> (January 2026). Cancer drug spending: <a href="https://www.dovepress.com/substantial-increase-in-the-costs-of-antineoplastic-agents-in-the-usa--peer-reviewed-fulltext-article-CEOR" target="_blank">Althemery (2025)</a>. Homeless veterans: <a href="https://department.va.gov/homeless/but-where-does-the-money-go-a-closer-look-at-the-va-homeless-programs-fiscal-year-2025-budget/" target="_blank">Department of Veterans Affairs</a>. Political spending: <a href="https://atfactionfund.org/billionaires-buying-elections-midterm-edition/" target="_blank">Americans for Tax Fairness</a>, a progressive advocacy group (FEC data through August 2026), and <a href="https://ktvz.com/politics/cnn-us-politics/2025/02/01/elon-musk-spent-more-than-290-million-on-the-2024-election-year-end-fec-filings-show/" target="_blank">CNN</a> and <a href="https://www.newser.com/story/366297/musk-easily-tops-all-donors-in-2024-race.html" target="_blank">OpenSecrets</a> (FEC filings); Musk&#8217;s 2026 midterm spending: the <a href="https://www.pbs.org/newshour/politics/elon-musk-gambled-445-million-to-boost-republicans-in-the-midterms-it-came-up-short" target="_blank">Associated Press, via PBS NewsHour</a>. Musk&#8217;s purchase of Twitter: <a href="https://www.npr.org/2022/10/28/1132163728/after-many-delays-elon-musk-is-now-the-proud-owner-of-twitter" target="_blank">NPR</a>. DOGE: <a href="https://www.live5news.com/2025/02/03/trump-musk-put-usaid-through-wood-chipper/" target="_blank">Live 5 News</a> (Musk&#8217;s post, February 2025), <a href="https://www.cnbc.com/2026/08/06/doge-elon-musk-gao-government-cost-cuts.html" target="_blank">CNBC</a> (the Government Accountability Office&#8217;s August 2026 review of DOGE&#8217;s savings), <a href="https://www.cbsnews.com/news/doge-cuts-cost-135-billion-analysis-elon-musk-department-of-government-efficiency/" target="_blank">CBS News</a> (the Partnership for Public Service&#8217;s cost estimate), <a href="https://fedscoop.com/doge-epa-grant-cuts-science-research-pollution/" target="_blank">FedScoop</a> (EPA cancellations), <a href="https://www.taipeitimes.com/News/world/archives/2026/01/21/2003850973" target="_blank">AFP, via the Taipei Times</a> (Boston University&#8217;s death estimates, January 2026), and <a href="https://www.npr.org/sections/goats-and-soda/2025/07/01/nx-s1-5452513/trump-usaid-foreign-aid-deaths" target="_blank">NPR</a> and <a href="https://www.courthousenews.com/over-14-million-people-could-die-from-us-foreign-aid-cuts-study-finds-on-usaids-last-day/" target="_blank">Courthouse News</a> (The Lancet&#8217;s projection; USAID&#8217;s closing). Musk&#8217;s taxes: <a href="https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax" target="_blank">ProPublica</a> (IRS data, 2014&#8211;2018) and <a href="https://www.cnbc.com/2021/12/20/elon-musk-says-he-will-pay-over-11-billion-in-taxes-this-year.html" target="_blank">CNBC</a> (his statement on 2021). Home prices: <a href="https://www.nar.realtor/newsroom/existing-home-sales-increased-1-5-in-september-according-to-nar-report" target="_blank">National Association of Realtors</a> (median existing-home price, September 2026). Musk&#8217;s holdings: <a href="https://www.forbes.com/profile/elon-musk/" target="_blank">Forbes profile</a> (October 2026) and <a href="https://www.cbsnews.com/news/elon-musk-spacex-ipo-trillionaire-wealth/" target="_blank">CBS News</a> (the SpaceX IPO). What the 400 have bought: <a href="https://www.nbcnews.com/news/us-news/new-york-city-condo-sold-u-s-record-238-million-n962346" target="_blank">Reuters, via NBC News</a> (Ken Griffin&#8217;s penthouse, 2019), <a href="https://www.aljazeera.com/economy/2013/8/6/amazon-boss-buys-washington-post-for-250m" target="_blank">Al Jazeera</a> (the Washington Post, 2013), <a href="https://gcaptain.com/bezoss-new-500-million-superyacht-is-undergoing-sea-trials/" target="_blank">Bloomberg, via gCaptain</a> (Koru, an estimate, 2023), <a href="https://www.cnbc.com/2016/02/18/ken-griffin-spent-500-million-on-two-paintings-sources.html" target="_blank">CNBC</a> (Griffin&#8217;s paintings, 2016; Blue Origin, <a href="https://www.cnbc.com/2017/04/06/bezos-is-selling-amazon-stock-to-fund-rocket-venture.html" target="_blank">2017</a>), and ESPN (the <a href="https://www.espn.com/los-angeles/nba/story/_/id/11343259/steve-ballmer-officially-new-owner-los-angeles-clippers" target="_blank">Clippers</a>, 2014; the <a href="https://www.espn.com/nba/story/_/id/32223760/la-clippers-owner-steve-ballmer-building-our-own-presence-identity-new-arena" target="_blank">Intuit Dome</a>, 2021 estimate; the <a href="https://www.espn.com/nfl/story/_/id/34374799/nfl-owners-unanimously-approve-sale-denver-broncos" target="_blank">Broncos</a>, 2022; the <a href="https://www.espn.com/nfl/story/_/id/38043528/nfl-owners-approve-605b-sale-commanders-harris-group" target="_blank">Commanders</a>, 2023). ProPublica on <a href="https://www.propublica.org/article/dark-money-leonard-leo-barre-seid" target="_blank">Barre Seid&#8217;s gift</a> (2022) and <a href="https://www.propublica.org/article/clarence-thomas-scotus-undisclosed-luxury-travel-gifts-crow" target="_blank">Harlan Crow and Clarence Thomas</a> (2023). The ticker of names at the top right: the <a href="https://www.forbes.com/sites/pr/2026/09/15/forbes-releases-its-45th-annual-forbes-400-ranking-of-richest-americans/" target="_blank">Forbes 400</a> (September 2026). Lobbying: <a href="https://legistorm.com/pro_news/4371/lobbying-spending-tops-5-billion-in-2025.html" target="_blank">LegiStorm</a>, consistent with OpenSecrets and Bloomberg Government. Some numbers are our own arithmetic from these sources: lifetime earnings by job (median yearly pay &times; 40 years; retail at $17.03 an hour &times; 2,080 hours a year; a high school graduate at $966 a week &times; 52 weeks); about $47,800 a year ($23 an hour for 2,080 hours); about 12 million and 19 million years of work ($908 billion divided by a teacher&#8217;s $74,495 and a warehouse worker&#8217;s $47,840); 434,000 children (three-quarters of Africa&#8217;s 579,000 malaria deaths); about 1,200 a day, and one every 73 seconds; malaria deaths in early 2020 (a third of 2020&#8217;s 627,000); the cost of $1,200 for every household; about $22 a day per person at the poverty line ($32,649 / 4 people / 365 days); $9 million per member of Congress; more than 21,000 homes a week ($9 billion / $417,500); a $184 billion endowment for community college ($9 billion a year / 4.9%); $132 billion to end hunger by 2030 ($33 billion a year &times; four years, 2027&#8211;2030); $456 billion for clean water by 2030 ($114 billion a year &times; four years); $263 billion for electricity and clean cooking ($23 billion a year &times; nine years, 2027&#8211;2035, plus $4 billion a year &times; 14 years, 2027&#8211;2040); endowments of $224 billion for school meals ($11 billion a year / 4.9%) and $2.14 trillion for the child tax credit ($105 billion a year / 4.9%); $200 million as 0.05% of Jeff Bezos&#8217;s wealth ($200 million / $378 billion); and what the 400 have bought, about $17.2 billion together, each purchase as a share of $8 trillion. Original project by <a href="https://github.com/MKorostoff" target="_blank">Matt Korostoff</a>, forked from <a href="https://github.com/eattherichtextformat/1-pixel-wealth" target="_blank">eattherichtextformat/1-pixel-wealth</a>.</p>
           </div>
         </div>
 
@@ -833,6 +924,7 @@
   </div>
 <!--i18n-end-->
 </div>
-<script type="text/javascript" src="main.js?version=2026.11o"></script>
+<script type="text/javascript" src="forbes400.js?version=2026.11q"></script>
+<script type="text/javascript" src="main.js?version=2026.11q"></script>
 </body>
 </html>

@@ -20,6 +20,13 @@ var pieDisc = document.getElementById('pie-disc');
 var piePct = document.getElementById('pie-pct');
 var pieLeft = document.getElementById('pie-left');
 var pieNow = document.getElementById('pie-now');
+var pieSpent = document.getElementById('pie-spent');
+// What the 400 have actually spent: real purchases drawn to scale near the
+// end of their bar. They feed the pie's orange slice, never "taken".
+var spending = [].slice.call(document.querySelectorAll('.spent'));
+var ticker = document.getElementById('ticker');
+var fourTitle = four_hundred.querySelector('.wealth-title');
+var fourDateline = fourTitle.querySelector('.title-dateline');
 var deathSquares = document.querySelector('.malaria-squares');
 var deathGrid = document.querySelector('.malaria-grid');
 
@@ -294,6 +301,7 @@ function update_strip() {
   }
 
   update_pie(x, vw);
+  update_ticker(x, vw);
   update_deaths(x, vw);
 }
 
@@ -323,13 +331,98 @@ function update_pie(x, vw) {
     else { now += cost * p; }
     if (p > 0) { name = (p < 1 ? 'Funding: ' : 'Funded: ') + program.getAttribute('data-name'); }
   });
+  // Real spending: each purchase adds to the orange slice in proportion to
+  // how far the reading mark is through its bar, the way programs take theirs.
+  var spent = 0;
+  spending.forEach(function (item) {
+    var bar = item.querySelector('.square');
+    var p = Math.max(0, Math.min(1, (x + vw / 2 - pageLeft(bar)) / bar.offsetWidth));
+    spent += Number(item.getAttribute('data-cost')) * p;
+    if (p > 0) { name = 'Spent: ' + item.getAttribute('data-name'); }
+  });
   var taken = done + now;
   var d = done / FOUR_HUNDRED_WEALTH * 100, t = taken / FOUR_HUNDRED_WEALTH * 100;
-  pieDisc.style.background = 'conic-gradient(var(--pie-taken) 0 ' + d + '%, var(--pie-now) ' + d + '% ' + t + '%, var(--pie-rest) ' + t + '% 100%)';
+  var s = t + spent / FOUR_HUNDRED_WEALTH * 100;
+  // Taken (stock), the program in progress (gold), spent (orange), left (blue).
+  pieDisc.style.background = 'conic-gradient(var(--pie-taken) 0 ' + d + '%, var(--pie-now) ' + d + '% ' + t + '%, var(--pie-spent) ' + t + '% ' + s + '%, var(--pie-rest) ' + s + '% 100%)';
   piePct.textContent = (t < 10 ? t.toFixed(1) : Math.round(t)) + '%';
+  // "Left" counts only the programs: they are what this money could do; the
+  // spending is money already gone, reported on its own line.
   pieLeft.textContent = '$' + ((FOUR_HUNDRED_WEALTH - taken) / 1e12).toFixed(1) + ' trillion left';
+  var spentPct = spent / FOUR_HUNDRED_WEALTH * 100;
+  var spentText = !spent ? '' : (spent < 1e9 ? '$' + Math.round(spent / 1e6) + ' million' : '$' + (spent / 1e9).toFixed(1) + ' billion') +
+    ' spent (' + (spentPct < 0.01 ? 'under 0.01' : spentPct.toFixed(2)) + '%)';
+  if (pieSpent.textContent !== spentText) { pieSpent.textContent = spentText; }
+  pieSpent.hidden = !spent;
+  pieSpent.parentNode.classList.toggle('has-spent', spent > 0);
   pieNow.textContent = name;
 }
+
+// The ticker: one of the 400 at a time, top right, level with the 400's
+// title, while their bar is under it. A new name, drawn at random without
+// repeats until the list runs out, each time the reader passes a box on the
+// bar or presses Back / Next. The list is a static copy (forbes400.js).
+var tickerDeck = [], tickerKey = null, tickerSwapped = 0, tickerForce = false, tickerTimer = null, tickerQuietUntil = 0;
+function tickerNext() {
+  if (!tickerDeck.length) {
+    tickerDeck = window.FORBES_400.slice();
+    for (var i = tickerDeck.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1)), tmp = tickerDeck[i];
+      tickerDeck[i] = tickerDeck[j]; tickerDeck[j] = tmp;
+    }
+  }
+  return tickerDeck.pop();
+}
+function update_ticker(x, vw) {
+  if (!ticker || !window.FORBES_400) { return; }
+  var barLeft = pageLeft(four_hundred_bar), barRight = barLeft + four_hundred_bar.offsetWidth;
+  var on = barLeft - x < vw / 2 && barRight - x > vw - 16;
+  if (!on) { ticker.classList.remove('on'); return; }
+  ticker.classList.add('on');
+  var key = 0, boxes = four_hundred_bar.children;
+  for (var b = 0; b < boxes.length; b++) {
+    if (boxes[b].classList.contains('infobox') && pageLeft(boxes[b]) < x + vw / 2) { key++; }
+  }
+  place_ticker();
+  if (key === tickerKey && !tickerForce && ticker.textContent) { return; }
+  // A Back / Next press already drew a new name: the boxes its glide passes
+  // don't draw more.
+  if (!tickerForce && Date.now() < tickerQuietUntil && ticker.textContent) { tickerKey = key; return; }
+  // At most one new name every 0.6s, so a glide past several boxes does not
+  // flicker through names.
+  var wait = 600 - (Date.now() - tickerSwapped);
+  if (wait > 0 && ticker.textContent) {
+    if (!tickerTimer) { tickerTimer = setTimeout(function () { tickerTimer = null; queueStrip(); }, wait); }
+    return;
+  }
+  tickerKey = key;
+  tickerForce = false;
+  tickerSwapped = Date.now();
+  var who = tickerNext();
+  var worth = who[1] % 1 ? who[1].toFixed(1) : String(who[1]);
+  ticker.innerHTML = '<span class="ticker-name"></span><span class="ticker-worth"></span>';
+  ticker.firstChild.textContent = who[0];
+  ticker.lastChild.textContent = '$' + worth + ' billion';
+  ticker.classList.remove('ticker-in');
+  void ticker.offsetWidth;
+  ticker.classList.add('ticker-in');
+  place_ticker();
+}
+// Level with the title's dateline, and never over the words of the title.
+function place_ticker() {
+  var dl = fourDateline.getBoundingClientRect();
+  var anchor = dl.width ? dl : fourTitle.getBoundingClientRect();
+  // The name's baseline sits a few pixels above the box's bottom; drop it to
+  // the dateline's.
+  ticker.style.top = Math.round(anchor.bottom - ticker.offsetHeight + 4) + 'px';
+  var words = dl.width ? dl.right : fourTitle.getBoundingClientRect().right - 10;
+  ticker.classList.toggle('crowded', window.innerWidth - 16 - ticker.offsetWidth < words + 32);
+}
+document.addEventListener('jump-stop', function () {
+  tickerForce = true;
+  tickerQuietUntil = Date.now() + 1500;
+  queueStrip();
+});
 
 // Malaria figures on the 400's bar. The death squares grow in when their
 // window comes on screen; the grid then fills with one year of under-five
@@ -530,6 +623,7 @@ function toggleZoom() {
     lastTarget = target;
     lastJump = Date.now();
     glide(target);
+    document.dispatchEvent(new Event('jump-stop'));
   }
 
   nav.querySelector('.jump-home').addEventListener('click', function () {

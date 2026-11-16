@@ -178,7 +178,7 @@ A two-ink poster palette (orange and blue over key ink) on uncoated buff stock, 
 
 ### Primary
 - **Musk Orange** (#e0662a): the fill of Elon Musk's bar, money attributed to him, and the progress bar's fill while the counter climbs through his fortune. Text on it is key ink (5.05:1). It also prints the title's out-of-register second ink. On bare stock it fails text contrast (2.77:1), so it never carries text or thin marks there.
-- **Cancellation Orange** (#b4441a): orange pulled darker for marks on bare stock: the FUNDED stamp, the orange marks in recolored charts, and the progress bar's sliver at the political section. It measures 4.47:1 on stock, so it is for large or bold marks (stamps, chart fills and strokes), not small body text.
+- **Cancellation Orange** (#b4441a): orange pulled darker for marks on bare stock: the FUNDED stamp, the orange marks in recolored charts, the progress bar's sliver at the political section, and the pie's spent slice (`--pie-spent`; only 1.43:1 against the blue beside it, so the slice's line of text carries it). It measures 4.47:1 on stock, so it is for large or bold marks (stamps, chart fills and strokes), not small body text.
 
 ### Secondary
 - **Ledger Blue** (#25547f): the fill of the 400 richest Americans' bar and the uncut part of every program bar. It also prints the familiar amounts (the $1,000 pixel, the $87,460 median square, the $1 million square, the For scale key squares, the title poster's lone pixel) and net worth in the celebrities row. Text on it is stock (6.38:1). On stock windows it is the program label's ink (6.38:1). It is also the pie's remaining wealth.
@@ -244,7 +244,7 @@ One horizontal row, roughly 17.82 million px wide, read by scrolling sideways or
 - **Breakpoints:** 450px is the phone break (counter and pie share a row, smaller capitals, datelines hidden, box figures at 10px, no grid).
 
 ### Named Rules
-**The Scale Is Sacred Rule.** A drawn money shape's area is its dollars divided by 1,000, in pixels. Changing a number means changing its drawn size; no style may change a drawn size.
+**The Scale Is Sacred Rule.** A drawn money shape's area is its dollars divided by 1,000, in pixels. Changing a number means changing its drawn size; no style may change a drawn size. The one exception is the Crow box in the political section (owner, 2026-11-15): an ink box like the midterms bar, sized to its words, that says in its own text it is not drawn to scale.
 
 **The No New Width Rule.** Nothing in a bar's flex row changes width at runtime, and nothing adds page width. Animate paint (gradients, opacity, transforms of non-flow marks), never width.
 
@@ -311,6 +311,7 @@ Printed ink tabs, fixed at the bottom center of the screen.
 - 18 $1 million squares tall (569.21px), centered on the 20-square bar: one square of orange above, one below where the ruler runs. Key ink, no outline. Width = cost / $1,000 / 569.21px, set inline in `index.html`.
 - The label is the program bar's window, unanimated: bare stock, key ink type, 18px 24px padding, pinned on the lane. It holds the name (poster capitals 30px), the one Figure-size cost, its share of Elon's wealth or what it buys (18px), and a 14px linked source line.
 - Never cut away and no stamp: the knock-out belongs to the 400's programs.
+- The same recipe, in key ink on the 400's blue, draws *What have they actually spent it on?* on the 400's bar (`.spent`), right after what the 400 could fund: real purchases that feed the pie's spent slice.
 
 ### The program bar and the knock-out (signature)
 - Starts as Ledger Blue and is painted `linear-gradient(to right, var(--stock) var(--cut), var(--blue) var(--cut))`. main.js sets `--cut` from how far the screen's middle has passed through the bar, never less than the label window's right edge, so window and cut read as one piece of bare stock.
@@ -322,7 +323,10 @@ Printed ink tabs, fixed at the bottom center of the screen.
 - The counter is poster capitals at 30px with tabular numerals.
 - The progress bar sits under the counter: a 14px track, up to 360px wide, 3px inside a 2px ink rim. Its Musk Orange fill grows with Musk's share of his own fortune as the counter climbs. At the political section it returns as a Cancellation Orange sliver (at least 3px) for billionaire families' midterm spending, with a 13px label under it.
 - The scale key ("For scale:" in bold) draws $1,000, the median household, and $1 million to scale in Ledger Blue.
-- The pie: stock = funded, gold = the program in progress, blue = what is left, inside a 3px ink rim. Beside it, the percentage at 48px poster capitals, "$X trillion left", and a bold "Funding:" or "Funded:" line.
+- The pie: stock = funded, gold = the program in progress, Cancellation Orange = money really spent (drawn after what was taken, to scale, so it is a hairline), blue = what is left, inside a 3px ink rim. Beside it, the percentage at 48px poster capitals, "$X trillion left" (programs only; spending never lowers it), "■ $X spent (Y%)" with a swatch of the spent ink, and a bold "Funding:", "Funded:" or "Spent:" line (on phones the "Spent:" line drops for room).
+
+### Forbes 400 ticker
+- One member of the 400 at a time, fixed at the top right of the screen, level with the 400 title's dateline, while the 400's bar runs under it: the name in poster capitals at 20px, net worth in 13px Public Sans. Drawn at random without repeats from `forbes400.js`; a new name for each box passed or Back/Next press (at most one every 0.6s). It fades up 4px over 0.3s (none under reduced motion), is `aria-hidden`, and hides whenever it would come within 32px of the title's words, which means it is off on phones.
 - The reading mark is a gold downward triangle (24 by 18px) on the bar's bottom edge at the screen's middle, the exact line the pie reads.
 
 ### The 10px strip

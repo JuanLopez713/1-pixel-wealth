@@ -101,19 +101,39 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
    - *How does it compare with what the US spends?* Homeless veterans, cancer drugs.
    - *What could Elon Musk alone pay for?*, *What has Elon actually spent it
      on?*, *And what did he take away?*, ending at the bar's end.
-4. **The 400 richest ($8T): what this wealth could fund.** Who they are (the
-   747), then programs in ascending cost, each
-   taking a slice out of the always-visible pie. Since Nov 2026 these are
-   lasting, infrastructural or life-saving programs only (cash payments and
-   debt payoffs were cut): vaccines (Gavi), malaria, transit repairs, school
-   meals endowment, electricity and clean cooking, internet, clean water by
-   2030, US drinking water systems, 2021 child tax credit endowment → combined
-   (≈55%, "a little more than half") → "all of them would still be billionaires".
-5. **History (2020):** COVID testing, CARES Act, 2018 taxes. Open question:
-   keep as one short "In 2020…" beat inside step 4, or drop.
-6. **Political ending:** "So why hasn't any of this happened?": billionaire
-   midterm spending, Musk's 2024 spending, lobbying, oligarchy → "We cannot
-   accept this level of inequality any longer." → sources.
+4. **The 400 richest ($8T)**, in titled sections like Musk's bar (owner,
+   2026-11-15): *How much do the 400 own?* (intro, trillion note, 747) →
+   *Could they have paid for 2020?* ($1,200 checks, CARES; not counted) →
+   *What could the 400 pay for?* (vaccines (Gavi), malaria, transit repairs,
+   school meals endowment, electricity and clean cooking, internet, clean
+   water by 2030, US drinking water) → *What could they do for America's
+   poor?* (poverty, 2021 child tax credit endowment) → *What would they have
+   left?* (combined ≈55%, transform, "all of them would still be
+   billionaires") → *What have they actually spent it on?*: nine real
+   purchases as cost bars (569.21px tall, cost / 1000 / 569.21 wide, class
+   `.spent` with `data-cost` and `data-name`), cheapest first: Griffin's
+   penthouse $238M, the Washington Post $250M, Koru $500M (estimate),
+   Griffin's two paintings $500M, Blue Origin $1B a year, the Clippers $2B,
+   the Intuit Dome $2B, the Broncos $4.65B, the Commanders $6.05B; together
+   $17.2B (0.21%). Each grows the pie's orange `--pie-spent` slice (to scale,
+   a hairline) and the "$X spent (Y%)" line; "left" does not drop (owner,
+   2026-11-15) → *Is it really so radical?* → "$3.6 trillion left" and the
+   long blue run.
+5. (2020 now lives inside step 4 as its own titled section; owner kept it,
+   2026-11-15.)
+6. **Political section, at the far end of the bar** (`.political-start`
+   carries `margin-left: auto`): *What does their money buy in politics?* →
+   a sliver buys political power → billionaire midterm spending $1.7B →
+   super PACs → Barre Seid's $1.6B to Leonard Leo (an ink money bar to
+   scale, 4,000px wide) and Harlan Crow's
+   trips for Clarence Thomas (an ink box like the midterms bar, but sized to
+   its words, not its $500,000, and labeled "not drawn to scale"; owner's
+   choice, 2026-11-15). Neither is on the Forbes 400, so neither is counted
+   → lobbying → oligarchy → "We cannot accept this level of inequality any
+   longer." (the only poster-scale ending heading) → sources. A ticker at
+   the top right shows one Forbes 400 member at a time (`forbes400.js`, a
+   static copy of the September 2026 list; new name per box passed or
+   Back/Next press; hidden when it would touch the title, so off on phones).
 7. **Below-the-bar layer (not on the money scale):** the persistent "For
    scale" key, the persistent pie (400 section) and the Musk/400 counters. The
    malaria figures (death squares and the dot grid) moved out of the strip
@@ -211,6 +231,19 @@ From the owner, 2026-11-09. These are decided; don't relitigate them.
 | Deaths from foreign aid cuts | >750,000 (>500,000 children) by Jan 2026 | Brooke Nichols (BU) Impact Counter, via AFP/Taipei Times; model estimate, not peer-reviewed | estimate; drawn as dots (1 per 1,000), never a box |
 | Projected deaths to 2030 | >14M, ~4.5M children under 5 | The Lancet (2025), via NPR | projection |
 | US public K-12 spending | $927B/yr | NCES Fast Facts (2020–21, 2022–23 $) | removed from the page (Nov 2026) |
+| Griffin penthouse | $238M (2019), a US record | Reuters via NBC News | historical; price from Griffin's spokesman |
+| Bezos buys the Washington Post | $250M cash (2013) | Al Jazeera (Post Co. release) | historical; WaPo's own story blocked our fetch |
+| Bezos yacht Koru | >$500M (2023) | Bloomberg via gCaptain | estimate |
+| Griffin's de Kooning + Pollock | $500M for the pair (summer 2015) | CNBC, Feb 2016 (unnamed sources; Bloomberg broke it) | reported |
+| Blue Origin | ~$1B of Amazon stock a year (Bezos, 2017) | CNBC | per year; no reputable cumulative total found |
+| Ballmer buys the Clippers | $2B (2014) | ESPN | historical |
+| Intuit Dome | "upward of $2 billion" | ESPN, 2021 | estimate; "privately paid" not sourced, so not claimed |
+| Walton-Penner group buys the Broncos | $4.65B (2022) | ESPN | historical; a group led by Rob Walton |
+| Harris group buys the Commanders | $6.05B (2023), a record | ESPN | historical; a group; ≈ the WFP's 2021 $6B famine ask |
+| Barre Seid gift to Marble Freedom Trust | $1.6B (2020–21), largest known donation to a political advocacy group | ProPublica, Aug 2022 | historical; Seid is not on the Forbes 400; ink money bar, 4,000px |
+| Crow trips for Clarence Thomas | 20+ years; 2019 Indonesia trip could have exceeded $500,000 | ProPublica, Apr 2023 | historical; Crow is not on the Forbes 400; ink box, labeled not to scale |
+| Forbes 400 names (ticker) | 400 names, Sept 2026 list values | Forbes API (`forbes-400/2026/position/true.json`), pulled twice in chunks, 0 diffs; 9 profiles spot-checked | static copy in `forbes400.js` |
+| Giving Pledge (unused) | 32 original pledgers still billionaires: +283% since signing | Institute for Policy Studies, July 2025 (advocacy) | sourced, not on the page |
 | Billionaire midterm spending | $1.7B (81% super PACs), 53× since 2010 | Americans for Tax Fairness, FEC data to Aug 2026 | current, advocacy source |
 | Musk 2024 election spending | ~$290M | CNN (FEC filings) | current; now a cost bar on Musk's bar (moved from the political ending) |
 | Federal lobbying 2025 | >$5B (~$9M per member of Congress) | LegiStorm; matches OpenSecrets, Bloomberg Gov | current |
